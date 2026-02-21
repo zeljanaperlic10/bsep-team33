@@ -1,0 +1,57 @@
+<div *ngIf="authService.isLoggedIn(); else noNav">
+
+  <!-- Navigacija — vidljiva samo kada je admin ulogovan -->
+  <mat-toolbar color="primary" class="toolbar">
+    <span class="logo">PKI Sistem</span>
+
+    <span class="spacer"></span>
+
+    <!-- Navigacioni linkovi -->
+    <button mat-button routerLink="/dashboard" routerLinkActive="active-link">
+      <mat-icon>dashboard</mat-icon>
+      Dashboard
+    </button>
+
+    <button mat-button routerLink="/certificates" routerLinkActive="active-link">
+      <mat-icon>security</mat-icon>
+      Sertifikati
+    </button>
+
+    <button mat-button routerLink="/passwords" routerLinkActive="active-link">
+      <mat-icon>lock</mat-icon>
+      Password Manager
+    </button>
+
+    <span class="spacer"></span>
+
+    <!-- Admin info i logout -->
+    <button mat-button [matMenuTriggerFor]="userMenu">
+      <mat-icon>account_circle</mat-icon>
+      {{ getCurrentUser().firstName }} {{ getCurrentUser().lastName }}
+    </button>
+
+    <mat-menu #userMenu="matMenu">
+      <button mat-menu-item disabled>
+        <mat-icon>email</mat-icon>
+        {{ getCurrentUser().email }}
+      </button>
+      <mat-divider></mat-divider>
+      <button mat-menu-item (click)="logout()">
+        <mat-icon>logout</mat-icon>
+        Odjavi se
+      </button>
+    </mat-menu>
+
+  </mat-toolbar>
+
+  <!-- Sadržaj stranice -->
+  <div class="content">
+    <router-outlet></router-outlet>
+  </div>
+
+</div>
+
+<!-- Ako nije ulogovan prikazujemo samo router outlet bez navigacije -->
+<ng-template #noNav>
+  <router-outlet></router-outlet>
+</ng-template>

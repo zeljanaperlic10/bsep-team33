@@ -11,6 +11,7 @@ import org.bouncycastle.cert.X509CertificateHolder;
 import org.bouncycastle.cert.X509v3CertificateBuilder;
 import org.bouncycastle.cert.jcajce.JcaX509CertificateConverter;
 import org.bouncycastle.cert.jcajce.JcaX509v3CertificateBuilder;
+import org.bouncycastle.jce.provider.BouncyCastleProvider;
 import org.bouncycastle.operator.ContentSigner;
 import org.bouncycastle.operator.jcajce.JcaContentSignerBuilder;
 import org.slf4j.Logger;
@@ -40,9 +41,24 @@ public class CertificateService {
         this.keystoreService = keystoreService;
     }
 
-    // Glavni metod koji se poziva iz kontrolera
-    // Na osnovu tipa sertifikata poziva odgovarajući metod
+    private void ensureBouncyCastleProvider() {
+        if (Security.getProvider(BouncyCastleProvider.PROVIDER_NAME) == null) {
+            Security.addProvider(new BouncyCastleProvider());
+            log.info("Bouncy Castle provider registrovan iz CertificateService");
+        }
+    }
+
     public CertificateResponse generateCertificate(CertificateRequest request) throws Exception {
+        ensureBouncyCastleProvider();
+
+        // Null check za datume
+        if (request.getValidFrom() == null) {
+            throw new IllegalArgumentException("ValidFrom je null — problem sa deserializacijom datuma");
+        }
+        if (request.getValidTo() == null) {
+            throw new IllegalArgumentException("ValidTo je null — problem sa deserializacijom datuma");
+        }
+
         switch (request.getType().toUpperCase()) {
             case "ROOT":
                 return generateRootCertificate(request);
@@ -56,101 +72,83 @@ public class CertificateService {
     }
 
     // ================================================================
-    // ROOT sertifikat — samopotpisan, vrh lanca
+    // ROOT sertifikat
     // ================================================================
     private CertificateResponse generateRootCertificate(CertificateRequest request) throws Exception {
         log.info("Generisanje ROOT sertifikata za: {}", request.getCommonName());
 
-        // Korak 1: Generišemo par ključeva
         KeyPair keyPair = generateKeyPair();
-
-        // Korak 2: Kreiramo X500Name
         X500Name subjectName = buildX500Name(request);
+        BigInteger serialNumber = new BigInteger(
+            UUID.randomUUID().toString().replace("-", ""), 16
+        );
 
-        // Korak 3: Serijski broj
-        BigInteger serialNumber = new BigInteger(UUID.randomUUID().toString().replace("-", ""), 16);
+        Date validFrom = Date.from(
+            request.getValidFrom().atZone(ZoneId.systemDefault()).toInstant()
+        );
+        Date validTo = Date.from(
+            request.getValidTo().atZone(ZoneId.systemDefault()).toInstant()
+        );
 
-        // Korak 4: Datumi važenja
-        Date validFrom = Date.from(request.getValidFrom().atZone(ZoneId.systemDefault()).toInstant());
-        Date validTo = Date.from(request.getValidTo().atZone(ZoneId.systemDefault()).toInstant());
-
-        // Korak 5: Gradimo sertifikat — za ROOT issuer == subject
         X509v3CertificateBuilder certBuilder = new JcaX509v3CertificateBuilder(
-            subjectName,
-            serialNumber,
-            validFrom,
-            validTo,
-            subjectName,
-            keyPair.getPublic()
+            subjectName, serialNumber, validFrom, validTo, subjectName, keyPair.getPublic()
         );
 
-        // Korak 6: Ekstenzije
-        // BasicConstraints(true) — označava da je ovo CA sertifikat
         certBuilder.addExtension(
-            Extension.basicConstraints,
-            true,
-            new BasicConstraints(true)
+            Extension.basicConstraints, true, new BasicConstraints(true)
         );
-
-        // KeyUsage — može potpisivati sertifikate i CRL
         certBuilder.addExtension(
-            Extension.keyUsage,
-            true,
+            Extension.keyUsage, true,
             new KeyUsage(KeyUsage.keyCertSign | KeyUsage.cRLSign)
         );
-
-        // SubjectKeyIdentifier
         certBuilder.addExtension(
-            Extension.subjectKeyIdentifier,
-            false,
+            Extension.subjectKeyIdentifier, false,
             createSubjectKeyIdentifier(keyPair.getPublic())
         );
 
-        // Korak 7: Potpisujemo sopstvenim privatnim ključem
         X509Certificate certificate = signCertificate(certBuilder, keyPair.getPrivate());
 
-        // Korak 8: Alias za keystore
         String alias = "root-" + request.getCommonName().toLowerCase().replace(" ", "-")
                 + "-" + System.currentTimeMillis();
 
-        // Korak 9: Čuvamo u keystore SA privatnim ključem
         keystoreService.saveCAcertificate(
-            alias,
-            keyPair.getPrivate(),
-            new X509Certificate[]{certificate}
+            alias, keyPair.getPrivate(), new X509Certificate[]{certificate}
         );
 
-        // Korak 10: Čuvamo u bazu
-        Certificate cert = saveCertificateToDatabase(request, alias, serialNumber.toString(), null);
+        Certificate cert = saveCertificateToDatabase(
+            request, alias, serialNumber.toString(), null
+        );
 
         log.info("ROOT sertifikat uspešno kreiran sa aliasom: {}", alias);
         return mapToResponse(cert);
     }
 
     // ================================================================
-    // INTERMEDIATE sertifikat — potpisan od ROOT ili drugog INTERMEDIATE
+    // INTERMEDIATE sertifikat
     // ================================================================
     private CertificateResponse generateIntermediateCertificate(CertificateRequest request) throws Exception {
         log.info("Generisanje INTERMEDIATE sertifikata za: {}", request.getCommonName());
 
-        // Korak 1: Validiramo issuer
         validateIssuer(request.getIssuerAlias());
 
-        // Korak 2: Učitavamo issuer iz keystore
         X509Certificate issuerCert = keystoreService.getCertificate(request.getIssuerAlias());
         PrivateKey issuerPrivateKey = keystoreService.getPrivateKey(request.getIssuerAlias());
-
-        // Korak 3: Novi par ključeva za intermediate
         KeyPair keyPair = generateKeyPair();
 
         X500Name issuerName = new X500Name(issuerCert.getSubjectX500Principal().getName());
         X500Name subjectName = buildX500Name(request);
 
-        BigInteger serialNumber = new BigInteger(UUID.randomUUID().toString().replace("-", ""), 16);
-        Date validFrom = Date.from(request.getValidFrom().atZone(ZoneId.systemDefault()).toInstant());
-        Date validTo = Date.from(request.getValidTo().atZone(ZoneId.systemDefault()).toInstant());
+        BigInteger serialNumber = new BigInteger(
+            UUID.randomUUID().toString().replace("-", ""), 16
+        );
 
-        // Korak 4: Proveravamo da ne traje duže od issuera
+        Date validFrom = Date.from(
+            request.getValidFrom().atZone(ZoneId.systemDefault()).toInstant()
+        );
+        Date validTo = Date.from(
+            request.getValidTo().atZone(ZoneId.systemDefault()).toInstant()
+        );
+
         if (validTo.after(issuerCert.getNotAfter())) {
             throw new IllegalArgumentException(
                 "Datum isteka ne može biti posle datuma isteka issuer sertifikata: "
@@ -158,49 +156,32 @@ public class CertificateService {
             );
         }
 
-        // Korak 5: Gradimo sertifikat
         X509v3CertificateBuilder certBuilder = new JcaX509v3CertificateBuilder(
-            issuerName,
-            serialNumber,
-            validFrom,
-            validTo,
-            subjectName,
-            keyPair.getPublic()
-        );
-
-        // Korak 6: Ekstenzije
-        certBuilder.addExtension(
-            Extension.basicConstraints,
-            true,
-            new BasicConstraints(true)
+            issuerName, serialNumber, validFrom, validTo, subjectName, keyPair.getPublic()
         );
 
         certBuilder.addExtension(
-            Extension.keyUsage,
-            true,
+            Extension.basicConstraints, true, new BasicConstraints(true)
+        );
+        certBuilder.addExtension(
+            Extension.keyUsage, true,
             new KeyUsage(KeyUsage.keyCertSign | KeyUsage.cRLSign)
         );
-
         certBuilder.addExtension(
-            Extension.subjectKeyIdentifier,
-            false,
+            Extension.subjectKeyIdentifier, false,
             createSubjectKeyIdentifier(keyPair.getPublic())
         );
 
-        // Korak 7: Potpisujemo issuerovim privatnim ključem
         X509Certificate certificate = signCertificate(certBuilder, issuerPrivateKey);
 
-        // Korak 8: Gradimo kompletan lanac
         X509Certificate[] issuerChain = keystoreService.getCertificateChain(request.getIssuerAlias());
         X509Certificate[] fullChain = buildCertificateChain(certificate, issuerChain);
 
-        // Korak 9: Čuvamo u keystore
         String alias = "intermediate-" + request.getCommonName().toLowerCase().replace(" ", "-")
                 + "-" + System.currentTimeMillis();
 
         keystoreService.saveCAcertificate(alias, keyPair.getPrivate(), fullChain);
 
-        // Korak 10: Čuvamo u bazu
         Certificate cert = saveCertificateToDatabase(
             request, alias, serialNumber.toString(), request.getIssuerAlias()
         );
@@ -210,29 +191,31 @@ public class CertificateService {
     }
 
     // ================================================================
-    // END ENTITY sertifikat — krajnji korisnik, ne može potpisivati
+    // END ENTITY sertifikat
     // ================================================================
     private CertificateResponse generateEndEntityCertificate(CertificateRequest request) throws Exception {
         log.info("Generisanje END_ENTITY sertifikata za: {}", request.getCommonName());
 
-        // Korak 1: Validiramo issuer
         validateIssuer(request.getIssuerAlias());
 
-        // Korak 2: Učitavamo issuer
         X509Certificate issuerCert = keystoreService.getCertificate(request.getIssuerAlias());
         PrivateKey issuerPrivateKey = keystoreService.getPrivateKey(request.getIssuerAlias());
-
-        // Korak 3: Novi par ključeva za EE
         KeyPair keyPair = generateKeyPair();
 
         X500Name issuerName = new X500Name(issuerCert.getSubjectX500Principal().getName());
         X500Name subjectName = buildX500Name(request);
 
-        BigInteger serialNumber = new BigInteger(UUID.randomUUID().toString().replace("-", ""), 16);
-        Date validFrom = Date.from(request.getValidFrom().atZone(ZoneId.systemDefault()).toInstant());
-        Date validTo = Date.from(request.getValidTo().atZone(ZoneId.systemDefault()).toInstant());
+        BigInteger serialNumber = new BigInteger(
+            UUID.randomUUID().toString().replace("-", ""), 16
+        );
 
-        // Provera trajanja
+        Date validFrom = Date.from(
+            request.getValidFrom().atZone(ZoneId.systemDefault()).toInstant()
+        );
+        Date validTo = Date.from(
+            request.getValidTo().atZone(ZoneId.systemDefault()).toInstant()
+        );
+
         if (validTo.after(issuerCert.getNotAfter())) {
             throw new IllegalArgumentException(
                 "Datum isteka ne može biti posle datuma isteka issuer sertifikata: "
@@ -240,59 +223,36 @@ public class CertificateService {
             );
         }
 
-        // Korak 4: Gradimo sertifikat
         X509v3CertificateBuilder certBuilder = new JcaX509v3CertificateBuilder(
-            issuerName,
-            serialNumber,
-            validFrom,
-            validTo,
-            subjectName,
-            keyPair.getPublic()
+            issuerName, serialNumber, validFrom, validTo, subjectName, keyPair.getPublic()
         );
 
-        // Korak 5: Ekstenzije za EE
-        // BasicConstraints(false) — EE NIJE CA
         certBuilder.addExtension(
-            Extension.basicConstraints,
-            true,
-            new BasicConstraints(false)
+            Extension.basicConstraints, true, new BasicConstraints(false)
         );
-
-        // KeyUsage za EE
         certBuilder.addExtension(
-            Extension.keyUsage,
-            true,
+            Extension.keyUsage, true,
             new KeyUsage(KeyUsage.digitalSignature | KeyUsage.keyEncipherment)
         );
-
-        // ExtendedKeyUsage — koristimo OID vrednosti direktno
-        // 1.3.6.1.5.5.7.3.1 = serverAuth
-        // 1.3.6.1.5.5.7.3.2 = clientAuth
         certBuilder.addExtension(
-            Extension.extendedKeyUsage,
-            false,
+            Extension.extendedKeyUsage, false,
             new ExtendedKeyUsage(new KeyPurposeId[]{
                 KeyPurposeId.getInstance(new ASN1ObjectIdentifier("1.3.6.1.5.5.7.3.1")),
                 KeyPurposeId.getInstance(new ASN1ObjectIdentifier("1.3.6.1.5.5.7.3.2"))
             })
         );
-
         certBuilder.addExtension(
-            Extension.subjectKeyIdentifier,
-            false,
+            Extension.subjectKeyIdentifier, false,
             createSubjectKeyIdentifier(keyPair.getPublic())
         );
 
-        // Korak 6: Potpisujemo issuerovim privatnim ključem
         X509Certificate certificate = signCertificate(certBuilder, issuerPrivateKey);
 
-        // Korak 7: EE čuvamo BEZ privatnog ključa
         String alias = "ee-" + request.getCommonName().toLowerCase().replace(" ", "-")
                 + "-" + System.currentTimeMillis();
 
         keystoreService.saveEEcertificate(alias, certificate);
 
-        // Korak 8: Čuvamo u bazu
         Certificate cert = saveCertificateToDatabase(
             request, alias, serialNumber.toString(), request.getIssuerAlias()
         );
@@ -305,14 +265,14 @@ public class CertificateService {
     // Helper metodi
     // ================================================================
 
-    // Generiše RSA par ključeva od 2048 bita
     private KeyPair generateKeyPair() throws Exception {
-        KeyPairGenerator keyPairGenerator = KeyPairGenerator.getInstance("RSA");
+        KeyPairGenerator keyPairGenerator = KeyPairGenerator.getInstance(
+            "RSA", BouncyCastleProvider.PROVIDER_NAME
+        );
         keyPairGenerator.initialize(2048, new SecureRandom());
         return keyPairGenerator.generateKeyPair();
     }
 
-    // Gradi X500Name iz podataka requesta
     private X500Name buildX500Name(CertificateRequest request) {
         StringBuilder sb = new StringBuilder();
         sb.append("CN=").append(request.getCommonName());
@@ -336,27 +296,26 @@ public class CertificateService {
         return new X500Name(sb.toString());
     }
 
-    // Potpisuje sertifikat datim privatnim ključem
     private X509Certificate signCertificate(X509v3CertificateBuilder certBuilder,
                                              PrivateKey privateKey) throws Exception {
+        ensureBouncyCastleProvider();
+
         ContentSigner signer = new JcaContentSignerBuilder("SHA256withRSA")
-            .setProvider("BC")
+            .setProvider(BouncyCastleProvider.PROVIDER_NAME)
             .build(privateKey);
 
         X509CertificateHolder certHolder = certBuilder.build(signer);
         return new JcaX509CertificateConverter()
-            .setProvider("BC")
+            .setProvider(BouncyCastleProvider.PROVIDER_NAME)
             .getCertificate(certHolder);
     }
 
-    // Kreira SubjectKeyIdentifier iz javnog ključa
     private SubjectKeyIdentifier createSubjectKeyIdentifier(PublicKey publicKey) throws Exception {
         byte[] publicKeyBytes = publicKey.getEncoded();
         byte[] digest = MessageDigest.getInstance("SHA-1").digest(publicKeyBytes);
         return new SubjectKeyIdentifier(digest);
     }
 
-    // Gradi kompletan lanac sertifikata
     private X509Certificate[] buildCertificateChain(X509Certificate newCert,
                                                       X509Certificate[] issuerChain) {
         X509Certificate[] chain = new X509Certificate[issuerChain.length + 1];
@@ -365,7 +324,6 @@ public class CertificateService {
         return chain;
     }
 
-    // Validira issuer pre potpisivanja
     private void validateIssuer(String issuerAlias) throws Exception {
         if (issuerAlias == null || issuerAlias.isEmpty()) {
             throw new IllegalArgumentException("Issuer alias je obavezan");
@@ -386,11 +344,11 @@ public class CertificateService {
         }
     }
 
-    // Čuva metapodatke sertifikata u bazu
+    // Čuva sertifikat u bazu — createdAt se postavlja automatski u @PrePersist
     private Certificate saveCertificateToDatabase(CertificateRequest request,
-                                                    String alias,
-                                                    String serialNumber,
-                                                    String issuerAlias) {
+                                                   String alias,
+                                                   String serialNumber,
+                                                   String issuerAlias) {
         Certificate cert = new Certificate();
         cert.setAlias(alias);
         cert.setCommonName(request.getCommonName());
@@ -403,7 +361,7 @@ public class CertificateService {
         cert.setValidTo(request.getValidTo());
         cert.setIssuerAlias(issuerAlias);
         cert.setRevoked(false);
-
+        // createdAt se postavlja automatski putem @PrePersist u Certificate.java
         return certificateRepository.save(cert);
     }
 
@@ -411,7 +369,6 @@ public class CertificateService {
     // Javni metodi za kontroler
     // ================================================================
 
-    // Vraća sve sertifikate
     public List<CertificateResponse> getAllCertificates() {
         List<Certificate> certificates = certificateRepository.findAll();
         List<CertificateResponse> responses = new ArrayList<>();
@@ -421,15 +378,12 @@ public class CertificateService {
         return responses;
     }
 
-    // Vraća jedan sertifikat po ID-u
     public CertificateResponse getCertificateById(Long id) {
         Certificate cert = certificateRepository.findById(id)
             .orElseThrow(() -> new RuntimeException("Sertifikat nije pronađen sa ID: " + id));
         return mapToResponse(cert);
     }
 
-    // Vraća sve CA sertifikate koji nisu povučeni
-    // Koristi se za dropdown na frontendu kada biramo issuera
     public List<CertificateResponse> getAvailableIssuers() {
         List<Certificate> issuers = new ArrayList<>();
         issuers.addAll(certificateRepository.findByTypeAndRevokedFalse(
@@ -444,7 +398,6 @@ public class CertificateService {
         return responses;
     }
 
-    // Povlačenje sertifikata
     public CertificateResponse revokeCertificate(Long id, String reason) {
         Certificate cert = certificateRepository.findById(id)
             .orElseThrow(() -> new RuntimeException("Sertifikat nije pronađen"));
@@ -459,11 +412,9 @@ public class CertificateService {
 
         certificateRepository.save(cert);
         log.warn("Sertifikat povučen: {} — razlog: {}", cert.getAlias(), reason);
-
         return mapToResponse(cert);
     }
 
-    // Mapira Certificate model na CertificateResponse DTO
     private CertificateResponse mapToResponse(Certificate cert) {
         return new CertificateResponse(
             cert.getId(),

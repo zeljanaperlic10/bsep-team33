@@ -1,0 +1,153 @@
+<div class="page-container">
+
+  <div class="page-header">
+    <h1>Novi sertifikat</h1>
+  </div>
+
+  <mat-card>
+    <mat-card-content>
+      <form [formGroup]="certForm" (ngSubmit)="onSubmit()">
+
+        <!-- Tip sertifikata -->
+        <h3>Tip sertifikata</h3>
+        <mat-form-field appearance="outline" class="full-width">
+          <mat-label>Tip</mat-label>
+          <mat-select formControlName="type" (selectionChange)="onTypeChange($event.value)">
+            <mat-option value="ROOT">ROOT — Samopotpisan, vrh lanca</mat-option>
+            <mat-option value="INTERMEDIATE">INTERMEDIATE — Potpisan od CA</mat-option>
+            <mat-option value="END_ENTITY">END_ENTITY — Krajnji korisnik</mat-option>
+          </mat-select>
+        </mat-form-field>
+
+        <!-- Issuer — prikazuje se samo za INTERMEDIATE i END_ENTITY -->
+        <mat-form-field appearance="outline" class="full-width"
+                        *ngIf="certForm.get('type')?.value !== 'ROOT'">
+          <mat-label>Issuer sertifikat</mat-label>
+          <mat-select formControlName="issuerAlias">
+            <mat-option *ngFor="let issuer of availableIssuers" [value]="issuer.alias">
+              {{ issuer.commonName }} ({{ issuer.type }}) — važi do {{ issuer.validTo | date:'dd.MM.yyyy' }}
+            </mat-option>
+          </mat-select>
+          <mat-error *ngIf="certForm.get('issuerAlias')?.hasError('required')">
+            Issuer je obavezan za ovaj tip sertifikata
+          </mat-error>
+        </mat-form-field>
+
+        <mat-divider></mat-divider>
+
+        <!-- X500Name podaci -->
+        <h3>Podaci o vlasniku (X500Name)</h3>
+
+        <div class="form-row">
+          <mat-form-field appearance="outline">
+            <mat-label>Common Name (CN) *</mat-label>
+            <input matInput formControlName="commonName" placeholder="npr. My Root CA">
+            <mat-error *ngIf="certForm.get('commonName')?.hasError('required')">
+              Common Name je obavezan
+            </mat-error>
+          </mat-form-field>
+
+          <mat-form-field appearance="outline">
+            <mat-label>Organizacija (O) *</mat-label>
+            <input matInput formControlName="organization" placeholder="npr. My Company">
+            <mat-error *ngIf="certForm.get('organization')?.hasError('required')">
+              Organizacija je obavezna
+            </mat-error>
+          </mat-form-field>
+        </div>
+
+        <div class="form-row">
+          <mat-form-field appearance="outline">
+            <mat-label>Organizational Unit (OU)</mat-label>
+            <input matInput formControlName="organizationalUnit" placeholder="npr. IT Department">
+          </mat-form-field>
+
+          <mat-form-field appearance="outline">
+            <mat-label>Država (C)</mat-label>
+            <input matInput formControlName="country" placeholder="npr. RS" maxlength="2">
+          </mat-form-field>
+        </div>
+
+        <div class="form-row">
+          <mat-form-field appearance="outline">
+            <mat-label>Pokrajina (ST)</mat-label>
+            <input matInput formControlName="state" placeholder="npr. Vojvodina">
+          </mat-form-field>
+
+          <mat-form-field appearance="outline">
+            <mat-label>Grad (L)</mat-label>
+            <input matInput formControlName="locality" placeholder="npr. Novi Sad">
+          </mat-form-field>
+        </div>
+
+        <mat-divider></mat-divider>
+
+        <!-- Datumi važenja -->
+        <h3>Period važenja</h3>
+
+        <div class="form-row">
+          <mat-form-field appearance="outline">
+            <mat-label>Važi od</mat-label>
+            <input matInput
+                   [matDatepicker]="pickerFrom"
+                   formControlName="validFrom">
+            <mat-datepicker-toggle matSuffix [for]="pickerFrom"></mat-datepicker-toggle>
+            <mat-datepicker #pickerFrom></mat-datepicker>
+            <mat-error>Datum početka je obavezan</mat-error>
+          </mat-form-field>
+
+          <mat-form-field appearance="outline">
+            <mat-label>Važi do</mat-label>
+            <input matInput
+                   [matDatepicker]="pickerTo"
+                   formControlName="validTo">
+            <mat-datepicker-toggle matSuffix [for]="pickerTo"></mat-datepicker-toggle>
+            <mat-datepicker #pickerTo></mat-datepicker>
+            <mat-error>Datum isteka je obavezan</mat-error>
+          </mat-form-field>
+        </div>
+
+        <mat-divider></mat-divider>
+
+        <!-- Ekstenzije -->
+        <h3>Ekstenzije</h3>
+
+        <div class="form-row">
+          <mat-form-field appearance="outline">
+            <mat-label>Key Usage</mat-label>
+            <mat-select formControlName="keyUsages" multiple>
+              <mat-option *ngFor="let ku of keyUsageOptions" [value]="ku.value">
+                {{ ku.label }}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+
+          <mat-form-field appearance="outline">
+            <mat-label>Extended Key Usage</mat-label>
+            <mat-select formControlName="extendedKeyUsages" multiple>
+              <mat-option *ngFor="let eku of extendedKeyUsageOptions" [value]="eku.value">
+                {{ eku.label }}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+
+        <!-- Akcioni dugmad -->
+        <div class="form-actions">
+          <button mat-stroked-button type="button" (click)="cancel()">
+            Odustani
+          </button>
+          <button mat-raised-button
+                  color="primary"
+                  type="submit"
+                  [disabled]="certForm.invalid || isLoading">
+            <mat-spinner *ngIf="isLoading" diameter="20"></mat-spinner>
+            <span *ngIf="!isLoading">Kreiraj sertifikat</span>
+          </button>
+        </div>
+
+      </form>
+    </mat-card-content>
+  </mat-card>
+
+</div>

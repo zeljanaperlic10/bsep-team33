@@ -646,3 +646,3696 @@ Caused by: org.postgresql.util.PSQLException: FATAL: password authentication fai
     values
         (?, ?, ?, ?, ?, ?)
 2026-02-21 01:03:44.589 [main] INFO  c.p.p.config.DataInitializer - Admin korisnik kreiran: admin@pki.com / Admin123!
+2026-02-21 01:11:06.695 [https-jsse-nio-8443-exec-5] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2026-02-21 01:11:09.604 [https-jsse-nio-8443-exec-5] INFO  c.p.p.controller.AuthController - Pokušaj prijave za: admin@pki.com
+2026-02-21 01:11:10.488 [https-jsse-nio-8443-exec-5] DEBUG org.hibernate.SQL - 
+    select
+        u1_0.id,
+        u1_0.email,
+        u1_0.first_name,
+        u1_0.last_name,
+        u1_0.password,
+        u1_0.public_key,
+        u1_0.role 
+    from
+        users u1_0 
+    where
+        u1_0.email=?
+2026-02-21 01:11:11.444 [https-jsse-nio-8443-exec-5] DEBUG org.hibernate.SQL - 
+    select
+        u1_0.id,
+        u1_0.email,
+        u1_0.first_name,
+        u1_0.last_name,
+        u1_0.password,
+        u1_0.public_key,
+        u1_0.role 
+    from
+        users u1_0 
+    where
+        u1_0.email=?
+2026-02-21 02:17:28.755 [https-jsse-nio-8443-exec-2] ERROR c.p.p.config.GlobalExceptionHandler - Neočekivana greška: Request method 'GET' is not supported
+org.springframework.web.HttpRequestMethodNotSupportedException: Request method 'GET' is not supported
+	at org.springframework.web.servlet.mvc.method.RequestMappingInfoHandlerMapping.handleNoMatch(RequestMappingInfoHandlerMapping.java:265)
+	at org.springframework.web.servlet.handler.AbstractHandlerMethodMapping.lookupHandlerMethod(AbstractHandlerMethodMapping.java:441)
+	at org.springframework.web.servlet.handler.AbstractHandlerMethodMapping.getHandlerInternal(AbstractHandlerMethodMapping.java:382)
+	at org.springframework.web.servlet.mvc.method.RequestMappingInfoHandlerMapping.getHandlerInternal(RequestMappingInfoHandlerMapping.java:126)
+	at org.springframework.web.servlet.mvc.method.RequestMappingInfoHandlerMapping.getHandlerInternal(RequestMappingInfoHandlerMapping.java:68)
+	at org.springframework.web.servlet.handler.AbstractHandlerMapping.getHandler(AbstractHandlerMapping.java:507)
+	at org.springframework.web.servlet.DispatcherServlet.getHandler(DispatcherServlet.java:1283)
+	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:1065)
+	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:979)
+	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:1014)
+	at org.springframework.web.servlet.FrameworkServlet.doGet(FrameworkServlet.java:903)
+	at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:564)
+	at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:885)
+	at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:658)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:205)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:149)
+	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:51)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:174)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:149)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:110)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:174)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:149)
+	at org.springframework.web.filter.CompositeFilter$VirtualFilterChain.doFilter(CompositeFilter.java:108)
+	at org.springframework.security.web.FilterChainProxy.lambda$doFilterInternal$3(FilterChainProxy.java:231)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:365)
+	at org.springframework.security.web.access.intercept.AuthorizationFilter.doFilter(AuthorizationFilter.java:100)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374)
+	at org.springframework.security.web.access.ExceptionTranslationFilter.doFilter(ExceptionTranslationFilter.java:126)
+	at org.springframework.security.web.access.ExceptionTranslationFilter.doFilter(ExceptionTranslationFilter.java:120)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374)
+	at org.springframework.security.web.session.SessionManagementFilter.doFilter(SessionManagementFilter.java:131)
+	at org.springframework.security.web.session.SessionManagementFilter.doFilter(SessionManagementFilter.java:85)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374)
+	at org.springframework.security.web.authentication.AnonymousAuthenticationFilter.doFilter(AnonymousAuthenticationFilter.java:100)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374)
+	at org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter.doFilter(SecurityContextHolderAwareRequestFilter.java:179)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374)
+	at org.springframework.security.web.savedrequest.RequestCacheAwareFilter.doFilter(RequestCacheAwareFilter.java:63)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374)
+	at com.pki.pkibackend.security.JwtAuthFilter.doFilterInternal(JwtAuthFilter.java:62)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374)
+	at org.springframework.security.web.authentication.logout.LogoutFilter.doFilter(LogoutFilter.java:107)
+	at org.springframework.security.web.authentication.logout.LogoutFilter.doFilter(LogoutFilter.java:93)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374)
+	at org.springframework.web.filter.CorsFilter.doFilterInternal(CorsFilter.java:91)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374)
+	at org.springframework.security.web.header.HeaderWriterFilter.doHeadersAfter(HeaderWriterFilter.java:90)
+	at org.springframework.security.web.header.HeaderWriterFilter.doFilterInternal(HeaderWriterFilter.java:75)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374)
+	at org.springframework.security.web.context.SecurityContextHolderFilter.doFilter(SecurityContextHolderFilter.java:82)
+	at org.springframework.security.web.context.SecurityContextHolderFilter.doFilter(SecurityContextHolderFilter.java:69)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374)
+	at org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter.doFilterInternal(WebAsyncManagerIntegrationFilter.java:62)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374)
+	at org.springframework.security.web.session.DisableEncodeUrlFilter.doFilterInternal(DisableEncodeUrlFilter.java:42)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374)
+	at org.springframework.security.web.FilterChainProxy.doFilterInternal(FilterChainProxy.java:233)
+	at org.springframework.security.web.FilterChainProxy.doFilter(FilterChainProxy.java:191)
+	at org.springframework.web.filter.CompositeFilter$VirtualFilterChain.doFilter(CompositeFilter.java:113)
+	at org.springframework.web.servlet.handler.HandlerMappingIntrospector.lambda$createCacheFilter$3(HandlerMappingIntrospector.java:195)
+	at org.springframework.web.filter.CompositeFilter$VirtualFilterChain.doFilter(CompositeFilter.java:113)
+	at org.springframework.web.filter.CompositeFilter.doFilter(CompositeFilter.java:74)
+	at org.springframework.security.config.annotation.web.configuration.WebMvcSecurityConfiguration$CompositeFilterChainProxy.doFilter(WebMvcSecurityConfiguration.java:230)
+	at org.springframework.web.filter.DelegatingFilterProxy.invokeDelegate(DelegatingFilterProxy.java:352)
+	at org.springframework.web.filter.DelegatingFilterProxy.doFilter(DelegatingFilterProxy.java:268)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:174)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:149)
+	at org.springframework.web.filter.RequestContextFilter.doFilterInternal(RequestContextFilter.java:100)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:174)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:149)
+	at org.springframework.web.filter.FormContentFilter.doFilterInternal(FormContentFilter.java:93)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:174)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:149)
+	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:201)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:174)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:149)
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:167)
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:90)
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:482)
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:115)
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:93)
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:74)
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:344)
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:391)
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:63)
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:896)
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1744)
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:52)
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1191)
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:659)
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:63)
+	at java.base/java.lang.Thread.run(Thread.java:1583)
+2026-02-21 02:18:08.514 [https-jsse-nio-8443-exec-9] INFO  c.p.p.controller.AuthController - Pokušaj prijave za: admin@pki.com
+2026-02-21 02:18:08.604 [https-jsse-nio-8443-exec-9] DEBUG org.hibernate.SQL - 
+    select
+        u1_0.id,
+        u1_0.email,
+        u1_0.first_name,
+        u1_0.last_name,
+        u1_0.password,
+        u1_0.public_key,
+        u1_0.role 
+    from
+        users u1_0 
+    where
+        u1_0.email=?
+2026-02-21 02:18:08.982 [https-jsse-nio-8443-exec-9] DEBUG org.hibernate.SQL - 
+    select
+        u1_0.id,
+        u1_0.email,
+        u1_0.first_name,
+        u1_0.last_name,
+        u1_0.password,
+        u1_0.public_key,
+        u1_0.role 
+    from
+        users u1_0 
+    where
+        u1_0.email=?
+2026-02-21 02:18:09.935 [https-jsse-nio-8443-exec-10] DEBUG org.hibernate.SQL - 
+    select
+        u1_0.id,
+        u1_0.email,
+        u1_0.first_name,
+        u1_0.last_name,
+        u1_0.password,
+        u1_0.public_key,
+        u1_0.role 
+    from
+        users u1_0 
+    where
+        u1_0.email=?
+2026-02-21 02:18:09.945 [https-jsse-nio-8443-exec-10] DEBUG c.p.p.security.JwtAuthFilter - Korisnik admin@pki.com uspešno autentifikovan
+2026-02-21 02:18:09.955 [https-jsse-nio-8443-exec-2] DEBUG org.hibernate.SQL - 
+    select
+        u1_0.id,
+        u1_0.email,
+        u1_0.first_name,
+        u1_0.last_name,
+        u1_0.password,
+        u1_0.public_key,
+        u1_0.role 
+    from
+        users u1_0 
+    where
+        u1_0.email=?
+2026-02-21 02:18:09.964 [https-jsse-nio-8443-exec-2] DEBUG c.p.p.security.JwtAuthFilter - Korisnik admin@pki.com uspešno autentifikovan
+2026-02-21 02:18:09.970 [https-jsse-nio-8443-exec-4] DEBUG org.hibernate.SQL - 
+    select
+        u1_0.id,
+        u1_0.email,
+        u1_0.first_name,
+        u1_0.last_name,
+        u1_0.password,
+        u1_0.public_key,
+        u1_0.role 
+    from
+        users u1_0 
+    where
+        u1_0.email=?
+2026-02-21 02:18:09.976 [https-jsse-nio-8443-exec-4] DEBUG c.p.p.security.JwtAuthFilter - Korisnik admin@pki.com uspešno autentifikovan
+2026-02-21 02:18:10.649 [https-jsse-nio-8443-exec-10] DEBUG org.hibernate.SQL - 
+    select
+        u1_0.id,
+        u1_0.email,
+        u1_0.first_name,
+        u1_0.last_name,
+        u1_0.password,
+        u1_0.public_key,
+        u1_0.role 
+    from
+        users u1_0 
+    where
+        u1_0.email=?
+2026-02-21 02:18:10.878 [https-jsse-nio-8443-exec-4] INFO  c.p.p.c.CertificateController - Admin zatražio listu svih sertifikata
+2026-02-21 02:18:10.878 [https-jsse-nio-8443-exec-2] INFO  c.p.p.c.PasswordManagerController - Admin admin@pki.com zatražio listu lozinki
+2026-02-21 02:18:10.881 [https-jsse-nio-8443-exec-2] DEBUG org.hibernate.SQL - 
+    select
+        u1_0.id,
+        u1_0.email,
+        u1_0.first_name,
+        u1_0.last_name,
+        u1_0.password,
+        u1_0.public_key,
+        u1_0.role 
+    from
+        users u1_0 
+    where
+        u1_0.email=?
+2026-02-21 02:18:10.968 [https-jsse-nio-8443-exec-2] DEBUG org.hibernate.SQL - 
+    select
+        pe1_0.id,
+        pe1_0.created_at,
+        pe1_0.encrypted_password,
+        pe1_0.user_id,
+        pe1_0.site_name,
+        pe1_0.updated_at,
+        pe1_0.username 
+    from
+        password_entries pe1_0 
+    where
+        pe1_0.user_id=?
+2026-02-21 02:18:10.989 [https-jsse-nio-8443-exec-4] DEBUG org.hibernate.SQL - 
+    select
+        c1_0.id,
+        c1_0.alias,
+        c1_0.common_name,
+        c1_0.country,
+        c1_0.created_at,
+        c1_0.issuer_alias,
+        c1_0.organization,
+        c1_0.organizational_unit,
+        c1_0.revocation_reason,
+        c1_0.revoked,
+        c1_0.revoked_at,
+        c1_0.serial_number,
+        c1_0.type,
+        c1_0.valid_from,
+        c1_0.valid_to 
+    from
+        certificates c1_0
+2026-02-21 02:19:32.194 [https-jsse-nio-8443-exec-5] DEBUG org.hibernate.SQL - 
+    select
+        u1_0.id,
+        u1_0.email,
+        u1_0.first_name,
+        u1_0.last_name,
+        u1_0.password,
+        u1_0.public_key,
+        u1_0.role 
+    from
+        users u1_0 
+    where
+        u1_0.email=?
+2026-02-21 02:19:32.194 [https-jsse-nio-8443-exec-3] DEBUG org.hibernate.SQL - 
+    select
+        u1_0.id,
+        u1_0.email,
+        u1_0.first_name,
+        u1_0.last_name,
+        u1_0.password,
+        u1_0.public_key,
+        u1_0.role 
+    from
+        users u1_0 
+    where
+        u1_0.email=?
+2026-02-21 02:19:32.194 [https-jsse-nio-8443-exec-10] DEBUG org.hibernate.SQL - 
+    select
+        u1_0.id,
+        u1_0.email,
+        u1_0.first_name,
+        u1_0.last_name,
+        u1_0.password,
+        u1_0.public_key,
+        u1_0.role 
+    from
+        users u1_0 
+    where
+        u1_0.email=?
+2026-02-21 02:19:32.579 [https-jsse-nio-8443-exec-3] DEBUG c.p.p.security.JwtAuthFilter - Korisnik admin@pki.com uspešno autentifikovan
+2026-02-21 02:19:32.632 [https-jsse-nio-8443-exec-5] DEBUG c.p.p.security.JwtAuthFilter - Korisnik admin@pki.com uspešno autentifikovan
+2026-02-21 02:19:32.883 [https-jsse-nio-8443-exec-5] DEBUG org.hibernate.SQL - 
+    select
+        u1_0.id,
+        u1_0.email,
+        u1_0.first_name,
+        u1_0.last_name,
+        u1_0.password,
+        u1_0.public_key,
+        u1_0.role 
+    from
+        users u1_0 
+    where
+        u1_0.email=?
+2026-02-21 02:19:32.898 [https-jsse-nio-8443-exec-3] INFO  c.p.p.c.PasswordManagerController - Admin admin@pki.com zatražio listu lozinki
+2026-02-21 02:19:32.916 [https-jsse-nio-8443-exec-3] DEBUG org.hibernate.SQL - 
+    select
+        u1_0.id,
+        u1_0.email,
+        u1_0.first_name,
+        u1_0.last_name,
+        u1_0.password,
+        u1_0.public_key,
+        u1_0.role 
+    from
+        users u1_0 
+    where
+        u1_0.email=?
+2026-02-21 02:19:32.977 [https-jsse-nio-8443-exec-3] DEBUG org.hibernate.SQL - 
+    select
+        pe1_0.id,
+        pe1_0.created_at,
+        pe1_0.encrypted_password,
+        pe1_0.user_id,
+        pe1_0.site_name,
+        pe1_0.updated_at,
+        pe1_0.username 
+    from
+        password_entries pe1_0 
+    where
+        pe1_0.user_id=?
+2026-02-21 02:19:33.048 [https-jsse-nio-8443-exec-10] DEBUG c.p.p.security.JwtAuthFilter - Korisnik admin@pki.com uspešno autentifikovan
+2026-02-21 02:19:33.050 [https-jsse-nio-8443-exec-10] INFO  c.p.p.c.CertificateController - Admin zatražio listu svih sertifikata
+2026-02-21 02:19:33.118 [https-jsse-nio-8443-exec-10] DEBUG org.hibernate.SQL - 
+    select
+        c1_0.id,
+        c1_0.alias,
+        c1_0.common_name,
+        c1_0.country,
+        c1_0.created_at,
+        c1_0.issuer_alias,
+        c1_0.organization,
+        c1_0.organizational_unit,
+        c1_0.revocation_reason,
+        c1_0.revoked,
+        c1_0.revoked_at,
+        c1_0.serial_number,
+        c1_0.type,
+        c1_0.valid_from,
+        c1_0.valid_to 
+    from
+        certificates c1_0
+2026-02-21 02:19:49.312 [https-jsse-nio-8443-exec-9] DEBUG org.hibernate.SQL - 
+    select
+        u1_0.id,
+        u1_0.email,
+        u1_0.first_name,
+        u1_0.last_name,
+        u1_0.password,
+        u1_0.public_key,
+        u1_0.role 
+    from
+        users u1_0 
+    where
+        u1_0.email=?
+2026-02-21 02:19:49.342 [https-jsse-nio-8443-exec-9] DEBUG c.p.p.security.JwtAuthFilter - Korisnik admin@pki.com uspešno autentifikovan
+2026-02-21 02:19:49.344 [https-jsse-nio-8443-exec-9] INFO  c.p.p.c.CertificateController - Admin zatražio listu svih sertifikata
+2026-02-21 02:19:49.347 [https-jsse-nio-8443-exec-9] DEBUG org.hibernate.SQL - 
+    select
+        c1_0.id,
+        c1_0.alias,
+        c1_0.common_name,
+        c1_0.country,
+        c1_0.created_at,
+        c1_0.issuer_alias,
+        c1_0.organization,
+        c1_0.organizational_unit,
+        c1_0.revocation_reason,
+        c1_0.revoked,
+        c1_0.revoked_at,
+        c1_0.serial_number,
+        c1_0.type,
+        c1_0.valid_from,
+        c1_0.valid_to 
+    from
+        certificates c1_0
+2026-02-21 02:19:50.774 [https-jsse-nio-8443-exec-1] DEBUG org.hibernate.SQL - 
+    select
+        u1_0.id,
+        u1_0.email,
+        u1_0.first_name,
+        u1_0.last_name,
+        u1_0.password,
+        u1_0.public_key,
+        u1_0.role 
+    from
+        users u1_0 
+    where
+        u1_0.email=?
+2026-02-21 02:19:50.789 [https-jsse-nio-8443-exec-1] DEBUG c.p.p.security.JwtAuthFilter - Korisnik admin@pki.com uspešno autentifikovan
+2026-02-21 02:19:50.789 [https-jsse-nio-8443-exec-1] DEBUG org.hibernate.SQL - 
+    select
+        u1_0.id,
+        u1_0.email,
+        u1_0.first_name,
+        u1_0.last_name,
+        u1_0.password,
+        u1_0.public_key,
+        u1_0.role 
+    from
+        users u1_0 
+    where
+        u1_0.email=?
+2026-02-21 02:19:50.949 [https-jsse-nio-8443-exec-8] DEBUG org.hibernate.SQL - 
+    select
+        u1_0.id,
+        u1_0.email,
+        u1_0.first_name,
+        u1_0.last_name,
+        u1_0.password,
+        u1_0.public_key,
+        u1_0.role 
+    from
+        users u1_0 
+    where
+        u1_0.email=?
+2026-02-21 02:19:50.954 [https-jsse-nio-8443-exec-8] DEBUG c.p.p.security.JwtAuthFilter - Korisnik admin@pki.com uspešno autentifikovan
+2026-02-21 02:19:50.965 [https-jsse-nio-8443-exec-8] INFO  c.p.p.c.PasswordManagerController - Admin admin@pki.com zatražio listu lozinki
+2026-02-21 02:19:51.020 [https-jsse-nio-8443-exec-8] DEBUG org.hibernate.SQL - 
+    select
+        u1_0.id,
+        u1_0.email,
+        u1_0.first_name,
+        u1_0.last_name,
+        u1_0.password,
+        u1_0.public_key,
+        u1_0.role 
+    from
+        users u1_0 
+    where
+        u1_0.email=?
+2026-02-21 02:19:51.027 [https-jsse-nio-8443-exec-8] DEBUG org.hibernate.SQL - 
+    select
+        pe1_0.id,
+        pe1_0.created_at,
+        pe1_0.encrypted_password,
+        pe1_0.user_id,
+        pe1_0.site_name,
+        pe1_0.updated_at,
+        pe1_0.username 
+    from
+        password_entries pe1_0 
+    where
+        pe1_0.user_id=?
+2026-02-21 02:19:52.908 [https-jsse-nio-8443-exec-5] DEBUG org.hibernate.SQL - 
+    select
+        u1_0.id,
+        u1_0.email,
+        u1_0.first_name,
+        u1_0.last_name,
+        u1_0.password,
+        u1_0.public_key,
+        u1_0.role 
+    from
+        users u1_0 
+    where
+        u1_0.email=?
+2026-02-21 02:19:52.983 [https-jsse-nio-8443-exec-5] DEBUG c.p.p.security.JwtAuthFilter - Korisnik admin@pki.com uspešno autentifikovan
+2026-02-21 02:19:53.032 [https-jsse-nio-8443-exec-5] INFO  c.p.p.c.CertificateController - Admin zatražio listu svih sertifikata
+2026-02-21 02:19:53.050 [https-jsse-nio-8443-exec-5] DEBUG org.hibernate.SQL - 
+    select
+        c1_0.id,
+        c1_0.alias,
+        c1_0.common_name,
+        c1_0.country,
+        c1_0.created_at,
+        c1_0.issuer_alias,
+        c1_0.organization,
+        c1_0.organizational_unit,
+        c1_0.revocation_reason,
+        c1_0.revoked,
+        c1_0.revoked_at,
+        c1_0.serial_number,
+        c1_0.type,
+        c1_0.valid_from,
+        c1_0.valid_to 
+    from
+        certificates c1_0
+2026-02-21 02:19:53.075 [https-jsse-nio-8443-exec-3] DEBUG org.hibernate.SQL - 
+    select
+        u1_0.id,
+        u1_0.email,
+        u1_0.first_name,
+        u1_0.last_name,
+        u1_0.password,
+        u1_0.public_key,
+        u1_0.role 
+    from
+        users u1_0 
+    where
+        u1_0.email=?
+2026-02-21 02:19:53.075 [https-jsse-nio-8443-exec-3] DEBUG c.p.p.security.JwtAuthFilter - Korisnik admin@pki.com uspešno autentifikovan
+2026-02-21 02:19:53.075 [https-jsse-nio-8443-exec-3] INFO  c.p.p.c.PasswordManagerController - Admin admin@pki.com zatražio listu lozinki
+2026-02-21 02:19:53.075 [https-jsse-nio-8443-exec-3] DEBUG org.hibernate.SQL - 
+    select
+        u1_0.id,
+        u1_0.email,
+        u1_0.first_name,
+        u1_0.last_name,
+        u1_0.password,
+        u1_0.public_key,
+        u1_0.role 
+    from
+        users u1_0 
+    where
+        u1_0.email=?
+2026-02-21 02:19:53.092 [https-jsse-nio-8443-exec-3] DEBUG org.hibernate.SQL - 
+    select
+        pe1_0.id,
+        pe1_0.created_at,
+        pe1_0.encrypted_password,
+        pe1_0.user_id,
+        pe1_0.site_name,
+        pe1_0.updated_at,
+        pe1_0.username 
+    from
+        password_entries pe1_0 
+    where
+        pe1_0.user_id=?
+2026-02-21 02:19:53.262 [https-jsse-nio-8443-exec-2] DEBUG org.hibernate.SQL - 
+    select
+        u1_0.id,
+        u1_0.email,
+        u1_0.first_name,
+        u1_0.last_name,
+        u1_0.password,
+        u1_0.public_key,
+        u1_0.role 
+    from
+        users u1_0 
+    where
+        u1_0.email=?
+2026-02-21 02:19:53.264 [https-jsse-nio-8443-exec-2] DEBUG c.p.p.security.JwtAuthFilter - Korisnik admin@pki.com uspešno autentifikovan
+2026-02-21 02:19:53.275 [https-jsse-nio-8443-exec-2] DEBUG org.hibernate.SQL - 
+    select
+        u1_0.id,
+        u1_0.email,
+        u1_0.first_name,
+        u1_0.last_name,
+        u1_0.password,
+        u1_0.public_key,
+        u1_0.role 
+    from
+        users u1_0 
+    where
+        u1_0.email=?
+2026-02-21 02:22:06.051 [https-jsse-nio-8443-exec-1] DEBUG org.hibernate.SQL - 
+    select
+        u1_0.id,
+        u1_0.email,
+        u1_0.first_name,
+        u1_0.last_name,
+        u1_0.password,
+        u1_0.public_key,
+        u1_0.role 
+    from
+        users u1_0 
+    where
+        u1_0.email=?
+2026-02-21 02:22:06.151 [https-jsse-nio-8443-exec-2] DEBUG org.hibernate.SQL - 
+    select
+        u1_0.id,
+        u1_0.email,
+        u1_0.first_name,
+        u1_0.last_name,
+        u1_0.password,
+        u1_0.public_key,
+        u1_0.role 
+    from
+        users u1_0 
+    where
+        u1_0.email=?
+2026-02-21 02:22:06.151 [https-jsse-nio-8443-exec-7] DEBUG org.hibernate.SQL - 
+    select
+        u1_0.id,
+        u1_0.email,
+        u1_0.first_name,
+        u1_0.last_name,
+        u1_0.password,
+        u1_0.public_key,
+        u1_0.role 
+    from
+        users u1_0 
+    where
+        u1_0.email=?
+2026-02-21 02:22:06.224 [https-jsse-nio-8443-exec-1] DEBUG c.p.p.security.JwtAuthFilter - Korisnik admin@pki.com uspešno autentifikovan
+2026-02-21 02:22:06.224 [https-jsse-nio-8443-exec-7] DEBUG c.p.p.security.JwtAuthFilter - Korisnik admin@pki.com uspešno autentifikovan
+2026-02-21 02:22:06.243 [https-jsse-nio-8443-exec-2] DEBUG c.p.p.security.JwtAuthFilter - Korisnik admin@pki.com uspešno autentifikovan
+2026-02-21 02:22:06.264 [https-jsse-nio-8443-exec-1] INFO  c.p.p.c.PasswordManagerController - Admin admin@pki.com zatražio listu lozinki
+2026-02-21 02:22:06.266 [https-jsse-nio-8443-exec-2] INFO  c.p.p.c.CertificateController - Admin zatražio listu svih sertifikata
+2026-02-21 02:22:06.281 [https-jsse-nio-8443-exec-1] DEBUG org.hibernate.SQL - 
+    select
+        u1_0.id,
+        u1_0.email,
+        u1_0.first_name,
+        u1_0.last_name,
+        u1_0.password,
+        u1_0.public_key,
+        u1_0.role 
+    from
+        users u1_0 
+    where
+        u1_0.email=?
+2026-02-21 02:22:06.300 [https-jsse-nio-8443-exec-2] DEBUG org.hibernate.SQL - 
+    select
+        c1_0.id,
+        c1_0.alias,
+        c1_0.common_name,
+        c1_0.country,
+        c1_0.created_at,
+        c1_0.issuer_alias,
+        c1_0.organization,
+        c1_0.organizational_unit,
+        c1_0.revocation_reason,
+        c1_0.revoked,
+        c1_0.revoked_at,
+        c1_0.serial_number,
+        c1_0.type,
+        c1_0.valid_from,
+        c1_0.valid_to 
+    from
+        certificates c1_0
+2026-02-21 02:22:06.309 [https-jsse-nio-8443-exec-7] DEBUG org.hibernate.SQL - 
+    select
+        u1_0.id,
+        u1_0.email,
+        u1_0.first_name,
+        u1_0.last_name,
+        u1_0.password,
+        u1_0.public_key,
+        u1_0.role 
+    from
+        users u1_0 
+    where
+        u1_0.email=?
+2026-02-21 02:22:06.322 [https-jsse-nio-8443-exec-1] DEBUG org.hibernate.SQL - 
+    select
+        pe1_0.id,
+        pe1_0.created_at,
+        pe1_0.encrypted_password,
+        pe1_0.user_id,
+        pe1_0.site_name,
+        pe1_0.updated_at,
+        pe1_0.username 
+    from
+        password_entries pe1_0 
+    where
+        pe1_0.user_id=?
+2026-02-21 02:22:29.208 [https-jsse-nio-8443-exec-6] INFO  c.p.p.controller.AuthController - Pokušaj prijave za: admin@pki.com
+2026-02-21 02:22:29.221 [https-jsse-nio-8443-exec-6] DEBUG org.hibernate.SQL - 
+    select
+        u1_0.id,
+        u1_0.email,
+        u1_0.first_name,
+        u1_0.last_name,
+        u1_0.password,
+        u1_0.public_key,
+        u1_0.role 
+    from
+        users u1_0 
+    where
+        u1_0.email=?
+2026-02-21 02:22:29.432 [https-jsse-nio-8443-exec-6] DEBUG org.hibernate.SQL - 
+    select
+        u1_0.id,
+        u1_0.email,
+        u1_0.first_name,
+        u1_0.last_name,
+        u1_0.password,
+        u1_0.public_key,
+        u1_0.role 
+    from
+        users u1_0 
+    where
+        u1_0.email=?
+2026-02-21 02:22:29.691 [https-jsse-nio-8443-exec-3] DEBUG org.hibernate.SQL - 
+    select
+        u1_0.id,
+        u1_0.email,
+        u1_0.first_name,
+        u1_0.last_name,
+        u1_0.password,
+        u1_0.public_key,
+        u1_0.role 
+    from
+        users u1_0 
+    where
+        u1_0.email=?
+2026-02-21 02:22:29.693 [https-jsse-nio-8443-exec-3] DEBUG c.p.p.security.JwtAuthFilter - Korisnik admin@pki.com uspešno autentifikovan
+2026-02-21 02:22:29.695 [https-jsse-nio-8443-exec-3] INFO  c.p.p.c.CertificateController - Admin zatražio listu svih sertifikata
+2026-02-21 02:22:29.778 [https-jsse-nio-8443-exec-10] DEBUG org.hibernate.SQL - 
+    select
+        u1_0.id,
+        u1_0.email,
+        u1_0.first_name,
+        u1_0.last_name,
+        u1_0.password,
+        u1_0.public_key,
+        u1_0.role 
+    from
+        users u1_0 
+    where
+        u1_0.email=?
+2026-02-21 02:22:29.791 [https-jsse-nio-8443-exec-10] DEBUG c.p.p.security.JwtAuthFilter - Korisnik admin@pki.com uspešno autentifikovan
+2026-02-21 02:22:29.795 [https-jsse-nio-8443-exec-10] INFO  c.p.p.c.PasswordManagerController - Admin admin@pki.com zatražio listu lozinki
+2026-02-21 02:22:29.807 [https-jsse-nio-8443-exec-10] DEBUG org.hibernate.SQL - 
+    select
+        u1_0.id,
+        u1_0.email,
+        u1_0.first_name,
+        u1_0.last_name,
+        u1_0.password,
+        u1_0.public_key,
+        u1_0.role 
+    from
+        users u1_0 
+    where
+        u1_0.email=?
+2026-02-21 02:22:29.814 [https-jsse-nio-8443-exec-10] DEBUG org.hibernate.SQL - 
+    select
+        pe1_0.id,
+        pe1_0.created_at,
+        pe1_0.encrypted_password,
+        pe1_0.user_id,
+        pe1_0.site_name,
+        pe1_0.updated_at,
+        pe1_0.username 
+    from
+        password_entries pe1_0 
+    where
+        pe1_0.user_id=?
+2026-02-21 02:22:29.865 [https-jsse-nio-8443-exec-4] DEBUG org.hibernate.SQL - 
+    select
+        u1_0.id,
+        u1_0.email,
+        u1_0.first_name,
+        u1_0.last_name,
+        u1_0.password,
+        u1_0.public_key,
+        u1_0.role 
+    from
+        users u1_0 
+    where
+        u1_0.email=?
+2026-02-21 02:22:29.876 [https-jsse-nio-8443-exec-4] DEBUG c.p.p.security.JwtAuthFilter - Korisnik admin@pki.com uspešno autentifikovan
+2026-02-21 02:22:29.813 [https-jsse-nio-8443-exec-3] DEBUG org.hibernate.SQL - 
+    select
+        c1_0.id,
+        c1_0.alias,
+        c1_0.common_name,
+        c1_0.country,
+        c1_0.created_at,
+        c1_0.issuer_alias,
+        c1_0.organization,
+        c1_0.organizational_unit,
+        c1_0.revocation_reason,
+        c1_0.revoked,
+        c1_0.revoked_at,
+        c1_0.serial_number,
+        c1_0.type,
+        c1_0.valid_from,
+        c1_0.valid_to 
+    from
+        certificates c1_0
+2026-02-21 02:22:29.883 [https-jsse-nio-8443-exec-4] DEBUG org.hibernate.SQL - 
+    select
+        u1_0.id,
+        u1_0.email,
+        u1_0.first_name,
+        u1_0.last_name,
+        u1_0.password,
+        u1_0.public_key,
+        u1_0.role 
+    from
+        users u1_0 
+    where
+        u1_0.email=?
+2026-02-21 02:23:26.441 [https-jsse-nio-8443-exec-8] DEBUG org.hibernate.SQL - 
+    select
+        u1_0.id,
+        u1_0.email,
+        u1_0.first_name,
+        u1_0.last_name,
+        u1_0.password,
+        u1_0.public_key,
+        u1_0.role 
+    from
+        users u1_0 
+    where
+        u1_0.email=?
+2026-02-21 02:23:26.594 [https-jsse-nio-8443-exec-8] DEBUG c.p.p.security.JwtAuthFilter - Korisnik admin@pki.com uspešno autentifikovan
+2026-02-21 02:23:26.668 [https-jsse-nio-8443-exec-8] INFO  c.p.p.c.CertificateController - Admin zatražio listu svih sertifikata
+2026-02-21 02:23:26.694 [https-jsse-nio-8443-exec-8] DEBUG org.hibernate.SQL - 
+    select
+        c1_0.id,
+        c1_0.alias,
+        c1_0.common_name,
+        c1_0.country,
+        c1_0.created_at,
+        c1_0.issuer_alias,
+        c1_0.organization,
+        c1_0.organizational_unit,
+        c1_0.revocation_reason,
+        c1_0.revoked,
+        c1_0.revoked_at,
+        c1_0.serial_number,
+        c1_0.type,
+        c1_0.valid_from,
+        c1_0.valid_to 
+    from
+        certificates c1_0
+2026-02-21 02:23:28.046 [https-jsse-nio-8443-exec-2] DEBUG org.hibernate.SQL - 
+    select
+        u1_0.id,
+        u1_0.email,
+        u1_0.first_name,
+        u1_0.last_name,
+        u1_0.password,
+        u1_0.public_key,
+        u1_0.role 
+    from
+        users u1_0 
+    where
+        u1_0.email=?
+2026-02-21 02:23:28.092 [https-jsse-nio-8443-exec-2] DEBUG c.p.p.security.JwtAuthFilter - Korisnik admin@pki.com uspešno autentifikovan
+2026-02-21 02:23:28.453 [https-jsse-nio-8443-exec-2] INFO  c.p.p.c.CertificateController - Admin zatražio listu dostupnih issuera
+2026-02-21 02:23:29.821 [https-jsse-nio-8443-exec-2] DEBUG org.hibernate.SQL - 
+    select
+        c1_0.id,
+        c1_0.alias,
+        c1_0.common_name,
+        c1_0.country,
+        c1_0.created_at,
+        c1_0.issuer_alias,
+        c1_0.organization,
+        c1_0.organizational_unit,
+        c1_0.revocation_reason,
+        c1_0.revoked,
+        c1_0.revoked_at,
+        c1_0.serial_number,
+        c1_0.type,
+        c1_0.valid_from,
+        c1_0.valid_to 
+    from
+        certificates c1_0 
+    where
+        c1_0.type=? 
+        and not(c1_0.revoked)
+2026-02-21 02:23:29.848 [https-jsse-nio-8443-exec-2] DEBUG org.hibernate.SQL - 
+    select
+        c1_0.id,
+        c1_0.alias,
+        c1_0.common_name,
+        c1_0.country,
+        c1_0.created_at,
+        c1_0.issuer_alias,
+        c1_0.organization,
+        c1_0.organizational_unit,
+        c1_0.revocation_reason,
+        c1_0.revoked,
+        c1_0.revoked_at,
+        c1_0.serial_number,
+        c1_0.type,
+        c1_0.valid_from,
+        c1_0.valid_to 
+    from
+        certificates c1_0 
+    where
+        c1_0.type=? 
+        and not(c1_0.revoked)
+2026-02-21 02:25:03.709 [https-jsse-nio-8443-exec-6] DEBUG org.hibernate.SQL - 
+    select
+        u1_0.id,
+        u1_0.email,
+        u1_0.first_name,
+        u1_0.last_name,
+        u1_0.password,
+        u1_0.public_key,
+        u1_0.role 
+    from
+        users u1_0 
+    where
+        u1_0.email=?
+2026-02-21 02:25:03.760 [https-jsse-nio-8443-exec-6] DEBUG c.p.p.security.JwtAuthFilter - Korisnik admin@pki.com uspešno autentifikovan
+2026-02-21 02:25:04.665 [https-jsse-nio-8443-exec-6] INFO  c.p.p.c.CertificateController - Admin kreira ROOT sertifikat za: My Root CA
+2026-02-21 02:25:08.000 [https-jsse-nio-8443-exec-6] INFO  c.p.p.service.KeystoreService - Novi keystore kreiran: keystores/pki-keystore.jks
+2026-02-21 02:25:08.022 [https-jsse-nio-8443-exec-6] ERROR c.p.p.c.CertificateController - Greška pri generisanju sertifikata: There is not enough space on the disk
+2026-02-21 02:27:04.953 [https-jsse-nio-8443-exec-6] DEBUG org.hibernate.SQL - 
+    select
+        u1_0.id,
+        u1_0.email,
+        u1_0.first_name,
+        u1_0.last_name,
+        u1_0.password,
+        u1_0.public_key,
+        u1_0.role 
+    from
+        users u1_0 
+    where
+        u1_0.email=?
+2026-02-21 02:27:05.043 [https-jsse-nio-8443-exec-6] DEBUG c.p.p.security.JwtAuthFilter - Korisnik admin@pki.com uspešno autentifikovan
+2026-02-21 02:27:05.147 [https-jsse-nio-8443-exec-6] INFO  c.p.p.c.CertificateController - Admin kreira ROOT sertifikat za: My Root CA
+2026-02-21 02:27:09.081 [https-jsse-nio-8443-exec-6] ERROR c.p.p.c.CertificateController - Greška pri generisanju sertifikata: null
+2026-02-21 02:28:50.985 [https-jsse-nio-8443-exec-7] DEBUG org.hibernate.SQL - 
+    select
+        u1_0.id,
+        u1_0.email,
+        u1_0.first_name,
+        u1_0.last_name,
+        u1_0.password,
+        u1_0.public_key,
+        u1_0.role 
+    from
+        users u1_0 
+    where
+        u1_0.email=?
+2026-02-21 02:28:51.095 [https-jsse-nio-8443-exec-7] DEBUG c.p.p.security.JwtAuthFilter - Korisnik admin@pki.com uspešno autentifikovan
+2026-02-21 02:28:51.246 [https-jsse-nio-8443-exec-7] INFO  c.p.p.c.CertificateController - Admin kreira ROOT sertifikat za: My Root CA
+2026-02-21 02:28:52.853 [https-jsse-nio-8443-exec-7] ERROR c.p.p.c.CertificateController - Greška pri generisanju sertifikata: null
+2026-02-21 02:37:00.185 [background-preinit] INFO  o.h.validator.internal.util.Version - HV000001: Hibernate Validator 8.0.1.Final
+2026-02-21 02:37:00.280 [main] INFO  c.p.pkibackend.PkibackendApplication - Starting PkibackendApplication using Java 21.0.8 with PID 10636 (C:\Users\Suvajdzic\Desktop\bsep\bsep-team33\pkibackend\pkibackend\target\classes started by Suvajdzic in C:\Users\Suvajdzic\Desktop\bsep\bsep-team33\pkibackend\pkibackend)
+2026-02-21 02:37:00.281 [main] DEBUG c.p.pkibackend.PkibackendApplication - Running with Spring Boot v3.2.3, Spring v6.1.4
+2026-02-21 02:37:00.282 [main] INFO  c.p.pkibackend.PkibackendApplication - No active profile set, falling back to 1 default profile: "default"
+2026-02-21 02:37:04.114 [main] INFO  o.h.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
+2026-02-21 02:37:04.235 [main] INFO  org.hibernate.Version - HHH000412: Hibernate ORM core version 6.4.4.Final
+2026-02-21 02:37:04.304 [main] INFO  o.h.c.i.RegionFactoryInitiator - HHH000026: Second-level cache disabled
+2026-02-21 02:37:04.903 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+2026-02-21 02:37:05.385 [main] INFO  com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@72b2c5ed
+2026-02-21 02:37:05.391 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+2026-02-21 02:37:05.499 [main] WARN  org.hibernate.orm.deprecation - HHH90000025: PostgreSQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2026-02-21 02:37:08.347 [main] INFO  o.h.e.t.j.p.i.JtaPlatformInitiator - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2026-02-21 02:37:08.421 [main] WARN  com.zaxxer.hikari.pool.PoolBase - HikariPool-1 - Failed to validate connection org.postgresql.jdbc.PgConnection@72b2c5ed (This connection has been closed.). Possibly consider using a shorter maxLifetime value.
+2026-02-21 02:37:08.431 [main] WARN  com.zaxxer.hikari.pool.PoolBase - HikariPool-1 - Failed to validate connection org.postgresql.jdbc.PgConnection@306bf4c3 (This connection has been closed.). Possibly consider using a shorter maxLifetime value.
+2026-02-21 02:37:08.435 [main] WARN  com.zaxxer.hikari.pool.PoolBase - HikariPool-1 - Failed to validate connection org.postgresql.jdbc.PgConnection@5cf80dfb (This connection has been closed.). Possibly consider using a shorter maxLifetime value.
+2026-02-21 02:39:02.249 [background-preinit] INFO  o.h.validator.internal.util.Version - HV000001: Hibernate Validator 8.0.1.Final
+2026-02-21 02:39:02.409 [main] INFO  c.p.pkibackend.PkibackendApplication - Starting PkibackendApplication using Java 21.0.8 with PID 5300 (C:\Users\Suvajdzic\Desktop\bsep\bsep-team33\pkibackend\pkibackend\target\classes started by Suvajdzic in C:\Users\Suvajdzic\Desktop\bsep\bsep-team33\pkibackend\pkibackend)
+2026-02-21 02:39:02.415 [main] DEBUG c.p.pkibackend.PkibackendApplication - Running with Spring Boot v3.2.3, Spring v6.1.4
+2026-02-21 02:39:02.422 [main] INFO  c.p.pkibackend.PkibackendApplication - No active profile set, falling back to 1 default profile: "default"
+2026-02-21 02:39:10.442 [main] INFO  o.h.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
+2026-02-21 02:39:10.633 [main] INFO  org.hibernate.Version - HHH000412: Hibernate ORM core version 6.4.4.Final
+2026-02-21 02:39:10.763 [main] INFO  o.h.c.i.RegionFactoryInitiator - HHH000026: Second-level cache disabled
+2026-02-21 02:39:11.832 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+2026-02-21 02:39:12.445 [main] INFO  com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@4607d78b
+2026-02-21 02:39:12.456 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+2026-02-21 02:39:12.608 [main] WARN  org.hibernate.orm.deprecation - HHH90000025: PostgreSQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2026-02-21 02:39:16.267 [main] INFO  o.h.e.t.j.p.i.JtaPlatformInitiator - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2026-02-21 02:39:18.751 [main] INFO  o.a.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["https-jsse-nio-8443"]
+2026-02-21 02:39:18.768 [main] INFO  o.a.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8080"]
+2026-02-21 02:39:18.779 [main] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+2026-02-21 02:39:18.782 [main] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.19]
+2026-02-21 02:39:18.963 [main] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2026-02-21 02:39:19.131 [main] DEBUG c.p.p.security.JwtAuthFilter - Filter 'jwtAuthFilter' configured for use
+2026-02-21 02:39:19.632 [main] INFO  c.p.p.config.BouncyCastleConfig - Bouncy Castle provider uspešno registrovan
+2026-02-21 02:39:20.677 [main] WARN  o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2026-02-21 02:39:22.748 [main] INFO  o.a.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["https-jsse-nio-8443"]
+2026-02-21 02:39:22.768 [main] WARN  o.s.b.w.s.c.AnnotationConfigServletWebServerApplicationContext - Exception encountered during context initialization - cancelling refresh attempt: org.springframework.context.ApplicationContextException: Failed to start bean 'webServerStartStop'
+2026-02-21 02:39:22.793 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown initiated...
+2026-02-21 02:39:22.846 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown completed.
+2026-02-21 02:39:22.964 [main] ERROR o.s.b.d.LoggingFailureAnalysisReporter - 
+
+***************************
+APPLICATION FAILED TO START
+***************************
+
+Description:
+
+Web server failed to start. Port 8443 was already in use.
+
+Action:
+
+Identify and stop the process that's listening on port 8443 or configure this application to listen on another port.
+
+2026-02-21 02:41:00.990 [background-preinit] INFO  o.h.validator.internal.util.Version - HV000001: Hibernate Validator 8.0.1.Final
+2026-02-21 02:41:01.155 [main] INFO  c.p.pkibackend.PkibackendApplication - Starting PkibackendApplication using Java 21.0.8 with PID 15956 (C:\Users\Suvajdzic\Desktop\bsep\bsep-team33\pkibackend\pkibackend\target\classes started by Suvajdzic in C:\Users\Suvajdzic\Desktop\bsep\bsep-team33\pkibackend\pkibackend)
+2026-02-21 02:41:01.156 [main] DEBUG c.p.pkibackend.PkibackendApplication - Running with Spring Boot v3.2.3, Spring v6.1.4
+2026-02-21 02:41:01.158 [main] INFO  c.p.pkibackend.PkibackendApplication - No active profile set, falling back to 1 default profile: "default"
+2026-02-21 02:41:07.628 [main] INFO  o.h.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
+2026-02-21 02:41:07.859 [main] INFO  org.hibernate.Version - HHH000412: Hibernate ORM core version 6.4.4.Final
+2026-02-21 02:41:07.979 [main] INFO  o.h.c.i.RegionFactoryInitiator - HHH000026: Second-level cache disabled
+2026-02-21 02:41:08.860 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+2026-02-21 02:41:09.400 [main] INFO  com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@401317a0
+2026-02-21 02:41:09.409 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+2026-02-21 02:41:09.535 [main] WARN  org.hibernate.orm.deprecation - HHH90000025: PostgreSQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2026-02-21 02:41:13.152 [main] INFO  o.h.e.t.j.p.i.JtaPlatformInitiator - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2026-02-21 02:41:15.537 [main] INFO  o.a.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["https-jsse-nio-8443"]
+2026-02-21 02:41:15.545 [main] INFO  o.a.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8080"]
+2026-02-21 02:41:15.556 [main] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+2026-02-21 02:41:15.559 [main] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.19]
+2026-02-21 02:41:15.720 [main] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2026-02-21 02:41:15.881 [main] DEBUG c.p.p.security.JwtAuthFilter - Filter 'jwtAuthFilter' configured for use
+2026-02-21 02:41:16.654 [main] INFO  c.p.p.config.BouncyCastleConfig - Bouncy Castle provider uspešno registrovan
+2026-02-21 02:41:17.793 [main] WARN  o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2026-02-21 02:41:19.957 [main] INFO  o.a.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["https-jsse-nio-8443"]
+2026-02-21 02:41:20.437 [main] INFO  o.a.t.u.net.NioEndpoint.certificate - Connector [https-jsse-nio-8443], TLS virtual host [_default_], certificate type [UNDEFINED] configured from keystore [C:\Users\Suvajdzic\.keystore] using alias [pki-https] with trust store [null]
+2026-02-21 02:41:20.484 [main] INFO  o.a.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8080"]
+2026-02-21 02:41:20.537 [main] INFO  c.p.pkibackend.PkibackendApplication - Started PkibackendApplication in 21.197 seconds (process running for 23.776)
+2026-02-21 02:41:21.089 [main] DEBUG org.hibernate.SQL - 
+    select
+        u1_0.id 
+    from
+        users u1_0 
+    where
+        u1_0.email=? 
+    fetch
+        first ? rows only
+2026-02-21 02:41:21.120 [main] INFO  c.p.p.config.DataInitializer - Admin korisnik već postoji, preskačem kreiranje
+2026-02-21 02:41:37.774 [https-jsse-nio-8443-exec-6] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2026-02-21 02:41:38.984 [https-jsse-nio-8443-exec-10] DEBUG org.hibernate.SQL - 
+    select
+        u1_0.id,
+        u1_0.email,
+        u1_0.first_name,
+        u1_0.last_name,
+        u1_0.password,
+        u1_0.public_key,
+        u1_0.role 
+    from
+        users u1_0 
+    where
+        u1_0.email=?
+2026-02-21 02:41:39.035 [https-jsse-nio-8443-exec-10] DEBUG c.p.p.security.JwtAuthFilter - Korisnik admin@pki.com uspešno autentifikovan
+2026-02-21 02:41:39.196 [https-jsse-nio-8443-exec-10] INFO  c.p.p.c.CertificateController - Admin zatražio listu dostupnih issuera
+2026-02-21 02:41:39.211 [https-jsse-nio-8443-exec-10] DEBUG org.hibernate.SQL - 
+    select
+        c1_0.id,
+        c1_0.alias,
+        c1_0.common_name,
+        c1_0.country,
+        c1_0.created_at,
+        c1_0.issuer_alias,
+        c1_0.organization,
+        c1_0.organizational_unit,
+        c1_0.revocation_reason,
+        c1_0.revoked,
+        c1_0.revoked_at,
+        c1_0.serial_number,
+        c1_0.type,
+        c1_0.valid_from,
+        c1_0.valid_to 
+    from
+        certificates c1_0 
+    where
+        c1_0.type=? 
+        and not(c1_0.revoked)
+2026-02-21 02:41:39.242 [https-jsse-nio-8443-exec-10] DEBUG org.hibernate.SQL - 
+    select
+        c1_0.id,
+        c1_0.alias,
+        c1_0.common_name,
+        c1_0.country,
+        c1_0.created_at,
+        c1_0.issuer_alias,
+        c1_0.organization,
+        c1_0.organizational_unit,
+        c1_0.revocation_reason,
+        c1_0.revoked,
+        c1_0.revoked_at,
+        c1_0.serial_number,
+        c1_0.type,
+        c1_0.valid_from,
+        c1_0.valid_to 
+    from
+        certificates c1_0 
+    where
+        c1_0.type=? 
+        and not(c1_0.revoked)
+2026-02-21 02:41:54.985 [https-jsse-nio-8443-exec-2] INFO  c.p.p.controller.AuthController - Pokušaj prijave za: admin@pki.com
+2026-02-21 02:41:55.188 [https-jsse-nio-8443-exec-2] DEBUG org.hibernate.SQL - 
+    select
+        u1_0.id,
+        u1_0.email,
+        u1_0.first_name,
+        u1_0.last_name,
+        u1_0.password,
+        u1_0.public_key,
+        u1_0.role 
+    from
+        users u1_0 
+    where
+        u1_0.email=?
+2026-02-21 02:41:55.329 [https-jsse-nio-8443-exec-2] DEBUG org.hibernate.SQL - 
+    select
+        u1_0.id,
+        u1_0.email,
+        u1_0.first_name,
+        u1_0.last_name,
+        u1_0.password,
+        u1_0.public_key,
+        u1_0.role 
+    from
+        users u1_0 
+    where
+        u1_0.email=?
+2026-02-21 02:41:55.711 [https-jsse-nio-8443-exec-3] DEBUG org.hibernate.SQL - 
+    select
+        u1_0.id,
+        u1_0.email,
+        u1_0.first_name,
+        u1_0.last_name,
+        u1_0.password,
+        u1_0.public_key,
+        u1_0.role 
+    from
+        users u1_0 
+    where
+        u1_0.email=?
+2026-02-21 02:41:55.714 [https-jsse-nio-8443-exec-3] DEBUG c.p.p.security.JwtAuthFilter - Korisnik admin@pki.com uspešno autentifikovan
+2026-02-21 02:41:55.885 [https-jsse-nio-8443-exec-3] INFO  c.p.p.c.CertificateController - Admin zatražio listu svih sertifikata
+2026-02-21 02:41:56.017 [https-jsse-nio-8443-exec-7] DEBUG org.hibernate.SQL - 
+    select
+        u1_0.id,
+        u1_0.email,
+        u1_0.first_name,
+        u1_0.last_name,
+        u1_0.password,
+        u1_0.public_key,
+        u1_0.role 
+    from
+        users u1_0 
+    where
+        u1_0.email=?
+2026-02-21 02:41:56.017 [https-jsse-nio-8443-exec-7] DEBUG c.p.p.security.JwtAuthFilter - Korisnik admin@pki.com uspešno autentifikovan
+2026-02-21 02:41:56.033 [https-jsse-nio-8443-exec-7] INFO  c.p.p.c.PasswordManagerController - Admin admin@pki.com zatražio listu lozinki
+2026-02-21 02:41:56.033 [https-jsse-nio-8443-exec-7] DEBUG org.hibernate.SQL - 
+    select
+        u1_0.id,
+        u1_0.email,
+        u1_0.first_name,
+        u1_0.last_name,
+        u1_0.password,
+        u1_0.public_key,
+        u1_0.role 
+    from
+        users u1_0 
+    where
+        u1_0.email=?
+2026-02-21 02:41:56.101 [https-jsse-nio-8443-exec-7] DEBUG org.hibernate.SQL - 
+    select
+        pe1_0.id,
+        pe1_0.created_at,
+        pe1_0.encrypted_password,
+        pe1_0.user_id,
+        pe1_0.site_name,
+        pe1_0.updated_at,
+        pe1_0.username 
+    from
+        password_entries pe1_0 
+    where
+        pe1_0.user_id=?
+2026-02-21 02:41:56.163 [https-jsse-nio-8443-exec-10] DEBUG org.hibernate.SQL - 
+    select
+        u1_0.id,
+        u1_0.email,
+        u1_0.first_name,
+        u1_0.last_name,
+        u1_0.password,
+        u1_0.public_key,
+        u1_0.role 
+    from
+        users u1_0 
+    where
+        u1_0.email=?
+2026-02-21 02:41:56.163 [https-jsse-nio-8443-exec-10] DEBUG c.p.p.security.JwtAuthFilter - Korisnik admin@pki.com uspešno autentifikovan
+2026-02-21 02:41:56.179 [https-jsse-nio-8443-exec-10] DEBUG org.hibernate.SQL - 
+    select
+        u1_0.id,
+        u1_0.email,
+        u1_0.first_name,
+        u1_0.last_name,
+        u1_0.password,
+        u1_0.public_key,
+        u1_0.role 
+    from
+        users u1_0 
+    where
+        u1_0.email=?
+2026-02-21 02:41:56.195 [https-jsse-nio-8443-exec-3] DEBUG org.hibernate.SQL - 
+    select
+        c1_0.id,
+        c1_0.alias,
+        c1_0.common_name,
+        c1_0.country,
+        c1_0.created_at,
+        c1_0.issuer_alias,
+        c1_0.organization,
+        c1_0.organizational_unit,
+        c1_0.revocation_reason,
+        c1_0.revoked,
+        c1_0.revoked_at,
+        c1_0.serial_number,
+        c1_0.type,
+        c1_0.valid_from,
+        c1_0.valid_to 
+    from
+        certificates c1_0
+2026-02-21 02:41:59.669 [https-jsse-nio-8443-exec-2] DEBUG org.hibernate.SQL - 
+    select
+        u1_0.id,
+        u1_0.email,
+        u1_0.first_name,
+        u1_0.last_name,
+        u1_0.password,
+        u1_0.public_key,
+        u1_0.role 
+    from
+        users u1_0 
+    where
+        u1_0.email=?
+2026-02-21 02:41:59.669 [https-jsse-nio-8443-exec-2] DEBUG c.p.p.security.JwtAuthFilter - Korisnik admin@pki.com uspešno autentifikovan
+2026-02-21 02:41:59.669 [https-jsse-nio-8443-exec-2] INFO  c.p.p.c.CertificateController - Admin zatražio listu svih sertifikata
+2026-02-21 02:41:59.687 [https-jsse-nio-8443-exec-2] DEBUG org.hibernate.SQL - 
+    select
+        c1_0.id,
+        c1_0.alias,
+        c1_0.common_name,
+        c1_0.country,
+        c1_0.created_at,
+        c1_0.issuer_alias,
+        c1_0.organization,
+        c1_0.organizational_unit,
+        c1_0.revocation_reason,
+        c1_0.revoked,
+        c1_0.revoked_at,
+        c1_0.serial_number,
+        c1_0.type,
+        c1_0.valid_from,
+        c1_0.valid_to 
+    from
+        certificates c1_0
+2026-02-21 02:42:01.594 [https-jsse-nio-8443-exec-7] DEBUG org.hibernate.SQL - 
+    select
+        u1_0.id,
+        u1_0.email,
+        u1_0.first_name,
+        u1_0.last_name,
+        u1_0.password,
+        u1_0.public_key,
+        u1_0.role 
+    from
+        users u1_0 
+    where
+        u1_0.email=?
+2026-02-21 02:42:01.601 [https-jsse-nio-8443-exec-7] DEBUG c.p.p.security.JwtAuthFilter - Korisnik admin@pki.com uspešno autentifikovan
+2026-02-21 02:42:01.603 [https-jsse-nio-8443-exec-7] INFO  c.p.p.c.CertificateController - Admin zatražio listu dostupnih issuera
+2026-02-21 02:42:01.605 [https-jsse-nio-8443-exec-7] DEBUG org.hibernate.SQL - 
+    select
+        c1_0.id,
+        c1_0.alias,
+        c1_0.common_name,
+        c1_0.country,
+        c1_0.created_at,
+        c1_0.issuer_alias,
+        c1_0.organization,
+        c1_0.organizational_unit,
+        c1_0.revocation_reason,
+        c1_0.revoked,
+        c1_0.revoked_at,
+        c1_0.serial_number,
+        c1_0.type,
+        c1_0.valid_from,
+        c1_0.valid_to 
+    from
+        certificates c1_0 
+    where
+        c1_0.type=? 
+        and not(c1_0.revoked)
+2026-02-21 02:42:01.610 [https-jsse-nio-8443-exec-7] DEBUG org.hibernate.SQL - 
+    select
+        c1_0.id,
+        c1_0.alias,
+        c1_0.common_name,
+        c1_0.country,
+        c1_0.created_at,
+        c1_0.issuer_alias,
+        c1_0.organization,
+        c1_0.organizational_unit,
+        c1_0.revocation_reason,
+        c1_0.revoked,
+        c1_0.revoked_at,
+        c1_0.serial_number,
+        c1_0.type,
+        c1_0.valid_from,
+        c1_0.valid_to 
+    from
+        certificates c1_0 
+    where
+        c1_0.type=? 
+        and not(c1_0.revoked)
+2026-02-21 02:42:52.598 [https-jsse-nio-8443-exec-4] DEBUG org.hibernate.SQL - 
+    select
+        u1_0.id,
+        u1_0.email,
+        u1_0.first_name,
+        u1_0.last_name,
+        u1_0.password,
+        u1_0.public_key,
+        u1_0.role 
+    from
+        users u1_0 
+    where
+        u1_0.email=?
+2026-02-21 02:42:52.598 [https-jsse-nio-8443-exec-4] DEBUG c.p.p.security.JwtAuthFilter - Korisnik admin@pki.com uspešno autentifikovan
+2026-02-21 02:42:52.649 [https-jsse-nio-8443-exec-4] INFO  c.p.p.c.CertificateController - Admin kreira ROOT sertifikat za: My Root CA
+2026-02-21 02:42:54.132 [https-jsse-nio-8443-exec-4] ERROR c.p.p.c.CertificateController - Greška pri generisanju sertifikata: null
+2026-02-21 02:48:35.481 [background-preinit] INFO  o.h.validator.internal.util.Version - HV000001: Hibernate Validator 8.0.1.Final
+2026-02-21 02:48:35.593 [main] INFO  c.p.pkibackend.PkibackendApplication - Starting PkibackendApplication using Java 21.0.8 with PID 11732 (C:\Users\Suvajdzic\Desktop\bsep\bsep-team33\pkibackend\pkibackend\target\classes started by Suvajdzic in C:\Users\Suvajdzic\Desktop\bsep\bsep-team33\pkibackend\pkibackend)
+2026-02-21 02:48:35.596 [main] DEBUG c.p.pkibackend.PkibackendApplication - Running with Spring Boot v3.2.3, Spring v6.1.4
+2026-02-21 02:48:35.598 [main] INFO  c.p.pkibackend.PkibackendApplication - No active profile set, falling back to 1 default profile: "default"
+2026-02-21 02:48:42.122 [main] INFO  o.h.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
+2026-02-21 02:48:42.269 [main] INFO  org.hibernate.Version - HHH000412: Hibernate ORM core version 6.4.4.Final
+2026-02-21 02:48:42.354 [main] INFO  o.h.c.i.RegionFactoryInitiator - HHH000026: Second-level cache disabled
+2026-02-21 02:48:43.095 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+2026-02-21 02:48:43.521 [main] INFO  com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@2e2f20b8
+2026-02-21 02:48:43.523 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+2026-02-21 02:48:43.627 [main] WARN  org.hibernate.orm.deprecation - HHH90000025: PostgreSQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2026-02-21 02:48:46.961 [main] INFO  o.h.e.t.j.p.i.JtaPlatformInitiator - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2026-02-21 02:48:48.912 [main] INFO  o.a.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["https-jsse-nio-8443"]
+2026-02-21 02:48:48.925 [main] INFO  o.a.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8080"]
+2026-02-21 02:48:48.932 [main] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+2026-02-21 02:48:48.932 [main] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.19]
+2026-02-21 02:48:49.071 [main] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2026-02-21 02:48:49.218 [main] DEBUG c.p.p.security.JwtAuthFilter - Filter 'jwtAuthFilter' configured for use
+2026-02-21 02:48:49.916 [main] INFO  c.p.p.config.BouncyCastleConfig - Bouncy Castle provider uspešno registrovan
+2026-02-21 02:48:50.548 [main] WARN  o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2026-02-21 02:48:52.304 [main] INFO  o.a.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["https-jsse-nio-8443"]
+2026-02-21 02:48:52.320 [main] WARN  o.s.b.w.s.c.AnnotationConfigServletWebServerApplicationContext - Exception encountered during context initialization - cancelling refresh attempt: org.springframework.context.ApplicationContextException: Failed to start bean 'webServerStartStop'
+2026-02-21 02:48:52.338 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown initiated...
+2026-02-21 02:48:52.373 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown completed.
+2026-02-21 02:48:52.471 [main] ERROR o.s.b.d.LoggingFailureAnalysisReporter - 
+
+***************************
+APPLICATION FAILED TO START
+***************************
+
+Description:
+
+Web server failed to start. Port 8443 was already in use.
+
+Action:
+
+Identify and stop the process that's listening on port 8443 or configure this application to listen on another port.
+
+2026-02-21 02:49:44.402 [background-preinit] INFO  o.h.validator.internal.util.Version - HV000001: Hibernate Validator 8.0.1.Final
+2026-02-21 02:49:44.895 [main] INFO  c.p.pkibackend.PkibackendApplication - Starting PkibackendApplication using Java 21.0.8 with PID 11088 (C:\Users\Suvajdzic\Desktop\bsep\bsep-team33\pkibackend\pkibackend\target\classes started by Suvajdzic in C:\Users\Suvajdzic\Desktop\bsep\bsep-team33\pkibackend\pkibackend)
+2026-02-21 02:49:44.896 [main] DEBUG c.p.pkibackend.PkibackendApplication - Running with Spring Boot v3.2.3, Spring v6.1.4
+2026-02-21 02:49:44.897 [main] INFO  c.p.pkibackend.PkibackendApplication - No active profile set, falling back to 1 default profile: "default"
+2026-02-21 02:49:59.904 [main] INFO  o.h.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
+2026-02-21 02:50:01.301 [main] INFO  org.hibernate.Version - HHH000412: Hibernate ORM core version 6.4.4.Final
+2026-02-21 02:50:01.420 [main] INFO  o.h.c.i.RegionFactoryInitiator - HHH000026: Second-level cache disabled
+2026-02-21 02:50:02.516 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+2026-02-21 02:50:03.053 [main] INFO  com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@113dcaf8
+2026-02-21 02:50:03.057 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+2026-02-21 02:50:03.184 [main] WARN  org.hibernate.orm.deprecation - HHH90000025: PostgreSQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2026-02-21 02:50:06.721 [main] INFO  o.h.e.t.j.p.i.JtaPlatformInitiator - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2026-02-21 02:50:09.644 [main] INFO  o.a.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["https-jsse-nio-8443"]
+2026-02-21 02:50:09.661 [main] INFO  o.a.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8080"]
+2026-02-21 02:50:09.671 [main] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+2026-02-21 02:50:09.675 [main] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.19]
+2026-02-21 02:50:09.864 [main] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2026-02-21 02:50:09.994 [main] DEBUG c.p.p.security.JwtAuthFilter - Filter 'jwtAuthFilter' configured for use
+2026-02-21 02:50:10.640 [main] INFO  c.p.p.config.BouncyCastleConfig - Bouncy Castle provider uspešno registrovan
+2026-02-21 02:50:11.620 [main] WARN  o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2026-02-21 02:50:13.525 [main] INFO  o.a.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["https-jsse-nio-8443"]
+2026-02-21 02:50:14.014 [main] INFO  o.a.t.u.net.NioEndpoint.certificate - Connector [https-jsse-nio-8443], TLS virtual host [_default_], certificate type [UNDEFINED] configured from keystore [C:\Users\Suvajdzic\.keystore] using alias [pki-https] with trust store [null]
+2026-02-21 02:50:14.071 [main] INFO  o.a.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8080"]
+2026-02-21 02:50:14.121 [main] INFO  c.p.pkibackend.PkibackendApplication - Started PkibackendApplication in 42.512 seconds (process running for 44.076)
+2026-02-21 02:50:14.478 [main] DEBUG org.hibernate.SQL - 
+    select
+        u1_0.id 
+    from
+        users u1_0 
+    where
+        u1_0.email=? 
+    fetch
+        first ? rows only
+2026-02-21 02:50:14.519 [main] INFO  c.p.p.config.DataInitializer - Admin korisnik već postoji, preskačem kreiranje
+2026-02-21 02:51:03.193 [https-jsse-nio-8443-exec-7] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2026-02-21 02:51:05.548 [https-jsse-nio-8443-exec-7] DEBUG org.hibernate.SQL - 
+    select
+        u1_0.id,
+        u1_0.email,
+        u1_0.first_name,
+        u1_0.last_name,
+        u1_0.password,
+        u1_0.public_key,
+        u1_0.role 
+    from
+        users u1_0 
+    where
+        u1_0.email=?
+2026-02-21 02:51:05.548 [https-jsse-nio-8443-exec-5] DEBUG org.hibernate.SQL - 
+    select
+        u1_0.id,
+        u1_0.email,
+        u1_0.first_name,
+        u1_0.last_name,
+        u1_0.password,
+        u1_0.public_key,
+        u1_0.role 
+    from
+        users u1_0 
+    where
+        u1_0.email=?
+2026-02-21 02:51:05.548 [https-jsse-nio-8443-exec-2] DEBUG org.hibernate.SQL - 
+    select
+        u1_0.id,
+        u1_0.email,
+        u1_0.first_name,
+        u1_0.last_name,
+        u1_0.password,
+        u1_0.public_key,
+        u1_0.role 
+    from
+        users u1_0 
+    where
+        u1_0.email=?
+2026-02-21 02:51:05.663 [https-jsse-nio-8443-exec-5] DEBUG c.p.p.security.JwtAuthFilter - Korisnik admin@pki.com uspešno autentifikovan
+2026-02-21 02:51:05.666 [https-jsse-nio-8443-exec-2] DEBUG c.p.p.security.JwtAuthFilter - Korisnik admin@pki.com uspešno autentifikovan
+2026-02-21 02:51:05.666 [https-jsse-nio-8443-exec-7] DEBUG c.p.p.security.JwtAuthFilter - Korisnik admin@pki.com uspešno autentifikovan
+2026-02-21 02:51:05.944 [https-jsse-nio-8443-exec-7] INFO  c.p.p.c.PasswordManagerController - Admin admin@pki.com zatražio listu lozinki
+2026-02-21 02:51:05.945 [https-jsse-nio-8443-exec-5] INFO  c.p.p.c.CertificateController - Admin zatražio listu svih sertifikata
+2026-02-21 02:51:05.956 [https-jsse-nio-8443-exec-7] DEBUG org.hibernate.SQL - 
+    select
+        u1_0.id,
+        u1_0.email,
+        u1_0.first_name,
+        u1_0.last_name,
+        u1_0.password,
+        u1_0.public_key,
+        u1_0.role 
+    from
+        users u1_0 
+    where
+        u1_0.email=?
+2026-02-21 02:51:06.028 [https-jsse-nio-8443-exec-2] DEBUG org.hibernate.SQL - 
+    select
+        u1_0.id,
+        u1_0.email,
+        u1_0.first_name,
+        u1_0.last_name,
+        u1_0.password,
+        u1_0.public_key,
+        u1_0.role 
+    from
+        users u1_0 
+    where
+        u1_0.email=?
+2026-02-21 02:51:06.079 [https-jsse-nio-8443-exec-7] DEBUG org.hibernate.SQL - 
+    select
+        pe1_0.id,
+        pe1_0.created_at,
+        pe1_0.encrypted_password,
+        pe1_0.user_id,
+        pe1_0.site_name,
+        pe1_0.updated_at,
+        pe1_0.username 
+    from
+        password_entries pe1_0 
+    where
+        pe1_0.user_id=?
+2026-02-21 02:51:06.226 [https-jsse-nio-8443-exec-5] DEBUG org.hibernate.SQL - 
+    select
+        c1_0.id,
+        c1_0.alias,
+        c1_0.common_name,
+        c1_0.country,
+        c1_0.created_at,
+        c1_0.issuer_alias,
+        c1_0.organization,
+        c1_0.organizational_unit,
+        c1_0.revocation_reason,
+        c1_0.revoked,
+        c1_0.revoked_at,
+        c1_0.serial_number,
+        c1_0.type,
+        c1_0.valid_from,
+        c1_0.valid_to 
+    from
+        certificates c1_0
+2026-02-21 02:51:19.898 [https-jsse-nio-8443-exec-3] INFO  c.p.p.controller.AuthController - Pokušaj prijave za: admin@pki.com
+2026-02-21 02:51:20.085 [https-jsse-nio-8443-exec-3] DEBUG org.hibernate.SQL - 
+    select
+        u1_0.id,
+        u1_0.email,
+        u1_0.first_name,
+        u1_0.last_name,
+        u1_0.password,
+        u1_0.public_key,
+        u1_0.role 
+    from
+        users u1_0 
+    where
+        u1_0.email=?
+2026-02-21 02:51:20.211 [https-jsse-nio-8443-exec-3] DEBUG org.hibernate.SQL - 
+    select
+        u1_0.id,
+        u1_0.email,
+        u1_0.first_name,
+        u1_0.last_name,
+        u1_0.password,
+        u1_0.public_key,
+        u1_0.role 
+    from
+        users u1_0 
+    where
+        u1_0.email=?
+2026-02-21 02:51:20.486 [https-jsse-nio-8443-exec-9] DEBUG org.hibernate.SQL - 
+    select
+        u1_0.id,
+        u1_0.email,
+        u1_0.first_name,
+        u1_0.last_name,
+        u1_0.password,
+        u1_0.public_key,
+        u1_0.role 
+    from
+        users u1_0 
+    where
+        u1_0.email=?
+2026-02-21 02:51:20.486 [https-jsse-nio-8443-exec-9] DEBUG c.p.p.security.JwtAuthFilter - Korisnik admin@pki.com uspešno autentifikovan
+2026-02-21 02:51:20.486 [https-jsse-nio-8443-exec-9] INFO  c.p.p.c.PasswordManagerController - Admin admin@pki.com zatražio listu lozinki
+2026-02-21 02:51:20.501 [https-jsse-nio-8443-exec-9] DEBUG org.hibernate.SQL - 
+    select
+        u1_0.id,
+        u1_0.email,
+        u1_0.first_name,
+        u1_0.last_name,
+        u1_0.password,
+        u1_0.public_key,
+        u1_0.role 
+    from
+        users u1_0 
+    where
+        u1_0.email=?
+2026-02-21 02:51:20.507 [https-jsse-nio-8443-exec-9] DEBUG org.hibernate.SQL - 
+    select
+        pe1_0.id,
+        pe1_0.created_at,
+        pe1_0.encrypted_password,
+        pe1_0.user_id,
+        pe1_0.site_name,
+        pe1_0.updated_at,
+        pe1_0.username 
+    from
+        password_entries pe1_0 
+    where
+        pe1_0.user_id=?
+2026-02-21 02:51:20.531 [https-jsse-nio-8443-exec-10] DEBUG org.hibernate.SQL - 
+    select
+        u1_0.id,
+        u1_0.email,
+        u1_0.first_name,
+        u1_0.last_name,
+        u1_0.password,
+        u1_0.public_key,
+        u1_0.role 
+    from
+        users u1_0 
+    where
+        u1_0.email=?
+2026-02-21 02:51:20.531 [https-jsse-nio-8443-exec-10] DEBUG c.p.p.security.JwtAuthFilter - Korisnik admin@pki.com uspešno autentifikovan
+2026-02-21 02:51:20.531 [https-jsse-nio-8443-exec-10] DEBUG org.hibernate.SQL - 
+    select
+        u1_0.id,
+        u1_0.email,
+        u1_0.first_name,
+        u1_0.last_name,
+        u1_0.password,
+        u1_0.public_key,
+        u1_0.role 
+    from
+        users u1_0 
+    where
+        u1_0.email=?
+2026-02-21 02:51:20.562 [https-jsse-nio-8443-exec-1] DEBUG org.hibernate.SQL - 
+    select
+        u1_0.id,
+        u1_0.email,
+        u1_0.first_name,
+        u1_0.last_name,
+        u1_0.password,
+        u1_0.public_key,
+        u1_0.role 
+    from
+        users u1_0 
+    where
+        u1_0.email=?
+2026-02-21 02:51:20.584 [https-jsse-nio-8443-exec-1] DEBUG c.p.p.security.JwtAuthFilter - Korisnik admin@pki.com uspešno autentifikovan
+2026-02-21 02:51:20.584 [https-jsse-nio-8443-exec-1] INFO  c.p.p.c.CertificateController - Admin zatražio listu svih sertifikata
+2026-02-21 02:51:20.609 [https-jsse-nio-8443-exec-1] DEBUG org.hibernate.SQL - 
+    select
+        c1_0.id,
+        c1_0.alias,
+        c1_0.common_name,
+        c1_0.country,
+        c1_0.created_at,
+        c1_0.issuer_alias,
+        c1_0.organization,
+        c1_0.organizational_unit,
+        c1_0.revocation_reason,
+        c1_0.revoked,
+        c1_0.revoked_at,
+        c1_0.serial_number,
+        c1_0.type,
+        c1_0.valid_from,
+        c1_0.valid_to 
+    from
+        certificates c1_0
+2026-02-21 02:51:23.502 [https-jsse-nio-8443-exec-8] DEBUG org.hibernate.SQL - 
+    select
+        u1_0.id,
+        u1_0.email,
+        u1_0.first_name,
+        u1_0.last_name,
+        u1_0.password,
+        u1_0.public_key,
+        u1_0.role 
+    from
+        users u1_0 
+    where
+        u1_0.email=?
+2026-02-21 02:51:23.517 [https-jsse-nio-8443-exec-8] DEBUG c.p.p.security.JwtAuthFilter - Korisnik admin@pki.com uspešno autentifikovan
+2026-02-21 02:51:23.517 [https-jsse-nio-8443-exec-8] INFO  c.p.p.c.CertificateController - Admin zatražio listu svih sertifikata
+2026-02-21 02:51:23.517 [https-jsse-nio-8443-exec-8] DEBUG org.hibernate.SQL - 
+    select
+        c1_0.id,
+        c1_0.alias,
+        c1_0.common_name,
+        c1_0.country,
+        c1_0.created_at,
+        c1_0.issuer_alias,
+        c1_0.organization,
+        c1_0.organizational_unit,
+        c1_0.revocation_reason,
+        c1_0.revoked,
+        c1_0.revoked_at,
+        c1_0.serial_number,
+        c1_0.type,
+        c1_0.valid_from,
+        c1_0.valid_to 
+    from
+        certificates c1_0
+2026-02-21 02:51:25.714 [https-jsse-nio-8443-exec-7] DEBUG org.hibernate.SQL - 
+    select
+        u1_0.id,
+        u1_0.email,
+        u1_0.first_name,
+        u1_0.last_name,
+        u1_0.password,
+        u1_0.public_key,
+        u1_0.role 
+    from
+        users u1_0 
+    where
+        u1_0.email=?
+2026-02-21 02:51:25.716 [https-jsse-nio-8443-exec-7] DEBUG c.p.p.security.JwtAuthFilter - Korisnik admin@pki.com uspešno autentifikovan
+2026-02-21 02:51:25.718 [https-jsse-nio-8443-exec-7] INFO  c.p.p.c.CertificateController - Admin zatražio listu dostupnih issuera
+2026-02-21 02:51:25.733 [https-jsse-nio-8443-exec-7] DEBUG org.hibernate.SQL - 
+    select
+        c1_0.id,
+        c1_0.alias,
+        c1_0.common_name,
+        c1_0.country,
+        c1_0.created_at,
+        c1_0.issuer_alias,
+        c1_0.organization,
+        c1_0.organizational_unit,
+        c1_0.revocation_reason,
+        c1_0.revoked,
+        c1_0.revoked_at,
+        c1_0.serial_number,
+        c1_0.type,
+        c1_0.valid_from,
+        c1_0.valid_to 
+    from
+        certificates c1_0 
+    where
+        c1_0.type=? 
+        and not(c1_0.revoked)
+2026-02-21 02:51:25.743 [https-jsse-nio-8443-exec-7] DEBUG org.hibernate.SQL - 
+    select
+        c1_0.id,
+        c1_0.alias,
+        c1_0.common_name,
+        c1_0.country,
+        c1_0.created_at,
+        c1_0.issuer_alias,
+        c1_0.organization,
+        c1_0.organizational_unit,
+        c1_0.revocation_reason,
+        c1_0.revoked,
+        c1_0.revoked_at,
+        c1_0.serial_number,
+        c1_0.type,
+        c1_0.valid_from,
+        c1_0.valid_to 
+    from
+        certificates c1_0 
+    where
+        c1_0.type=? 
+        and not(c1_0.revoked)
+2026-02-21 02:52:08.825 [https-jsse-nio-8443-exec-2] DEBUG org.hibernate.SQL - 
+    select
+        u1_0.id,
+        u1_0.email,
+        u1_0.first_name,
+        u1_0.last_name,
+        u1_0.password,
+        u1_0.public_key,
+        u1_0.role 
+    from
+        users u1_0 
+    where
+        u1_0.email=?
+2026-02-21 02:52:08.857 [https-jsse-nio-8443-exec-2] DEBUG c.p.p.security.JwtAuthFilter - Korisnik admin@pki.com uspešno autentifikovan
+2026-02-21 02:52:09.050 [https-jsse-nio-8443-exec-2] INFO  c.p.p.c.CertificateController - Admin kreira ROOT sertifikat za: Root
+2026-02-21 02:52:10.443 [https-jsse-nio-8443-exec-2] ERROR c.p.p.c.CertificateController - Greška pri generisanju sertifikata: null
+2026-02-21 02:53:18.958 [https-jsse-nio-8443-exec-10] ERROR c.p.p.config.GlobalExceptionHandler - Neočekivana greška: Request method 'GET' is not supported
+org.springframework.web.HttpRequestMethodNotSupportedException: Request method 'GET' is not supported
+	at org.springframework.web.servlet.mvc.method.RequestMappingInfoHandlerMapping.handleNoMatch(RequestMappingInfoHandlerMapping.java:265)
+	at org.springframework.web.servlet.handler.AbstractHandlerMethodMapping.lookupHandlerMethod(AbstractHandlerMethodMapping.java:441)
+	at org.springframework.web.servlet.handler.AbstractHandlerMethodMapping.getHandlerInternal(AbstractHandlerMethodMapping.java:382)
+	at org.springframework.web.servlet.mvc.method.RequestMappingInfoHandlerMapping.getHandlerInternal(RequestMappingInfoHandlerMapping.java:126)
+	at org.springframework.web.servlet.mvc.method.RequestMappingInfoHandlerMapping.getHandlerInternal(RequestMappingInfoHandlerMapping.java:68)
+	at org.springframework.web.servlet.handler.AbstractHandlerMapping.getHandler(AbstractHandlerMapping.java:507)
+	at org.springframework.web.servlet.DispatcherServlet.getHandler(DispatcherServlet.java:1283)
+	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:1065)
+	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:979)
+	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:1014)
+	at org.springframework.web.servlet.FrameworkServlet.doGet(FrameworkServlet.java:903)
+	at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:564)
+	at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:885)
+	at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:658)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:205)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:149)
+	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:51)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:174)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:149)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:110)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:174)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:149)
+	at org.springframework.web.filter.CompositeFilter$VirtualFilterChain.doFilter(CompositeFilter.java:108)
+	at org.springframework.security.web.FilterChainProxy.lambda$doFilterInternal$3(FilterChainProxy.java:231)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:365)
+	at org.springframework.security.web.access.intercept.AuthorizationFilter.doFilter(AuthorizationFilter.java:100)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374)
+	at org.springframework.security.web.access.ExceptionTranslationFilter.doFilter(ExceptionTranslationFilter.java:126)
+	at org.springframework.security.web.access.ExceptionTranslationFilter.doFilter(ExceptionTranslationFilter.java:120)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374)
+	at org.springframework.security.web.session.SessionManagementFilter.doFilter(SessionManagementFilter.java:131)
+	at org.springframework.security.web.session.SessionManagementFilter.doFilter(SessionManagementFilter.java:85)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374)
+	at org.springframework.security.web.authentication.AnonymousAuthenticationFilter.doFilter(AnonymousAuthenticationFilter.java:100)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374)
+	at org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter.doFilter(SecurityContextHolderAwareRequestFilter.java:179)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374)
+	at org.springframework.security.web.savedrequest.RequestCacheAwareFilter.doFilter(RequestCacheAwareFilter.java:63)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374)
+	at com.pki.pkibackend.security.JwtAuthFilter.doFilterInternal(JwtAuthFilter.java:62)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374)
+	at org.springframework.security.web.authentication.logout.LogoutFilter.doFilter(LogoutFilter.java:107)
+	at org.springframework.security.web.authentication.logout.LogoutFilter.doFilter(LogoutFilter.java:93)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374)
+	at org.springframework.web.filter.CorsFilter.doFilterInternal(CorsFilter.java:91)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374)
+	at org.springframework.security.web.header.HeaderWriterFilter.doHeadersAfter(HeaderWriterFilter.java:90)
+	at org.springframework.security.web.header.HeaderWriterFilter.doFilterInternal(HeaderWriterFilter.java:75)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374)
+	at org.springframework.security.web.context.SecurityContextHolderFilter.doFilter(SecurityContextHolderFilter.java:82)
+	at org.springframework.security.web.context.SecurityContextHolderFilter.doFilter(SecurityContextHolderFilter.java:69)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374)
+	at org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter.doFilterInternal(WebAsyncManagerIntegrationFilter.java:62)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374)
+	at org.springframework.security.web.session.DisableEncodeUrlFilter.doFilterInternal(DisableEncodeUrlFilter.java:42)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374)
+	at org.springframework.security.web.FilterChainProxy.doFilterInternal(FilterChainProxy.java:233)
+	at org.springframework.security.web.FilterChainProxy.doFilter(FilterChainProxy.java:191)
+	at org.springframework.web.filter.CompositeFilter$VirtualFilterChain.doFilter(CompositeFilter.java:113)
+	at org.springframework.web.servlet.handler.HandlerMappingIntrospector.lambda$createCacheFilter$3(HandlerMappingIntrospector.java:195)
+	at org.springframework.web.filter.CompositeFilter$VirtualFilterChain.doFilter(CompositeFilter.java:113)
+	at org.springframework.web.filter.CompositeFilter.doFilter(CompositeFilter.java:74)
+	at org.springframework.security.config.annotation.web.configuration.WebMvcSecurityConfiguration$CompositeFilterChainProxy.doFilter(WebMvcSecurityConfiguration.java:230)
+	at org.springframework.web.filter.DelegatingFilterProxy.invokeDelegate(DelegatingFilterProxy.java:352)
+	at org.springframework.web.filter.DelegatingFilterProxy.doFilter(DelegatingFilterProxy.java:268)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:174)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:149)
+	at org.springframework.web.filter.RequestContextFilter.doFilterInternal(RequestContextFilter.java:100)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:174)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:149)
+	at org.springframework.web.filter.FormContentFilter.doFilterInternal(FormContentFilter.java:93)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:174)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:149)
+	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:201)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:174)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:149)
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:167)
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:90)
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:482)
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:115)
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:93)
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:74)
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:344)
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:391)
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:63)
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:896)
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1744)
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:52)
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1191)
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:659)
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:63)
+	at java.base/java.lang.Thread.run(Thread.java:1583)
+2026-02-21 02:56:22.563 [https-jsse-nio-8443-exec-10] DEBUG org.hibernate.SQL - 
+    select
+        u1_0.id,
+        u1_0.email,
+        u1_0.first_name,
+        u1_0.last_name,
+        u1_0.password,
+        u1_0.public_key,
+        u1_0.role 
+    from
+        users u1_0 
+    where
+        u1_0.email=?
+2026-02-21 02:56:22.563 [https-jsse-nio-8443-exec-2] DEBUG org.hibernate.SQL - 
+    select
+        u1_0.id,
+        u1_0.email,
+        u1_0.first_name,
+        u1_0.last_name,
+        u1_0.password,
+        u1_0.public_key,
+        u1_0.role 
+    from
+        users u1_0 
+    where
+        u1_0.email=?
+2026-02-21 02:56:22.668 [https-jsse-nio-8443-exec-10] DEBUG c.p.p.security.JwtAuthFilter - Korisnik admin@pki.com uspešno autentifikovan
+2026-02-21 02:56:22.668 [https-jsse-nio-8443-exec-2] DEBUG c.p.p.security.JwtAuthFilter - Korisnik admin@pki.com uspešno autentifikovan
+2026-02-21 02:56:22.747 [https-jsse-nio-8443-exec-2] DEBUG org.hibernate.SQL - 
+    select
+        u1_0.id,
+        u1_0.email,
+        u1_0.first_name,
+        u1_0.last_name,
+        u1_0.password,
+        u1_0.public_key,
+        u1_0.role 
+    from
+        users u1_0 
+    where
+        u1_0.email=?
+2026-02-21 02:56:22.744 [https-jsse-nio-8443-exec-10] INFO  c.p.p.c.PasswordManagerController - Admin admin@pki.com zatražio listu lozinki
+2026-02-21 02:56:22.747 [https-jsse-nio-8443-exec-10] DEBUG org.hibernate.SQL - 
+    select
+        u1_0.id,
+        u1_0.email,
+        u1_0.first_name,
+        u1_0.last_name,
+        u1_0.password,
+        u1_0.public_key,
+        u1_0.role 
+    from
+        users u1_0 
+    where
+        u1_0.email=?
+2026-02-21 02:56:22.762 [https-jsse-nio-8443-exec-10] DEBUG org.hibernate.SQL - 
+    select
+        pe1_0.id,
+        pe1_0.created_at,
+        pe1_0.encrypted_password,
+        pe1_0.user_id,
+        pe1_0.site_name,
+        pe1_0.updated_at,
+        pe1_0.username 
+    from
+        password_entries pe1_0 
+    where
+        pe1_0.user_id=?
+2026-02-21 02:56:30.629 [https-jsse-nio-8443-exec-4] DEBUG org.hibernate.SQL - 
+    select
+        u1_0.id,
+        u1_0.email,
+        u1_0.first_name,
+        u1_0.last_name,
+        u1_0.password,
+        u1_0.public_key,
+        u1_0.role 
+    from
+        users u1_0 
+    where
+        u1_0.email=?
+2026-02-21 02:56:30.637 [https-jsse-nio-8443-exec-4] DEBUG c.p.p.security.JwtAuthFilter - Korisnik admin@pki.com uspešno autentifikovan
+2026-02-21 02:56:30.707 [https-jsse-nio-8443-exec-4] WARN  c.p.p.controller.KeyPairController - Admin admin@pki.com generiše novi par ključeva — privatni ključ će biti vraćen JEDNOM
+2026-02-21 02:56:30.707 [https-jsse-nio-8443-exec-4] DEBUG org.hibernate.SQL - 
+    select
+        u1_0.id,
+        u1_0.email,
+        u1_0.first_name,
+        u1_0.last_name,
+        u1_0.password,
+        u1_0.public_key,
+        u1_0.role 
+    from
+        users u1_0 
+    where
+        u1_0.email=?
+2026-02-21 02:56:33.800 [https-jsse-nio-8443-exec-4] DEBUG org.hibernate.SQL - 
+    update
+        users 
+    set
+        email=?,
+        first_name=?,
+        last_name=?,
+        password=?,
+        public_key=?,
+        role=? 
+    where
+        id=?
+2026-02-21 02:56:56.222 [https-jsse-nio-8443-exec-1] DEBUG org.hibernate.SQL - 
+    select
+        u1_0.id,
+        u1_0.email,
+        u1_0.first_name,
+        u1_0.last_name,
+        u1_0.password,
+        u1_0.public_key,
+        u1_0.role 
+    from
+        users u1_0 
+    where
+        u1_0.email=?
+2026-02-21 02:56:56.222 [https-jsse-nio-8443-exec-3] DEBUG org.hibernate.SQL - 
+    select
+        u1_0.id,
+        u1_0.email,
+        u1_0.first_name,
+        u1_0.last_name,
+        u1_0.password,
+        u1_0.public_key,
+        u1_0.role 
+    from
+        users u1_0 
+    where
+        u1_0.email=?
+2026-02-21 02:56:56.222 [https-jsse-nio-8443-exec-3] DEBUG c.p.p.security.JwtAuthFilter - Korisnik admin@pki.com uspešno autentifikovan
+2026-02-21 02:56:56.258 [https-jsse-nio-8443-exec-3] DEBUG org.hibernate.SQL - 
+    select
+        u1_0.id,
+        u1_0.email,
+        u1_0.first_name,
+        u1_0.last_name,
+        u1_0.password,
+        u1_0.public_key,
+        u1_0.role 
+    from
+        users u1_0 
+    where
+        u1_0.email=?
+2026-02-21 02:56:56.313 [https-jsse-nio-8443-exec-8] DEBUG org.hibernate.SQL - 
+    select
+        u1_0.id,
+        u1_0.email,
+        u1_0.first_name,
+        u1_0.last_name,
+        u1_0.password,
+        u1_0.public_key,
+        u1_0.role 
+    from
+        users u1_0 
+    where
+        u1_0.email=?
+2026-02-21 02:56:56.331 [https-jsse-nio-8443-exec-8] DEBUG c.p.p.security.JwtAuthFilter - Korisnik admin@pki.com uspešno autentifikovan
+2026-02-21 02:56:56.347 [https-jsse-nio-8443-exec-8] INFO  c.p.p.c.CertificateController - Admin zatražio listu svih sertifikata
+2026-02-21 02:56:56.347 [https-jsse-nio-8443-exec-1] DEBUG c.p.p.security.JwtAuthFilter - Korisnik admin@pki.com uspešno autentifikovan
+2026-02-21 02:56:56.347 [https-jsse-nio-8443-exec-1] INFO  c.p.p.c.PasswordManagerController - Admin admin@pki.com zatražio listu lozinki
+2026-02-21 02:56:56.378 [https-jsse-nio-8443-exec-8] DEBUG org.hibernate.SQL - 
+    select
+        c1_0.id,
+        c1_0.alias,
+        c1_0.common_name,
+        c1_0.country,
+        c1_0.created_at,
+        c1_0.issuer_alias,
+        c1_0.organization,
+        c1_0.organizational_unit,
+        c1_0.revocation_reason,
+        c1_0.revoked,
+        c1_0.revoked_at,
+        c1_0.serial_number,
+        c1_0.type,
+        c1_0.valid_from,
+        c1_0.valid_to 
+    from
+        certificates c1_0
+2026-02-21 02:56:56.394 [https-jsse-nio-8443-exec-1] DEBUG org.hibernate.SQL - 
+    select
+        u1_0.id,
+        u1_0.email,
+        u1_0.first_name,
+        u1_0.last_name,
+        u1_0.password,
+        u1_0.public_key,
+        u1_0.role 
+    from
+        users u1_0 
+    where
+        u1_0.email=?
+2026-02-21 02:56:56.410 [https-jsse-nio-8443-exec-1] DEBUG org.hibernate.SQL - 
+    select
+        pe1_0.id,
+        pe1_0.created_at,
+        pe1_0.encrypted_password,
+        pe1_0.user_id,
+        pe1_0.site_name,
+        pe1_0.updated_at,
+        pe1_0.username 
+    from
+        password_entries pe1_0 
+    where
+        pe1_0.user_id=?
+2026-02-21 02:57:00.339 [https-jsse-nio-8443-exec-5] DEBUG org.hibernate.SQL - 
+    select
+        u1_0.id,
+        u1_0.email,
+        u1_0.first_name,
+        u1_0.last_name,
+        u1_0.password,
+        u1_0.public_key,
+        u1_0.role 
+    from
+        users u1_0 
+    where
+        u1_0.email=?
+2026-02-21 02:57:00.363 [https-jsse-nio-8443-exec-5] DEBUG c.p.p.security.JwtAuthFilter - Korisnik admin@pki.com uspešno autentifikovan
+2026-02-21 02:57:00.364 [https-jsse-nio-8443-exec-5] INFO  c.p.p.c.CertificateController - Admin zatražio listu svih sertifikata
+2026-02-21 02:57:00.367 [https-jsse-nio-8443-exec-5] DEBUG org.hibernate.SQL - 
+    select
+        c1_0.id,
+        c1_0.alias,
+        c1_0.common_name,
+        c1_0.country,
+        c1_0.created_at,
+        c1_0.issuer_alias,
+        c1_0.organization,
+        c1_0.organizational_unit,
+        c1_0.revocation_reason,
+        c1_0.revoked,
+        c1_0.revoked_at,
+        c1_0.serial_number,
+        c1_0.type,
+        c1_0.valid_from,
+        c1_0.valid_to 
+    from
+        certificates c1_0
+2026-02-21 02:57:07.727 [https-jsse-nio-8443-exec-10] DEBUG org.hibernate.SQL - 
+    select
+        u1_0.id,
+        u1_0.email,
+        u1_0.first_name,
+        u1_0.last_name,
+        u1_0.password,
+        u1_0.public_key,
+        u1_0.role 
+    from
+        users u1_0 
+    where
+        u1_0.email=?
+2026-02-21 02:57:07.740 [https-jsse-nio-8443-exec-10] DEBUG c.p.p.security.JwtAuthFilter - Korisnik admin@pki.com uspešno autentifikovan
+2026-02-21 02:57:07.748 [https-jsse-nio-8443-exec-4] DEBUG org.hibernate.SQL - 
+    select
+        u1_0.id,
+        u1_0.email,
+        u1_0.first_name,
+        u1_0.last_name,
+        u1_0.password,
+        u1_0.public_key,
+        u1_0.role 
+    from
+        users u1_0 
+    where
+        u1_0.email=?
+2026-02-21 02:57:07.748 [https-jsse-nio-8443-exec-10] DEBUG org.hibernate.SQL - 
+    select
+        u1_0.id,
+        u1_0.email,
+        u1_0.first_name,
+        u1_0.last_name,
+        u1_0.password,
+        u1_0.public_key,
+        u1_0.role 
+    from
+        users u1_0 
+    where
+        u1_0.email=?
+2026-02-21 02:57:07.749 [https-jsse-nio-8443-exec-4] DEBUG c.p.p.security.JwtAuthFilter - Korisnik admin@pki.com uspešno autentifikovan
+2026-02-21 02:57:07.753 [https-jsse-nio-8443-exec-4] INFO  c.p.p.c.CertificateController - Admin zatražio listu svih sertifikata
+2026-02-21 02:57:07.756 [https-jsse-nio-8443-exec-4] DEBUG org.hibernate.SQL - 
+    select
+        c1_0.id,
+        c1_0.alias,
+        c1_0.common_name,
+        c1_0.country,
+        c1_0.created_at,
+        c1_0.issuer_alias,
+        c1_0.organization,
+        c1_0.organizational_unit,
+        c1_0.revocation_reason,
+        c1_0.revoked,
+        c1_0.revoked_at,
+        c1_0.serial_number,
+        c1_0.type,
+        c1_0.valid_from,
+        c1_0.valid_to 
+    from
+        certificates c1_0
+2026-02-21 02:57:07.787 [https-jsse-nio-8443-exec-2] DEBUG org.hibernate.SQL - 
+    select
+        u1_0.id,
+        u1_0.email,
+        u1_0.first_name,
+        u1_0.last_name,
+        u1_0.password,
+        u1_0.public_key,
+        u1_0.role 
+    from
+        users u1_0 
+    where
+        u1_0.email=?
+2026-02-21 02:57:07.787 [https-jsse-nio-8443-exec-2] DEBUG c.p.p.security.JwtAuthFilter - Korisnik admin@pki.com uspešno autentifikovan
+2026-02-21 02:57:07.804 [https-jsse-nio-8443-exec-2] INFO  c.p.p.c.PasswordManagerController - Admin admin@pki.com zatražio listu lozinki
+2026-02-21 02:57:07.804 [https-jsse-nio-8443-exec-2] DEBUG org.hibernate.SQL - 
+    select
+        u1_0.id,
+        u1_0.email,
+        u1_0.first_name,
+        u1_0.last_name,
+        u1_0.password,
+        u1_0.public_key,
+        u1_0.role 
+    from
+        users u1_0 
+    where
+        u1_0.email=?
+2026-02-21 02:57:07.804 [https-jsse-nio-8443-exec-2] DEBUG org.hibernate.SQL - 
+    select
+        pe1_0.id,
+        pe1_0.created_at,
+        pe1_0.encrypted_password,
+        pe1_0.user_id,
+        pe1_0.site_name,
+        pe1_0.updated_at,
+        pe1_0.username 
+    from
+        password_entries pe1_0 
+    where
+        pe1_0.user_id=?
+2026-02-21 02:58:31.743 [https-jsse-nio-8443-exec-4] DEBUG org.hibernate.SQL - 
+    select
+        u1_0.id,
+        u1_0.email,
+        u1_0.first_name,
+        u1_0.last_name,
+        u1_0.password,
+        u1_0.public_key,
+        u1_0.role 
+    from
+        users u1_0 
+    where
+        u1_0.email=?
+2026-02-21 02:58:31.837 [https-jsse-nio-8443-exec-4] DEBUG c.p.p.security.JwtAuthFilter - Korisnik admin@pki.com uspešno autentifikovan
+2026-02-21 02:58:31.884 [https-jsse-nio-8443-exec-4] INFO  c.p.p.c.CertificateController - Admin zatražio listu svih sertifikata
+2026-02-21 02:58:31.916 [https-jsse-nio-8443-exec-4] DEBUG org.hibernate.SQL - 
+    select
+        c1_0.id,
+        c1_0.alias,
+        c1_0.common_name,
+        c1_0.country,
+        c1_0.created_at,
+        c1_0.issuer_alias,
+        c1_0.organization,
+        c1_0.organizational_unit,
+        c1_0.revocation_reason,
+        c1_0.revoked,
+        c1_0.revoked_at,
+        c1_0.serial_number,
+        c1_0.type,
+        c1_0.valid_from,
+        c1_0.valid_to 
+    from
+        certificates c1_0
+2026-02-21 02:58:32.195 [https-jsse-nio-8443-exec-3] DEBUG org.hibernate.SQL - 
+    select
+        u1_0.id,
+        u1_0.email,
+        u1_0.first_name,
+        u1_0.last_name,
+        u1_0.password,
+        u1_0.public_key,
+        u1_0.role 
+    from
+        users u1_0 
+    where
+        u1_0.email=?
+2026-02-21 02:58:32.200 [https-jsse-nio-8443-exec-3] DEBUG c.p.p.security.JwtAuthFilter - Korisnik admin@pki.com uspešno autentifikovan
+2026-02-21 02:58:32.218 [https-jsse-nio-8443-exec-3] INFO  c.p.p.c.CertificateController - Admin zatražio listu dostupnih issuera
+2026-02-21 02:58:32.300 [https-jsse-nio-8443-exec-3] DEBUG org.hibernate.SQL - 
+    select
+        c1_0.id,
+        c1_0.alias,
+        c1_0.common_name,
+        c1_0.country,
+        c1_0.created_at,
+        c1_0.issuer_alias,
+        c1_0.organization,
+        c1_0.organizational_unit,
+        c1_0.revocation_reason,
+        c1_0.revoked,
+        c1_0.revoked_at,
+        c1_0.serial_number,
+        c1_0.type,
+        c1_0.valid_from,
+        c1_0.valid_to 
+    from
+        certificates c1_0 
+    where
+        c1_0.type=? 
+        and not(c1_0.revoked)
+2026-02-21 02:58:32.395 [https-jsse-nio-8443-exec-3] DEBUG org.hibernate.SQL - 
+    select
+        c1_0.id,
+        c1_0.alias,
+        c1_0.common_name,
+        c1_0.country,
+        c1_0.created_at,
+        c1_0.issuer_alias,
+        c1_0.organization,
+        c1_0.organizational_unit,
+        c1_0.revocation_reason,
+        c1_0.revoked,
+        c1_0.revoked_at,
+        c1_0.serial_number,
+        c1_0.type,
+        c1_0.valid_from,
+        c1_0.valid_to 
+    from
+        certificates c1_0 
+    where
+        c1_0.type=? 
+        and not(c1_0.revoked)
+2026-02-21 02:59:27.549 [https-jsse-nio-8443-exec-5] DEBUG org.hibernate.SQL - 
+    select
+        u1_0.id,
+        u1_0.email,
+        u1_0.first_name,
+        u1_0.last_name,
+        u1_0.password,
+        u1_0.public_key,
+        u1_0.role 
+    from
+        users u1_0 
+    where
+        u1_0.email=?
+2026-02-21 02:59:27.568 [https-jsse-nio-8443-exec-5] DEBUG c.p.p.security.JwtAuthFilter - Korisnik admin@pki.com uspešno autentifikovan
+2026-02-21 02:59:27.702 [https-jsse-nio-8443-exec-5] INFO  c.p.p.c.CertificateController - Admin kreira ROOT sertifikat za: gerrg
+2026-02-21 02:59:28.216 [https-jsse-nio-8443-exec-5] ERROR c.p.p.c.CertificateController - Greška pri generisanju sertifikata: null
+2026-02-21 02:59:44.607 [https-jsse-nio-8443-exec-5] DEBUG org.hibernate.SQL - 
+    select
+        u1_0.id,
+        u1_0.email,
+        u1_0.first_name,
+        u1_0.last_name,
+        u1_0.password,
+        u1_0.public_key,
+        u1_0.role 
+    from
+        users u1_0 
+    where
+        u1_0.email=?
+2026-02-21 02:59:44.617 [https-jsse-nio-8443-exec-5] DEBUG c.p.p.security.JwtAuthFilter - Korisnik admin@pki.com uspešno autentifikovan
+2026-02-21 02:59:44.617 [https-jsse-nio-8443-exec-5] INFO  c.p.p.c.CertificateController - Admin kreira ROOT sertifikat za: gerrg
+2026-02-21 02:59:45.117 [https-jsse-nio-8443-exec-5] ERROR c.p.p.c.CertificateController - Greška pri generisanju sertifikata: null
+2026-02-21 15:24:34.257 [https-jsse-nio-8443-exec-5] DEBUG org.hibernate.SQL - 
+    select
+        u1_0.id,
+        u1_0.email,
+        u1_0.first_name,
+        u1_0.last_name,
+        u1_0.password,
+        u1_0.public_key,
+        u1_0.role 
+    from
+        users u1_0 
+    where
+        u1_0.email=?
+2026-02-21 15:24:34.445 [https-jsse-nio-8443-exec-5] DEBUG c.p.p.security.JwtAuthFilter - Korisnik admin@pki.com uspešno autentifikovan
+2026-02-21 15:24:34.647 [https-jsse-nio-8443-exec-5] INFO  c.p.p.c.CertificateController - Admin zatražio listu dostupnih issuera
+2026-02-21 15:24:34.679 [https-jsse-nio-8443-exec-5] DEBUG org.hibernate.SQL - 
+    select
+        c1_0.id,
+        c1_0.alias,
+        c1_0.common_name,
+        c1_0.country,
+        c1_0.created_at,
+        c1_0.issuer_alias,
+        c1_0.organization,
+        c1_0.organizational_unit,
+        c1_0.revocation_reason,
+        c1_0.revoked,
+        c1_0.revoked_at,
+        c1_0.serial_number,
+        c1_0.type,
+        c1_0.valid_from,
+        c1_0.valid_to 
+    from
+        certificates c1_0 
+    where
+        c1_0.type=? 
+        and not(c1_0.revoked)
+2026-02-21 15:24:34.703 [https-jsse-nio-8443-exec-5] DEBUG org.hibernate.SQL - 
+    select
+        c1_0.id,
+        c1_0.alias,
+        c1_0.common_name,
+        c1_0.country,
+        c1_0.created_at,
+        c1_0.issuer_alias,
+        c1_0.organization,
+        c1_0.organizational_unit,
+        c1_0.revocation_reason,
+        c1_0.revoked,
+        c1_0.revoked_at,
+        c1_0.serial_number,
+        c1_0.type,
+        c1_0.valid_from,
+        c1_0.valid_to 
+    from
+        certificates c1_0 
+    where
+        c1_0.type=? 
+        and not(c1_0.revoked)
+2026-02-21 15:24:55.891 [https-jsse-nio-8443-exec-9] DEBUG org.hibernate.SQL - 
+    select
+        u1_0.id,
+        u1_0.email,
+        u1_0.first_name,
+        u1_0.last_name,
+        u1_0.password,
+        u1_0.public_key,
+        u1_0.role 
+    from
+        users u1_0 
+    where
+        u1_0.email=?
+2026-02-21 15:24:55.928 [https-jsse-nio-8443-exec-9] DEBUG c.p.p.security.JwtAuthFilter - Korisnik admin@pki.com uspešno autentifikovan
+2026-02-21 15:24:56.298 [https-jsse-nio-8443-exec-9] INFO  c.p.p.c.CertificateController - Admin kreira ROOT sertifikat za: hbbhjb
+2026-02-21 15:24:57.325 [https-jsse-nio-8443-exec-9] ERROR c.p.p.c.CertificateController - Greška pri generisanju sertifikata: null
+2026-02-21 15:26:38.278 [background-preinit] INFO  o.h.validator.internal.util.Version - HV000001: Hibernate Validator 8.0.1.Final
+2026-02-21 15:26:39.065 [main] INFO  c.p.pkibackend.PkibackendApplication - Starting PkibackendApplication using Java 21.0.8 with PID 15180 (C:\Users\Suvajdzic\Desktop\bsep\bsep-team33\pkibackend\pkibackend\target\classes started by Suvajdzic in C:\Users\Suvajdzic\Desktop\bsep\bsep-team33\pkibackend\pkibackend)
+2026-02-21 15:26:39.073 [main] DEBUG c.p.pkibackend.PkibackendApplication - Running with Spring Boot v3.2.3, Spring v6.1.4
+2026-02-21 15:26:39.074 [main] INFO  c.p.pkibackend.PkibackendApplication - No active profile set, falling back to 1 default profile: "default"
+2026-02-21 15:26:43.275 [main] INFO  o.h.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
+2026-02-21 15:26:43.427 [main] INFO  org.hibernate.Version - HHH000412: Hibernate ORM core version 6.4.4.Final
+2026-02-21 15:26:43.511 [main] INFO  o.h.c.i.RegionFactoryInitiator - HHH000026: Second-level cache disabled
+2026-02-21 15:26:44.316 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+2026-02-21 15:26:44.809 [main] INFO  com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@6615237
+2026-02-21 15:26:44.812 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+2026-02-21 15:26:44.908 [main] WARN  org.hibernate.orm.deprecation - HHH90000025: PostgreSQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2026-02-21 15:26:48.138 [main] INFO  o.h.e.t.j.p.i.JtaPlatformInitiator - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2026-02-21 15:26:51.788 [main] INFO  o.a.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["https-jsse-nio-8443"]
+2026-02-21 15:26:51.814 [main] INFO  o.a.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8080"]
+2026-02-21 15:26:51.912 [main] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+2026-02-21 15:26:51.955 [main] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.19]
+2026-02-21 15:26:52.263 [main] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2026-02-21 15:26:52.388 [main] DEBUG c.p.p.security.JwtAuthFilter - Filter 'jwtAuthFilter' configured for use
+2026-02-21 15:26:52.730 [main] INFO  c.p.p.config.BouncyCastleConfig - Bouncy Castle provider uspešno registrovan
+2026-02-21 15:26:53.553 [main] WARN  o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2026-02-21 15:26:58.603 [main] INFO  o.a.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["https-jsse-nio-8443"]
+2026-02-21 15:27:02.734 [main] INFO  o.a.t.u.net.NioEndpoint.certificate - Connector [https-jsse-nio-8443], TLS virtual host [_default_], certificate type [UNDEFINED] configured from keystore [C:\Users\Suvajdzic\.keystore] using alias [pki-https] with trust store [null]
+2026-02-21 15:27:03.331 [main] INFO  o.a.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8080"]
+2026-02-21 15:27:03.477 [main] INFO  c.p.pkibackend.PkibackendApplication - Started PkibackendApplication in 26.72 seconds (process running for 27.937)
+2026-02-21 15:27:04.380 [main] DEBUG org.hibernate.SQL - 
+    select
+        u1_0.id 
+    from
+        users u1_0 
+    where
+        u1_0.email=? 
+    fetch
+        first ? rows only
+2026-02-21 15:27:04.616 [main] INFO  c.p.p.config.DataInitializer - Admin korisnik već postoji, preskačem kreiranje
+2026-02-21 15:27:22.289 [https-jsse-nio-8443-exec-5] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2026-02-21 15:27:23.654 [https-jsse-nio-8443-exec-10] DEBUG org.hibernate.SQL - 
+    select
+        u1_0.id,
+        u1_0.email,
+        u1_0.first_name,
+        u1_0.last_name,
+        u1_0.password,
+        u1_0.public_key,
+        u1_0.role 
+    from
+        users u1_0 
+    where
+        u1_0.email=?
+2026-02-21 15:27:23.654 [https-jsse-nio-8443-exec-9] DEBUG org.hibernate.SQL - 
+    select
+        u1_0.id,
+        u1_0.email,
+        u1_0.first_name,
+        u1_0.last_name,
+        u1_0.password,
+        u1_0.public_key,
+        u1_0.role 
+    from
+        users u1_0 
+    where
+        u1_0.email=?
+2026-02-21 15:27:23.654 [https-jsse-nio-8443-exec-7] DEBUG org.hibernate.SQL - 
+    select
+        u1_0.id,
+        u1_0.email,
+        u1_0.first_name,
+        u1_0.last_name,
+        u1_0.password,
+        u1_0.public_key,
+        u1_0.role 
+    from
+        users u1_0 
+    where
+        u1_0.email=?
+2026-02-21 15:27:23.732 [https-jsse-nio-8443-exec-9] DEBUG c.p.p.security.JwtAuthFilter - Korisnik admin@pki.com uspešno autentifikovan
+2026-02-21 15:27:23.732 [https-jsse-nio-8443-exec-7] DEBUG c.p.p.security.JwtAuthFilter - Korisnik admin@pki.com uspešno autentifikovan
+2026-02-21 15:27:23.732 [https-jsse-nio-8443-exec-10] DEBUG c.p.p.security.JwtAuthFilter - Korisnik admin@pki.com uspešno autentifikovan
+2026-02-21 15:27:23.943 [https-jsse-nio-8443-exec-7] INFO  c.p.p.c.CertificateController - Admin zatražio listu svih sertifikata
+2026-02-21 15:27:23.943 [https-jsse-nio-8443-exec-9] DEBUG org.hibernate.SQL - 
+    select
+        u1_0.id,
+        u1_0.email,
+        u1_0.first_name,
+        u1_0.last_name,
+        u1_0.password,
+        u1_0.public_key,
+        u1_0.role 
+    from
+        users u1_0 
+    where
+        u1_0.email=?
+2026-02-21 15:27:23.943 [https-jsse-nio-8443-exec-10] INFO  c.p.p.c.PasswordManagerController - Admin admin@pki.com zatražio listu lozinki
+2026-02-21 15:27:23.952 [https-jsse-nio-8443-exec-10] DEBUG org.hibernate.SQL - 
+    select
+        u1_0.id,
+        u1_0.email,
+        u1_0.first_name,
+        u1_0.last_name,
+        u1_0.password,
+        u1_0.public_key,
+        u1_0.role 
+    from
+        users u1_0 
+    where
+        u1_0.email=?
+2026-02-21 15:27:23.999 [https-jsse-nio-8443-exec-10] DEBUG org.hibernate.SQL - 
+    select
+        pe1_0.id,
+        pe1_0.created_at,
+        pe1_0.encrypted_password,
+        pe1_0.user_id,
+        pe1_0.site_name,
+        pe1_0.updated_at,
+        pe1_0.username 
+    from
+        password_entries pe1_0 
+    where
+        pe1_0.user_id=?
+2026-02-21 15:27:24.282 [https-jsse-nio-8443-exec-7] DEBUG org.hibernate.SQL - 
+    select
+        c1_0.id,
+        c1_0.alias,
+        c1_0.common_name,
+        c1_0.country,
+        c1_0.created_at,
+        c1_0.issuer_alias,
+        c1_0.organization,
+        c1_0.organizational_unit,
+        c1_0.revocation_reason,
+        c1_0.revoked,
+        c1_0.revoked_at,
+        c1_0.serial_number,
+        c1_0.type,
+        c1_0.valid_from,
+        c1_0.valid_to 
+    from
+        certificates c1_0
+2026-02-21 15:27:25.619 [https-jsse-nio-8443-exec-2] DEBUG org.hibernate.SQL - 
+    select
+        u1_0.id,
+        u1_0.email,
+        u1_0.first_name,
+        u1_0.last_name,
+        u1_0.password,
+        u1_0.public_key,
+        u1_0.role 
+    from
+        users u1_0 
+    where
+        u1_0.email=?
+2026-02-21 15:27:25.624 [https-jsse-nio-8443-exec-2] DEBUG c.p.p.security.JwtAuthFilter - Korisnik admin@pki.com uspešno autentifikovan
+2026-02-21 15:27:25.624 [https-jsse-nio-8443-exec-2] INFO  c.p.p.c.CertificateController - Admin zatražio listu svih sertifikata
+2026-02-21 15:27:25.624 [https-jsse-nio-8443-exec-2] DEBUG org.hibernate.SQL - 
+    select
+        c1_0.id,
+        c1_0.alias,
+        c1_0.common_name,
+        c1_0.country,
+        c1_0.created_at,
+        c1_0.issuer_alias,
+        c1_0.organization,
+        c1_0.organizational_unit,
+        c1_0.revocation_reason,
+        c1_0.revoked,
+        c1_0.revoked_at,
+        c1_0.serial_number,
+        c1_0.type,
+        c1_0.valid_from,
+        c1_0.valid_to 
+    from
+        certificates c1_0
+2026-02-21 15:27:27.421 [https-jsse-nio-8443-exec-8] DEBUG org.hibernate.SQL - 
+    select
+        u1_0.id,
+        u1_0.email,
+        u1_0.first_name,
+        u1_0.last_name,
+        u1_0.password,
+        u1_0.public_key,
+        u1_0.role 
+    from
+        users u1_0 
+    where
+        u1_0.email=?
+2026-02-21 15:27:27.421 [https-jsse-nio-8443-exec-8] DEBUG c.p.p.security.JwtAuthFilter - Korisnik admin@pki.com uspešno autentifikovan
+2026-02-21 15:27:27.437 [https-jsse-nio-8443-exec-8] INFO  c.p.p.c.CertificateController - Admin zatražio listu dostupnih issuera
+2026-02-21 15:27:27.453 [https-jsse-nio-8443-exec-8] DEBUG org.hibernate.SQL - 
+    select
+        c1_0.id,
+        c1_0.alias,
+        c1_0.common_name,
+        c1_0.country,
+        c1_0.created_at,
+        c1_0.issuer_alias,
+        c1_0.organization,
+        c1_0.organizational_unit,
+        c1_0.revocation_reason,
+        c1_0.revoked,
+        c1_0.revoked_at,
+        c1_0.serial_number,
+        c1_0.type,
+        c1_0.valid_from,
+        c1_0.valid_to 
+    from
+        certificates c1_0 
+    where
+        c1_0.type=? 
+        and not(c1_0.revoked)
+2026-02-21 15:27:27.469 [https-jsse-nio-8443-exec-8] DEBUG org.hibernate.SQL - 
+    select
+        c1_0.id,
+        c1_0.alias,
+        c1_0.common_name,
+        c1_0.country,
+        c1_0.created_at,
+        c1_0.issuer_alias,
+        c1_0.organization,
+        c1_0.organizational_unit,
+        c1_0.revocation_reason,
+        c1_0.revoked,
+        c1_0.revoked_at,
+        c1_0.serial_number,
+        c1_0.type,
+        c1_0.valid_from,
+        c1_0.valid_to 
+    from
+        certificates c1_0 
+    where
+        c1_0.type=? 
+        and not(c1_0.revoked)
+2026-02-21 15:27:51.317 [https-jsse-nio-8443-exec-3] DEBUG org.hibernate.SQL - 
+    select
+        u1_0.id,
+        u1_0.email,
+        u1_0.first_name,
+        u1_0.last_name,
+        u1_0.password,
+        u1_0.public_key,
+        u1_0.role 
+    from
+        users u1_0 
+    where
+        u1_0.email=?
+2026-02-21 15:27:51.317 [https-jsse-nio-8443-exec-3] DEBUG c.p.p.security.JwtAuthFilter - Korisnik admin@pki.com uspešno autentifikovan
+2026-02-21 15:27:51.632 [https-jsse-nio-8443-exec-3] INFO  c.p.p.c.CertificateController - Admin kreira ROOT sertifikat za: ijeo
+2026-02-21 15:27:53.795 [https-jsse-nio-8443-exec-3] ERROR c.p.p.c.CertificateController - Greška pri generisanju sertifikata: null
+2026-02-21 15:34:25.756 [https-jsse-nio-8443-exec-7] INFO  c.p.p.controller.AuthController - Pokušaj prijave za: admin@pki.com
+2026-02-21 15:34:28.121 [https-jsse-nio-8443-exec-7] DEBUG org.hibernate.SQL - 
+    select
+        u1_0.id,
+        u1_0.email,
+        u1_0.first_name,
+        u1_0.last_name,
+        u1_0.password,
+        u1_0.public_key,
+        u1_0.role 
+    from
+        users u1_0 
+    where
+        u1_0.email=?
+2026-02-21 15:34:28.678 [https-jsse-nio-8443-exec-7] DEBUG org.hibernate.SQL - 
+    select
+        u1_0.id,
+        u1_0.email,
+        u1_0.first_name,
+        u1_0.last_name,
+        u1_0.password,
+        u1_0.public_key,
+        u1_0.role 
+    from
+        users u1_0 
+    where
+        u1_0.email=?
+2026-02-21 15:39:42.419 [https-jsse-nio-8443-exec-1] INFO  c.p.p.controller.AuthController - Pokušaj prijave za: admin@pki.com
+2026-02-21 15:39:42.580 [https-jsse-nio-8443-exec-1] DEBUG org.hibernate.SQL - 
+    select
+        u1_0.id,
+        u1_0.email,
+        u1_0.first_name,
+        u1_0.last_name,
+        u1_0.password,
+        u1_0.public_key,
+        u1_0.role 
+    from
+        users u1_0 
+    where
+        u1_0.email=?
+2026-02-21 15:39:42.906 [https-jsse-nio-8443-exec-1] DEBUG org.hibernate.SQL - 
+    select
+        u1_0.id,
+        u1_0.email,
+        u1_0.first_name,
+        u1_0.last_name,
+        u1_0.password,
+        u1_0.public_key,
+        u1_0.role 
+    from
+        users u1_0 
+    where
+        u1_0.email=?
+2026-02-21 15:41:03.419 [https-jsse-nio-8443-exec-6] DEBUG org.hibernate.SQL - 
+    select
+        u1_0.id,
+        u1_0.email,
+        u1_0.first_name,
+        u1_0.last_name,
+        u1_0.password,
+        u1_0.public_key,
+        u1_0.role 
+    from
+        users u1_0 
+    where
+        u1_0.email=?
+2026-02-21 15:41:03.522 [https-jsse-nio-8443-exec-6] DEBUG c.p.p.security.JwtAuthFilter - Korisnik admin@pki.com uspešno autentifikovan
+2026-02-21 15:41:04.040 [https-jsse-nio-8443-exec-6] INFO  c.p.p.c.CertificateController - Admin kreira ROOT sertifikat za: My Root CA
+2026-02-21 15:41:06.425 [https-jsse-nio-8443-exec-6] ERROR c.p.p.c.CertificateController - Greška pri generisanju sertifikata: null
+2026-02-21 15:47:32.110 [background-preinit] INFO  o.h.validator.internal.util.Version - HV000001: Hibernate Validator 8.0.1.Final
+2026-02-21 15:47:32.261 [main] INFO  c.p.pkibackend.PkibackendApplication - Starting PkibackendApplication using Java 21.0.8 with PID 13480 (C:\Users\Suvajdzic\Desktop\bsep\bsep-team33\pkibackend\pkibackend\target\classes started by Suvajdzic in C:\Users\Suvajdzic\Desktop\bsep\bsep-team33\pkibackend\pkibackend)
+2026-02-21 15:47:32.264 [main] DEBUG c.p.pkibackend.PkibackendApplication - Running with Spring Boot v3.2.3, Spring v6.1.4
+2026-02-21 15:47:32.315 [main] INFO  c.p.pkibackend.PkibackendApplication - No active profile set, falling back to 1 default profile: "default"
+2026-02-21 15:47:37.146 [main] INFO  o.h.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
+2026-02-21 15:47:37.286 [main] INFO  org.hibernate.Version - HHH000412: Hibernate ORM core version 6.4.4.Final
+2026-02-21 15:47:37.390 [main] INFO  o.h.c.i.RegionFactoryInitiator - HHH000026: Second-level cache disabled
+2026-02-21 15:47:38.158 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+2026-02-21 15:47:38.711 [main] INFO  com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@727986ad
+2026-02-21 15:47:38.720 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+2026-02-21 15:47:38.813 [main] WARN  org.hibernate.orm.deprecation - HHH90000025: PostgreSQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2026-02-21 15:47:41.529 [main] INFO  o.h.e.t.j.p.i.JtaPlatformInitiator - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2026-02-21 15:47:43.227 [main] INFO  o.a.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["https-jsse-nio-8443"]
+2026-02-21 15:47:43.235 [main] INFO  o.a.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8080"]
+2026-02-21 15:47:43.239 [main] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+2026-02-21 15:47:43.241 [main] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.19]
+2026-02-21 15:47:43.442 [main] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2026-02-21 15:47:43.560 [main] DEBUG c.p.p.security.JwtAuthFilter - Filter 'jwtAuthFilter' configured for use
+2026-02-21 15:47:43.963 [main] INFO  c.p.p.config.BouncyCastleConfig - Bouncy Castle provider uspešno registrovan
+2026-02-21 15:47:44.702 [main] WARN  o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2026-02-21 15:47:46.366 [main] INFO  o.a.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["https-jsse-nio-8443"]
+2026-02-21 15:47:47.079 [main] INFO  o.a.t.u.net.NioEndpoint.certificate - Connector [https-jsse-nio-8443], TLS virtual host [_default_], certificate type [UNDEFINED] configured from keystore [C:\Users\Suvajdzic\.keystore] using alias [pki-https] with trust store [null]
+2026-02-21 15:47:47.112 [main] INFO  o.a.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8080"]
+2026-02-21 15:47:47.141 [main] INFO  c.p.pkibackend.PkibackendApplication - Started PkibackendApplication in 16.439 seconds (process running for 17.722)
+2026-02-21 15:47:47.440 [main] DEBUG org.hibernate.SQL - 
+    select
+        u1_0.id 
+    from
+        users u1_0 
+    where
+        u1_0.email=? 
+    fetch
+        first ? rows only
+2026-02-21 15:47:47.473 [main] INFO  c.p.p.config.DataInitializer - Admin korisnik već postoji, preskačem kreiranje
+2026-02-21 15:48:00.938 [https-jsse-nio-8443-exec-5] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2026-02-21 15:48:01.393 [https-jsse-nio-8443-exec-5] DEBUG org.hibernate.SQL - 
+    select
+        u1_0.id,
+        u1_0.email,
+        u1_0.first_name,
+        u1_0.last_name,
+        u1_0.password,
+        u1_0.public_key,
+        u1_0.role 
+    from
+        users u1_0 
+    where
+        u1_0.email=?
+2026-02-21 15:48:01.429 [https-jsse-nio-8443-exec-5] DEBUG c.p.p.security.JwtAuthFilter - Korisnik admin@pki.com uspešno autentifikovan
+2026-02-21 15:48:01.819 [https-jsse-nio-8443-exec-5] INFO  c.p.p.c.CertificateController - === GENERATE REQUEST ===
+2026-02-21 15:48:01.820 [https-jsse-nio-8443-exec-5] INFO  c.p.p.c.CertificateController - Type: ROOT
+2026-02-21 15:48:01.820 [https-jsse-nio-8443-exec-5] INFO  c.p.p.c.CertificateController - CommonName: My Root CA
+2026-02-21 15:48:01.821 [https-jsse-nio-8443-exec-5] INFO  c.p.p.c.CertificateController - Organization: Test Org
+2026-02-21 15:48:01.822 [https-jsse-nio-8443-exec-5] INFO  c.p.p.c.CertificateController - ValidFrom: 2026-02-21T00:00
+2026-02-21 15:48:01.822 [https-jsse-nio-8443-exec-5] INFO  c.p.p.c.CertificateController - ValidTo: 2036-02-21T00:00
+2026-02-21 15:48:01.822 [https-jsse-nio-8443-exec-5] INFO  c.p.p.c.CertificateController - IssuerAlias: null
+2026-02-21 15:48:01.822 [https-jsse-nio-8443-exec-5] INFO  c.p.p.c.CertificateController - isCA: true
+2026-02-21 15:48:01.823 [https-jsse-nio-8443-exec-5] INFO  c.p.p.c.CertificateController - =======================
+2026-02-21 15:48:01.823 [https-jsse-nio-8443-exec-5] INFO  c.p.p.c.CertificateController - Admin admin@pki.com kreira ROOT sertifikat za: My Root CA
+2026-02-21 15:48:07.243 [https-jsse-nio-8443-exec-5] ERROR c.p.p.c.CertificateController - Greška pri generisanju sertifikata: null
+java.io.EOFException: null
+	at java.base/sun.security.util.IOUtils.readExactlyNBytes(IOUtils.java:61)
+	at java.base/sun.security.provider.JavaKeyStore.engineLoad(JavaKeyStore.java:710)
+	at java.base/sun.security.util.KeyStoreDelegator.engineLoad(KeyStoreDelegator.java:228)
+	at java.base/java.security.KeyStore.load(KeyStore.java:1500)
+	at com.pki.pkibackend.service.KeystoreService.loadOrCreateKeystore(KeystoreService.java:46)
+	at com.pki.pkibackend.service.KeystoreService.saveCAcertificate(KeystoreService.java:67)
+	at com.pki.pkibackend.service.CertificateService.generateRootCertificate(CertificateService.java:114)
+	at com.pki.pkibackend.service.CertificateService.generateCertificate(CertificateService.java:64)
+	at com.pki.pkibackend.controller.CertificateController.generateCertificate(CertificateController.java:110)
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
+	at org.springframework.web.method.support.InvocableHandlerMethod.doInvoke(InvocableHandlerMethod.java:259)
+	at org.springframework.web.method.support.InvocableHandlerMethod.invokeForRequest(InvocableHandlerMethod.java:192)
+	at org.springframework.web.servlet.mvc.method.annotation.ServletInvocableHandlerMethod.invokeAndHandle(ServletInvocableHandlerMethod.java:118)
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.invokeHandlerMethod(RequestMappingHandlerAdapter.java:920)
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.handleInternal(RequestMappingHandlerAdapter.java:830)
+	at org.springframework.web.servlet.mvc.method.AbstractHandlerMethodAdapter.handle(AbstractHandlerMethodAdapter.java:87)
+	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:1089)
+	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:979)
+	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:1014)
+	at org.springframework.web.servlet.FrameworkServlet.doPost(FrameworkServlet.java:914)
+	at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:590)
+	at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:885)
+	at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:658)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:205)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:149)
+	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:51)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:174)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:149)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:110)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:174)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:149)
+	at org.springframework.web.filter.CompositeFilter$VirtualFilterChain.doFilter(CompositeFilter.java:108)
+	at org.springframework.security.web.FilterChainProxy.lambda$doFilterInternal$3(FilterChainProxy.java:231)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:365)
+	at org.springframework.security.web.access.intercept.AuthorizationFilter.doFilter(AuthorizationFilter.java:100)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374)
+	at org.springframework.security.web.access.ExceptionTranslationFilter.doFilter(ExceptionTranslationFilter.java:126)
+	at org.springframework.security.web.access.ExceptionTranslationFilter.doFilter(ExceptionTranslationFilter.java:120)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374)
+	at org.springframework.security.web.session.SessionManagementFilter.doFilter(SessionManagementFilter.java:131)
+	at org.springframework.security.web.session.SessionManagementFilter.doFilter(SessionManagementFilter.java:85)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374)
+	at org.springframework.security.web.authentication.AnonymousAuthenticationFilter.doFilter(AnonymousAuthenticationFilter.java:100)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374)
+	at org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter.doFilter(SecurityContextHolderAwareRequestFilter.java:179)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374)
+	at org.springframework.security.web.savedrequest.RequestCacheAwareFilter.doFilter(RequestCacheAwareFilter.java:63)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374)
+	at com.pki.pkibackend.security.JwtAuthFilter.doFilterInternal(JwtAuthFilter.java:62)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374)
+	at org.springframework.security.web.authentication.logout.LogoutFilter.doFilter(LogoutFilter.java:107)
+	at org.springframework.security.web.authentication.logout.LogoutFilter.doFilter(LogoutFilter.java:93)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374)
+	at org.springframework.web.filter.CorsFilter.doFilterInternal(CorsFilter.java:91)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374)
+	at org.springframework.security.web.header.HeaderWriterFilter.doHeadersAfter(HeaderWriterFilter.java:90)
+	at org.springframework.security.web.header.HeaderWriterFilter.doFilterInternal(HeaderWriterFilter.java:75)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374)
+	at org.springframework.security.web.context.SecurityContextHolderFilter.doFilter(SecurityContextHolderFilter.java:82)
+	at org.springframework.security.web.context.SecurityContextHolderFilter.doFilter(SecurityContextHolderFilter.java:69)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374)
+	at org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter.doFilterInternal(WebAsyncManagerIntegrationFilter.java:62)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374)
+	at org.springframework.security.web.session.DisableEncodeUrlFilter.doFilterInternal(DisableEncodeUrlFilter.java:42)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374)
+	at org.springframework.security.web.FilterChainProxy.doFilterInternal(FilterChainProxy.java:233)
+	at org.springframework.security.web.FilterChainProxy.doFilter(FilterChainProxy.java:191)
+	at org.springframework.web.filter.CompositeFilter$VirtualFilterChain.doFilter(CompositeFilter.java:113)
+	at org.springframework.web.servlet.handler.HandlerMappingIntrospector.lambda$createCacheFilter$3(HandlerMappingIntrospector.java:195)
+	at org.springframework.web.filter.CompositeFilter$VirtualFilterChain.doFilter(CompositeFilter.java:113)
+	at org.springframework.web.filter.CompositeFilter.doFilter(CompositeFilter.java:74)
+	at org.springframework.security.config.annotation.web.configuration.WebMvcSecurityConfiguration$CompositeFilterChainProxy.doFilter(WebMvcSecurityConfiguration.java:230)
+	at org.springframework.web.filter.DelegatingFilterProxy.invokeDelegate(DelegatingFilterProxy.java:352)
+	at org.springframework.web.filter.DelegatingFilterProxy.doFilter(DelegatingFilterProxy.java:268)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:174)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:149)
+	at org.springframework.web.filter.RequestContextFilter.doFilterInternal(RequestContextFilter.java:100)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:174)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:149)
+	at org.springframework.web.filter.FormContentFilter.doFilterInternal(FormContentFilter.java:93)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:174)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:149)
+	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:201)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:174)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:149)
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:167)
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:90)
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:482)
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:115)
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:93)
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:74)
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:344)
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:391)
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:63)
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:896)
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1744)
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:52)
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1191)
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:659)
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:63)
+	at java.base/java.lang.Thread.run(Thread.java:1583)
+2026-02-21 15:58:07.343 [main] INFO  c.p.pkibackend.PkibackendApplication - Starting PkibackendApplication using Java 21.0.8 with PID 14012 (C:\Users\Suvajdzic\Desktop\bsep\bsep-team33\pkibackend\pkibackend\target\classes started by Suvajdzic in C:\Users\Suvajdzic\Desktop\bsep\bsep-team33\pkibackend\pkibackend)
+2026-02-21 15:58:07.347 [main] DEBUG c.p.pkibackend.PkibackendApplication - Running with Spring Boot v3.2.3, Spring v6.1.4
+2026-02-21 15:58:07.348 [main] INFO  c.p.pkibackend.PkibackendApplication - No active profile set, falling back to 1 default profile: "default"
+2026-02-21 15:58:07.369 [background-preinit] INFO  o.h.validator.internal.util.Version - HV000001: Hibernate Validator 8.0.1.Final
+2026-02-21 15:58:12.559 [main] INFO  o.h.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
+2026-02-21 15:58:12.725 [main] INFO  org.hibernate.Version - HHH000412: Hibernate ORM core version 6.4.4.Final
+2026-02-21 15:58:12.809 [main] INFO  o.h.c.i.RegionFactoryInitiator - HHH000026: Second-level cache disabled
+2026-02-21 15:58:14.848 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+2026-02-21 15:58:15.601 [main] INFO  com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@504497fa
+2026-02-21 15:58:15.604 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+2026-02-21 15:58:15.845 [main] WARN  org.hibernate.orm.deprecation - HHH90000025: PostgreSQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2026-02-21 15:58:20.124 [main] INFO  o.h.e.t.j.p.i.JtaPlatformInitiator - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2026-02-21 15:58:22.500 [main] INFO  o.a.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["https-jsse-nio-8443"]
+2026-02-21 15:58:22.505 [main] INFO  o.a.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8080"]
+2026-02-21 15:58:22.508 [main] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+2026-02-21 15:58:22.513 [main] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.19]
+2026-02-21 15:58:22.766 [main] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2026-02-21 15:58:22.956 [main] DEBUG c.p.p.security.JwtAuthFilter - Filter 'jwtAuthFilter' configured for use
+2026-02-21 15:58:23.580 [main] INFO  c.p.p.config.BouncyCastleConfig - Bouncy Castle provider uspešno registrovan
+2026-02-21 15:58:24.410 [main] WARN  o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2026-02-21 15:58:25.894 [main] INFO  o.a.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["https-jsse-nio-8443"]
+2026-02-21 15:58:26.296 [main] INFO  o.a.t.u.net.NioEndpoint.certificate - Connector [https-jsse-nio-8443], TLS virtual host [_default_], certificate type [UNDEFINED] configured from keystore [C:\Users\Suvajdzic\.keystore] using alias [pki-https] with trust store [null]
+2026-02-21 15:58:26.356 [main] INFO  o.a.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8080"]
+2026-02-21 15:58:26.397 [main] INFO  c.p.pkibackend.PkibackendApplication - Started PkibackendApplication in 21.059 seconds (process running for 22.392)
+2026-02-21 15:58:26.715 [main] DEBUG org.hibernate.SQL - 
+    select
+        u1_0.id 
+    from
+        users u1_0 
+    where
+        u1_0.email=? 
+    fetch
+        first ? rows only
+2026-02-21 15:58:26.735 [main] INFO  c.p.p.config.DataInitializer - Admin korisnik već postoji, preskačem kreiranje
+2026-02-21 15:58:41.444 [https-jsse-nio-8443-exec-9] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2026-02-21 15:58:43.437 [https-jsse-nio-8443-exec-10] DEBUG org.hibernate.SQL - 
+    select
+        u1_0.id,
+        u1_0.email,
+        u1_0.first_name,
+        u1_0.last_name,
+        u1_0.password,
+        u1_0.public_key,
+        u1_0.role 
+    from
+        users u1_0 
+    where
+        u1_0.email=?
+2026-02-21 15:58:43.484 [https-jsse-nio-8443-exec-10] DEBUG c.p.p.security.JwtAuthFilter - Korisnik admin@pki.com uspešno autentifikovan
+2026-02-21 15:58:44.320 [https-jsse-nio-8443-exec-10] INFO  c.p.p.c.CertificateController - === GENERATE REQUEST ===
+2026-02-21 15:58:44.320 [https-jsse-nio-8443-exec-10] INFO  c.p.p.c.CertificateController - Type: ROOT
+2026-02-21 15:58:44.320 [https-jsse-nio-8443-exec-10] INFO  c.p.p.c.CertificateController - CommonName: ijeo
+2026-02-21 15:58:44.320 [https-jsse-nio-8443-exec-10] INFO  c.p.p.c.CertificateController - Organization: fejwof
+2026-02-21 15:58:44.320 [https-jsse-nio-8443-exec-10] INFO  c.p.p.c.CertificateController - ValidFrom: 2026-02-21T14:27:27
+2026-02-21 15:58:44.320 [https-jsse-nio-8443-exec-10] INFO  c.p.p.c.CertificateController - ValidTo: 2036-02-20T23:00
+2026-02-21 15:58:44.320 [https-jsse-nio-8443-exec-10] INFO  c.p.p.c.CertificateController - IssuerAlias: 
+2026-02-21 15:58:44.320 [https-jsse-nio-8443-exec-10] INFO  c.p.p.c.CertificateController - isCA: false
+2026-02-21 15:58:44.320 [https-jsse-nio-8443-exec-10] INFO  c.p.p.c.CertificateController - =======================
+2026-02-21 15:58:44.320 [https-jsse-nio-8443-exec-10] INFO  c.p.p.c.CertificateController - Admin admin@pki.com kreira ROOT sertifikat za: ijeo
+2026-02-21 15:58:48.896 [https-jsse-nio-8443-exec-10] INFO  c.p.p.service.KeystoreService - Novi keystore kreiran: C:/Users/Suvajdzic/Desktop/bsep/bsep-team33/pkibackend/pkibackend/keystores/pki-keystore.jks
+2026-02-21 15:58:48.946 [https-jsse-nio-8443-exec-10] DEBUG c.p.p.service.KeystoreService - Keystore sačuvan: C:/Users/Suvajdzic/Desktop/bsep/bsep-team33/pkibackend/pkibackend/keystores/pki-keystore.jks
+2026-02-21 15:58:49.054 [https-jsse-nio-8443-exec-10] INFO  c.p.p.service.KeystoreService - CA sertifikat sačuvan sa aliasom: root-ijeo-1771685928881
+2026-02-21 15:58:49.447 [https-jsse-nio-8443-exec-10] DEBUG org.hibernate.SQL - 
+    insert 
+    into
+        certificates
+        (alias, common_name, country, created_at, issuer_alias, organization, organizational_unit, revocation_reason, revoked, revoked_at, serial_number, type, valid_from, valid_to) 
+    values
+        (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+2026-02-21 15:58:52.129 [https-jsse-nio-8443-exec-1] DEBUG org.hibernate.SQL - 
+    select
+        u1_0.id,
+        u1_0.email,
+        u1_0.first_name,
+        u1_0.last_name,
+        u1_0.password,
+        u1_0.public_key,
+        u1_0.role 
+    from
+        users u1_0 
+    where
+        u1_0.email=?
+2026-02-21 15:58:52.145 [https-jsse-nio-8443-exec-1] DEBUG c.p.p.security.JwtAuthFilter - Korisnik admin@pki.com uspešno autentifikovan
+2026-02-21 15:58:52.454 [https-jsse-nio-8443-exec-1] DEBUG org.hibernate.SQL - 
+    select
+        c1_0.id,
+        c1_0.alias,
+        c1_0.common_name,
+        c1_0.country,
+        c1_0.created_at,
+        c1_0.issuer_alias,
+        c1_0.organization,
+        c1_0.organizational_unit,
+        c1_0.revocation_reason,
+        c1_0.revoked,
+        c1_0.revoked_at,
+        c1_0.serial_number,
+        c1_0.type,
+        c1_0.valid_from,
+        c1_0.valid_to 
+    from
+        certificates c1_0
+2026-02-21 15:59:05.755 [https-jsse-nio-8443-exec-6] DEBUG org.hibernate.SQL - 
+    select
+        u1_0.id,
+        u1_0.email,
+        u1_0.first_name,
+        u1_0.last_name,
+        u1_0.password,
+        u1_0.public_key,
+        u1_0.role 
+    from
+        users u1_0 
+    where
+        u1_0.email=?
+2026-02-21 15:59:05.755 [https-jsse-nio-8443-exec-6] DEBUG c.p.p.security.JwtAuthFilter - Korisnik admin@pki.com uspešno autentifikovan
+2026-02-21 15:59:05.762 [https-jsse-nio-8443-exec-6] DEBUG org.hibernate.SQL - 
+    select
+        c1_0.id,
+        c1_0.alias,
+        c1_0.common_name,
+        c1_0.country,
+        c1_0.created_at,
+        c1_0.issuer_alias,
+        c1_0.organization,
+        c1_0.organizational_unit,
+        c1_0.revocation_reason,
+        c1_0.revoked,
+        c1_0.revoked_at,
+        c1_0.serial_number,
+        c1_0.type,
+        c1_0.valid_from,
+        c1_0.valid_to 
+    from
+        certificates c1_0
+2026-02-21 15:59:05.953 [https-jsse-nio-8443-exec-9] DEBUG org.hibernate.SQL - 
+    select
+        u1_0.id,
+        u1_0.email,
+        u1_0.first_name,
+        u1_0.last_name,
+        u1_0.password,
+        u1_0.public_key,
+        u1_0.role 
+    from
+        users u1_0 
+    where
+        u1_0.email=?
+2026-02-21 15:59:05.953 [https-jsse-nio-8443-exec-9] DEBUG c.p.p.security.JwtAuthFilter - Korisnik admin@pki.com uspešno autentifikovan
+2026-02-21 15:59:06.065 [https-jsse-nio-8443-exec-10] DEBUG org.hibernate.SQL - 
+    select
+        u1_0.id,
+        u1_0.email,
+        u1_0.first_name,
+        u1_0.last_name,
+        u1_0.password,
+        u1_0.public_key,
+        u1_0.role 
+    from
+        users u1_0 
+    where
+        u1_0.email=?
+2026-02-21 15:59:06.065 [https-jsse-nio-8443-exec-10] DEBUG c.p.p.security.JwtAuthFilter - Korisnik admin@pki.com uspešno autentifikovan
+2026-02-21 15:59:06.255 [https-jsse-nio-8443-exec-9] INFO  c.p.p.c.PasswordManagerController - Admin admin@pki.com zatražio listu lozinki
+2026-02-21 15:59:06.255 [https-jsse-nio-8443-exec-10] DEBUG org.hibernate.SQL - 
+    select
+        u1_0.id,
+        u1_0.email,
+        u1_0.first_name,
+        u1_0.last_name,
+        u1_0.password,
+        u1_0.public_key,
+        u1_0.role 
+    from
+        users u1_0 
+    where
+        u1_0.email=?
+2026-02-21 15:59:06.270 [https-jsse-nio-8443-exec-9] DEBUG org.hibernate.SQL - 
+    select
+        u1_0.id,
+        u1_0.email,
+        u1_0.first_name,
+        u1_0.last_name,
+        u1_0.password,
+        u1_0.public_key,
+        u1_0.role 
+    from
+        users u1_0 
+    where
+        u1_0.email=?
+2026-02-21 15:59:06.364 [https-jsse-nio-8443-exec-9] DEBUG org.hibernate.SQL - 
+    select
+        pe1_0.id,
+        pe1_0.created_at,
+        pe1_0.encrypted_password,
+        pe1_0.user_id,
+        pe1_0.site_name,
+        pe1_0.updated_at,
+        pe1_0.username 
+    from
+        password_entries pe1_0 
+    where
+        pe1_0.user_id=?
+2026-02-21 15:59:11.163 [https-jsse-nio-8443-exec-2] DEBUG org.hibernate.SQL - 
+    select
+        u1_0.id,
+        u1_0.email,
+        u1_0.first_name,
+        u1_0.last_name,
+        u1_0.password,
+        u1_0.public_key,
+        u1_0.role 
+    from
+        users u1_0 
+    where
+        u1_0.email=?
+2026-02-21 15:59:11.163 [https-jsse-nio-8443-exec-2] DEBUG c.p.p.security.JwtAuthFilter - Korisnik admin@pki.com uspešno autentifikovan
+2026-02-21 15:59:11.171 [https-jsse-nio-8443-exec-2] DEBUG org.hibernate.SQL - 
+    select
+        c1_0.id,
+        c1_0.alias,
+        c1_0.common_name,
+        c1_0.country,
+        c1_0.created_at,
+        c1_0.issuer_alias,
+        c1_0.organization,
+        c1_0.organizational_unit,
+        c1_0.revocation_reason,
+        c1_0.revoked,
+        c1_0.revoked_at,
+        c1_0.serial_number,
+        c1_0.type,
+        c1_0.valid_from,
+        c1_0.valid_to 
+    from
+        certificates c1_0
+2026-02-21 16:00:51.277 [https-jsse-nio-8443-exec-6] DEBUG org.hibernate.SQL - 
+    select
+        u1_0.id,
+        u1_0.email,
+        u1_0.first_name,
+        u1_0.last_name,
+        u1_0.password,
+        u1_0.public_key,
+        u1_0.role 
+    from
+        users u1_0 
+    where
+        u1_0.email=?
+2026-02-21 16:00:51.414 [https-jsse-nio-8443-exec-6] DEBUG c.p.p.security.JwtAuthFilter - Korisnik admin@pki.com uspešno autentifikovan
+2026-02-21 16:00:51.773 [https-jsse-nio-8443-exec-6] DEBUG org.hibernate.SQL - 
+    select
+        c1_0.id,
+        c1_0.alias,
+        c1_0.common_name,
+        c1_0.country,
+        c1_0.created_at,
+        c1_0.issuer_alias,
+        c1_0.organization,
+        c1_0.organizational_unit,
+        c1_0.revocation_reason,
+        c1_0.revoked,
+        c1_0.revoked_at,
+        c1_0.serial_number,
+        c1_0.type,
+        c1_0.valid_from,
+        c1_0.valid_to 
+    from
+        certificates c1_0 
+    where
+        c1_0.type=? 
+        and not(c1_0.revoked)
+2026-02-21 16:00:51.821 [https-jsse-nio-8443-exec-6] DEBUG org.hibernate.SQL - 
+    select
+        c1_0.id,
+        c1_0.alias,
+        c1_0.common_name,
+        c1_0.country,
+        c1_0.created_at,
+        c1_0.issuer_alias,
+        c1_0.organization,
+        c1_0.organizational_unit,
+        c1_0.revocation_reason,
+        c1_0.revoked,
+        c1_0.revoked_at,
+        c1_0.serial_number,
+        c1_0.type,
+        c1_0.valid_from,
+        c1_0.valid_to 
+    from
+        certificates c1_0 
+    where
+        c1_0.type=? 
+        and not(c1_0.revoked)
+2026-02-21 16:01:48.369 [https-jsse-nio-8443-exec-10] DEBUG org.hibernate.SQL - 
+    select
+        u1_0.id,
+        u1_0.email,
+        u1_0.first_name,
+        u1_0.last_name,
+        u1_0.password,
+        u1_0.public_key,
+        u1_0.role 
+    from
+        users u1_0 
+    where
+        u1_0.email=?
+2026-02-21 16:01:49.259 [https-jsse-nio-8443-exec-10] DEBUG c.p.p.security.JwtAuthFilter - Korisnik admin@pki.com uspešno autentifikovan
+2026-02-21 16:01:49.590 [https-jsse-nio-8443-exec-10] INFO  c.p.p.c.CertificateController - === GENERATE REQUEST ===
+2026-02-21 16:01:49.590 [https-jsse-nio-8443-exec-10] INFO  c.p.p.c.CertificateController - Type: INTERMEDIATE
+2026-02-21 16:01:49.590 [https-jsse-nio-8443-exec-10] INFO  c.p.p.c.CertificateController - CommonName: fud
+2026-02-21 16:01:49.590 [https-jsse-nio-8443-exec-10] INFO  c.p.p.c.CertificateController - Organization: djcne
+2026-02-21 16:01:49.590 [https-jsse-nio-8443-exec-10] INFO  c.p.p.c.CertificateController - ValidFrom: 2026-02-21T15:00:49
+2026-02-21 16:01:49.590 [https-jsse-nio-8443-exec-10] INFO  c.p.p.c.CertificateController - ValidTo: 2031-02-20T23:00
+2026-02-21 16:01:49.590 [https-jsse-nio-8443-exec-10] INFO  c.p.p.c.CertificateController - IssuerAlias: root-ijeo-1771685928881
+2026-02-21 16:01:49.590 [https-jsse-nio-8443-exec-10] INFO  c.p.p.c.CertificateController - isCA: true
+2026-02-21 16:01:49.590 [https-jsse-nio-8443-exec-10] INFO  c.p.p.c.CertificateController - =======================
+2026-02-21 16:01:49.590 [https-jsse-nio-8443-exec-10] INFO  c.p.p.c.CertificateController - Admin admin@pki.com kreira INTERMEDIATE sertifikat za: fud
+2026-02-21 16:01:49.637 [https-jsse-nio-8443-exec-10] DEBUG org.hibernate.SQL - 
+    select
+        c1_0.id,
+        c1_0.alias,
+        c1_0.common_name,
+        c1_0.country,
+        c1_0.created_at,
+        c1_0.issuer_alias,
+        c1_0.organization,
+        c1_0.organizational_unit,
+        c1_0.revocation_reason,
+        c1_0.revoked,
+        c1_0.revoked_at,
+        c1_0.serial_number,
+        c1_0.type,
+        c1_0.valid_from,
+        c1_0.valid_to 
+    from
+        certificates c1_0 
+    where
+        c1_0.alias=?
+2026-02-21 16:01:50.076 [https-jsse-nio-8443-exec-10] DEBUG c.p.p.service.KeystoreService - Keystore učitan: C:/Users/Suvajdzic/Desktop/bsep/bsep-team33/pkibackend/pkibackend/keystores/pki-keystore.jks
+2026-02-21 16:01:50.139 [https-jsse-nio-8443-exec-10] DEBUG c.p.p.service.KeystoreService - Keystore učitan: C:/Users/Suvajdzic/Desktop/bsep/bsep-team33/pkibackend/pkibackend/keystores/pki-keystore.jks
+2026-02-21 16:01:50.139 [https-jsse-nio-8443-exec-10] DEBUG c.p.p.service.KeystoreService - Keystore učitan: C:/Users/Suvajdzic/Desktop/bsep/bsep-team33/pkibackend/pkibackend/keystores/pki-keystore.jks
+2026-02-21 16:01:57.755 [https-jsse-nio-8443-exec-10] DEBUG c.p.p.service.KeystoreService - Keystore učitan: C:/Users/Suvajdzic/Desktop/bsep/bsep-team33/pkibackend/pkibackend/keystores/pki-keystore.jks
+2026-02-21 16:01:57.802 [https-jsse-nio-8443-exec-10] DEBUG c.p.p.service.KeystoreService - Keystore učitan: C:/Users/Suvajdzic/Desktop/bsep/bsep-team33/pkibackend/pkibackend/keystores/pki-keystore.jks
+2026-02-21 16:01:57.817 [https-jsse-nio-8443-exec-10] DEBUG c.p.p.service.KeystoreService - Keystore sačuvan: C:/Users/Suvajdzic/Desktop/bsep/bsep-team33/pkibackend/pkibackend/keystores/pki-keystore.jks
+2026-02-21 16:01:57.817 [https-jsse-nio-8443-exec-10] INFO  c.p.p.service.KeystoreService - CA sertifikat sačuvan sa aliasom: intermediate-fud-1771686117770
+2026-02-21 16:01:57.896 [https-jsse-nio-8443-exec-10] DEBUG org.hibernate.SQL - 
+    insert 
+    into
+        certificates
+        (alias, common_name, country, created_at, issuer_alias, organization, organizational_unit, revocation_reason, revoked, revoked_at, serial_number, type, valid_from, valid_to) 
+    values
+        (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+2026-02-21 16:01:58.107 [https-jsse-nio-8443-exec-1] DEBUG org.hibernate.SQL - 
+    select
+        u1_0.id,
+        u1_0.email,
+        u1_0.first_name,
+        u1_0.last_name,
+        u1_0.password,
+        u1_0.public_key,
+        u1_0.role 
+    from
+        users u1_0 
+    where
+        u1_0.email=?
+2026-02-21 16:01:58.316 [https-jsse-nio-8443-exec-1] DEBUG c.p.p.security.JwtAuthFilter - Korisnik admin@pki.com uspešno autentifikovan
+2026-02-21 16:01:58.438 [https-jsse-nio-8443-exec-1] DEBUG org.hibernate.SQL - 
+    select
+        c1_0.id,
+        c1_0.alias,
+        c1_0.common_name,
+        c1_0.country,
+        c1_0.created_at,
+        c1_0.issuer_alias,
+        c1_0.organization,
+        c1_0.organizational_unit,
+        c1_0.revocation_reason,
+        c1_0.revoked,
+        c1_0.revoked_at,
+        c1_0.serial_number,
+        c1_0.type,
+        c1_0.valid_from,
+        c1_0.valid_to 
+    from
+        certificates c1_0
+2026-02-21 16:03:35.564 [https-jsse-nio-8443-exec-2] DEBUG org.hibernate.SQL - 
+    select
+        u1_0.id,
+        u1_0.email,
+        u1_0.first_name,
+        u1_0.last_name,
+        u1_0.password,
+        u1_0.public_key,
+        u1_0.role 
+    from
+        users u1_0 
+    where
+        u1_0.email=?
+2026-02-21 16:03:35.696 [https-jsse-nio-8443-exec-2] DEBUG c.p.p.security.JwtAuthFilter - Korisnik admin@pki.com uspešno autentifikovan
+2026-02-21 16:03:35.767 [https-jsse-nio-8443-exec-2] DEBUG org.hibernate.SQL - 
+    select
+        c1_0.id,
+        c1_0.alias,
+        c1_0.common_name,
+        c1_0.country,
+        c1_0.created_at,
+        c1_0.issuer_alias,
+        c1_0.organization,
+        c1_0.organizational_unit,
+        c1_0.revocation_reason,
+        c1_0.revoked,
+        c1_0.revoked_at,
+        c1_0.serial_number,
+        c1_0.type,
+        c1_0.valid_from,
+        c1_0.valid_to 
+    from
+        certificates c1_0 
+    where
+        c1_0.type=? 
+        and not(c1_0.revoked)
+2026-02-21 16:03:35.814 [https-jsse-nio-8443-exec-2] DEBUG org.hibernate.SQL - 
+    select
+        c1_0.id,
+        c1_0.alias,
+        c1_0.common_name,
+        c1_0.country,
+        c1_0.created_at,
+        c1_0.issuer_alias,
+        c1_0.organization,
+        c1_0.organizational_unit,
+        c1_0.revocation_reason,
+        c1_0.revoked,
+        c1_0.revoked_at,
+        c1_0.serial_number,
+        c1_0.type,
+        c1_0.valid_from,
+        c1_0.valid_to 
+    from
+        certificates c1_0 
+    where
+        c1_0.type=? 
+        and not(c1_0.revoked)
+2026-02-21 16:03:58.995 [https-jsse-nio-8443-exec-5] DEBUG org.hibernate.SQL - 
+    select
+        u1_0.id,
+        u1_0.email,
+        u1_0.first_name,
+        u1_0.last_name,
+        u1_0.password,
+        u1_0.public_key,
+        u1_0.role 
+    from
+        users u1_0 
+    where
+        u1_0.email=?
+2026-02-21 16:03:58.995 [https-jsse-nio-8443-exec-5] DEBUG c.p.p.security.JwtAuthFilter - Korisnik admin@pki.com uspešno autentifikovan
+2026-02-21 16:03:59.065 [https-jsse-nio-8443-exec-5] INFO  c.p.p.c.CertificateController - === GENERATE REQUEST ===
+2026-02-21 16:03:59.065 [https-jsse-nio-8443-exec-5] INFO  c.p.p.c.CertificateController - Type: END_ENTITY
+2026-02-21 16:03:59.065 [https-jsse-nio-8443-exec-5] INFO  c.p.p.c.CertificateController - CommonName: nrf
+2026-02-21 16:03:59.065 [https-jsse-nio-8443-exec-5] INFO  c.p.p.c.CertificateController - Organization: jwfn
+2026-02-21 16:03:59.065 [https-jsse-nio-8443-exec-5] INFO  c.p.p.c.CertificateController - ValidFrom: 2026-02-21T15:03:31
+2026-02-21 16:03:59.065 [https-jsse-nio-8443-exec-5] INFO  c.p.p.c.CertificateController - ValidTo: 2028-02-20T23:00
+2026-02-21 16:03:59.065 [https-jsse-nio-8443-exec-5] INFO  c.p.p.c.CertificateController - IssuerAlias: intermediate-fud-1771686117770
+2026-02-21 16:03:59.065 [https-jsse-nio-8443-exec-5] INFO  c.p.p.c.CertificateController - isCA: false
+2026-02-21 16:03:59.065 [https-jsse-nio-8443-exec-5] INFO  c.p.p.c.CertificateController - =======================
+2026-02-21 16:03:59.065 [https-jsse-nio-8443-exec-5] INFO  c.p.p.c.CertificateController - Admin admin@pki.com kreira END_ENTITY sertifikat za: nrf
+2026-02-21 16:03:59.081 [https-jsse-nio-8443-exec-5] DEBUG org.hibernate.SQL - 
+    select
+        c1_0.id,
+        c1_0.alias,
+        c1_0.common_name,
+        c1_0.country,
+        c1_0.created_at,
+        c1_0.issuer_alias,
+        c1_0.organization,
+        c1_0.organizational_unit,
+        c1_0.revocation_reason,
+        c1_0.revoked,
+        c1_0.revoked_at,
+        c1_0.serial_number,
+        c1_0.type,
+        c1_0.valid_from,
+        c1_0.valid_to 
+    from
+        certificates c1_0 
+    where
+        c1_0.alias=?
+2026-02-21 16:03:59.227 [https-jsse-nio-8443-exec-5] DEBUG c.p.p.service.KeystoreService - Keystore učitan: C:/Users/Suvajdzic/Desktop/bsep/bsep-team33/pkibackend/pkibackend/keystores/pki-keystore.jks
+2026-02-21 16:03:59.227 [https-jsse-nio-8443-exec-5] DEBUG c.p.p.service.KeystoreService - Keystore učitan: C:/Users/Suvajdzic/Desktop/bsep/bsep-team33/pkibackend/pkibackend/keystores/pki-keystore.jks
+2026-02-21 16:03:59.227 [https-jsse-nio-8443-exec-5] DEBUG c.p.p.service.KeystoreService - Keystore učitan: C:/Users/Suvajdzic/Desktop/bsep/bsep-team33/pkibackend/pkibackend/keystores/pki-keystore.jks
+2026-02-21 16:04:04.023 [https-jsse-nio-8443-exec-5] DEBUG c.p.p.service.KeystoreService - Keystore učitan: C:/Users/Suvajdzic/Desktop/bsep/bsep-team33/pkibackend/pkibackend/keystores/pki-keystore.jks
+2026-02-21 16:04:04.023 [https-jsse-nio-8443-exec-5] DEBUG c.p.p.service.KeystoreService - Keystore sačuvan: C:/Users/Suvajdzic/Desktop/bsep/bsep-team33/pkibackend/pkibackend/keystores/pki-keystore.jks
+2026-02-21 16:04:04.023 [https-jsse-nio-8443-exec-5] INFO  c.p.p.service.KeystoreService - EE sertifikat sačuvan sa aliasom: ee-nrf-1771686243960
+2026-02-21 16:04:04.070 [https-jsse-nio-8443-exec-5] DEBUG org.hibernate.SQL - 
+    insert 
+    into
+        certificates
+        (alias, common_name, country, created_at, issuer_alias, organization, organizational_unit, revocation_reason, revoked, revoked_at, serial_number, type, valid_from, valid_to) 
+    values
+        (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+2026-02-21 16:04:04.807 [https-jsse-nio-8443-exec-5] DEBUG org.hibernate.SQL - 
+    select
+        u1_0.id,
+        u1_0.email,
+        u1_0.first_name,
+        u1_0.last_name,
+        u1_0.password,
+        u1_0.public_key,
+        u1_0.role 
+    from
+        users u1_0 
+    where
+        u1_0.email=?
+2026-02-21 16:04:04.807 [https-jsse-nio-8443-exec-5] DEBUG c.p.p.security.JwtAuthFilter - Korisnik admin@pki.com uspešno autentifikovan
+2026-02-21 16:04:04.832 [https-jsse-nio-8443-exec-5] DEBUG org.hibernate.SQL - 
+    select
+        c1_0.id,
+        c1_0.alias,
+        c1_0.common_name,
+        c1_0.country,
+        c1_0.created_at,
+        c1_0.issuer_alias,
+        c1_0.organization,
+        c1_0.organizational_unit,
+        c1_0.revocation_reason,
+        c1_0.revoked,
+        c1_0.revoked_at,
+        c1_0.serial_number,
+        c1_0.type,
+        c1_0.valid_from,
+        c1_0.valid_to 
+    from
+        certificates c1_0
+2026-02-21 16:04:35.409 [https-jsse-nio-8443-exec-3] DEBUG org.hibernate.SQL - 
+    select
+        u1_0.id,
+        u1_0.email,
+        u1_0.first_name,
+        u1_0.last_name,
+        u1_0.password,
+        u1_0.public_key,
+        u1_0.role 
+    from
+        users u1_0 
+    where
+        u1_0.email=?
+2026-02-21 16:04:35.431 [https-jsse-nio-8443-exec-3] DEBUG c.p.p.security.JwtAuthFilter - Korisnik admin@pki.com uspešno autentifikovan
+2026-02-21 16:04:35.548 [https-jsse-nio-8443-exec-3] INFO  c.p.p.c.CertificateController - Admin admin@pki.com povlači sertifikat ID: 3 — razlog: keyCompromise
+2026-02-21 16:04:35.674 [https-jsse-nio-8443-exec-3] DEBUG org.hibernate.SQL - 
+    select
+        c1_0.id,
+        c1_0.alias,
+        c1_0.common_name,
+        c1_0.country,
+        c1_0.created_at,
+        c1_0.issuer_alias,
+        c1_0.organization,
+        c1_0.organizational_unit,
+        c1_0.revocation_reason,
+        c1_0.revoked,
+        c1_0.revoked_at,
+        c1_0.serial_number,
+        c1_0.type,
+        c1_0.valid_from,
+        c1_0.valid_to 
+    from
+        certificates c1_0 
+    where
+        c1_0.id=?
+2026-02-21 16:04:35.768 [https-jsse-nio-8443-exec-3] DEBUG org.hibernate.SQL - 
+    update
+        certificates 
+    set
+        alias=?,
+        common_name=?,
+        country=?,
+        created_at=?,
+        issuer_alias=?,
+        organization=?,
+        organizational_unit=?,
+        revocation_reason=?,
+        revoked=?,
+        revoked_at=?,
+        serial_number=?,
+        type=?,
+        valid_from=?,
+        valid_to=? 
+    where
+        id=?
+2026-02-21 16:04:35.873 [https-jsse-nio-8443-exec-6] DEBUG org.hibernate.SQL - 
+    select
+        u1_0.id,
+        u1_0.email,
+        u1_0.first_name,
+        u1_0.last_name,
+        u1_0.password,
+        u1_0.public_key,
+        u1_0.role 
+    from
+        users u1_0 
+    where
+        u1_0.email=?
+2026-02-21 16:04:35.873 [https-jsse-nio-8443-exec-6] DEBUG c.p.p.security.JwtAuthFilter - Korisnik admin@pki.com uspešno autentifikovan
+2026-02-21 16:04:35.873 [https-jsse-nio-8443-exec-6] DEBUG org.hibernate.SQL - 
+    select
+        c1_0.id,
+        c1_0.alias,
+        c1_0.common_name,
+        c1_0.country,
+        c1_0.created_at,
+        c1_0.issuer_alias,
+        c1_0.organization,
+        c1_0.organizational_unit,
+        c1_0.revocation_reason,
+        c1_0.revoked,
+        c1_0.revoked_at,
+        c1_0.serial_number,
+        c1_0.type,
+        c1_0.valid_from,
+        c1_0.valid_to 
+    from
+        certificates c1_0
+2026-02-21 16:04:43.763 [https-jsse-nio-8443-exec-1] DEBUG org.hibernate.SQL - 
+    select
+        u1_0.id,
+        u1_0.email,
+        u1_0.first_name,
+        u1_0.last_name,
+        u1_0.password,
+        u1_0.public_key,
+        u1_0.role 
+    from
+        users u1_0 
+    where
+        u1_0.email=?
+2026-02-21 16:04:43.771 [https-jsse-nio-8443-exec-1] DEBUG c.p.p.security.JwtAuthFilter - Korisnik admin@pki.com uspešno autentifikovan
+2026-02-21 16:04:43.795 [https-jsse-nio-8443-exec-1] DEBUG org.hibernate.SQL - 
+    select
+        u1_0.id,
+        u1_0.email,
+        u1_0.first_name,
+        u1_0.last_name,
+        u1_0.password,
+        u1_0.public_key,
+        u1_0.role 
+    from
+        users u1_0 
+    where
+        u1_0.email=?
+2026-02-21 16:04:43.847 [https-jsse-nio-8443-exec-4] DEBUG org.hibernate.SQL - 
+    select
+        u1_0.id,
+        u1_0.email,
+        u1_0.first_name,
+        u1_0.last_name,
+        u1_0.password,
+        u1_0.public_key,
+        u1_0.role 
+    from
+        users u1_0 
+    where
+        u1_0.email=?
+2026-02-21 16:04:43.847 [https-jsse-nio-8443-exec-4] DEBUG c.p.p.security.JwtAuthFilter - Korisnik admin@pki.com uspešno autentifikovan
+2026-02-21 16:04:43.865 [https-jsse-nio-8443-exec-4] INFO  c.p.p.c.PasswordManagerController - Admin admin@pki.com zatražio listu lozinki
+2026-02-21 16:04:43.865 [https-jsse-nio-8443-exec-4] DEBUG org.hibernate.SQL - 
+    select
+        u1_0.id,
+        u1_0.email,
+        u1_0.first_name,
+        u1_0.last_name,
+        u1_0.password,
+        u1_0.public_key,
+        u1_0.role 
+    from
+        users u1_0 
+    where
+        u1_0.email=?
+2026-02-21 16:04:43.897 [https-jsse-nio-8443-exec-4] DEBUG org.hibernate.SQL - 
+    select
+        pe1_0.id,
+        pe1_0.created_at,
+        pe1_0.encrypted_password,
+        pe1_0.user_id,
+        pe1_0.site_name,
+        pe1_0.updated_at,
+        pe1_0.username 
+    from
+        password_entries pe1_0 
+    where
+        pe1_0.user_id=?
+2026-02-21 16:06:00.184 [https-jsse-nio-8443-exec-3] DEBUG org.hibernate.SQL - 
+    select
+        u1_0.id,
+        u1_0.email,
+        u1_0.first_name,
+        u1_0.last_name,
+        u1_0.password,
+        u1_0.public_key,
+        u1_0.role 
+    from
+        users u1_0 
+    where
+        u1_0.email=?
+2026-02-21 16:06:00.341 [https-jsse-nio-8443-exec-3] DEBUG c.p.p.security.JwtAuthFilter - Korisnik admin@pki.com uspešno autentifikovan
+2026-02-21 16:06:00.513 [https-jsse-nio-8443-exec-3] DEBUG org.hibernate.SQL - 
+    select
+        u1_0.id,
+        u1_0.email,
+        u1_0.first_name,
+        u1_0.last_name,
+        u1_0.password,
+        u1_0.public_key,
+        u1_0.role 
+    from
+        users u1_0 
+    where
+        u1_0.email=?
+2026-02-21 16:06:00.724 [https-jsse-nio-8443-exec-10] DEBUG org.hibernate.SQL - 
+    select
+        u1_0.id,
+        u1_0.email,
+        u1_0.first_name,
+        u1_0.last_name,
+        u1_0.password,
+        u1_0.public_key,
+        u1_0.role 
+    from
+        users u1_0 
+    where
+        u1_0.email=?
+2026-02-21 16:06:00.724 [https-jsse-nio-8443-exec-10] DEBUG c.p.p.security.JwtAuthFilter - Korisnik admin@pki.com uspešno autentifikovan
+2026-02-21 16:06:02.267 [https-jsse-nio-8443-exec-10] DEBUG org.hibernate.SQL - 
+    select
+        u1_0.id,
+        u1_0.email,
+        u1_0.first_name,
+        u1_0.last_name,
+        u1_0.password,
+        u1_0.public_key,
+        u1_0.role 
+    from
+        users u1_0 
+    where
+        u1_0.email=?
+2026-02-21 16:06:02.581 [https-jsse-nio-8443-exec-10] DEBUG org.hibernate.SQL - 
+    insert 
+    into
+        password_entries
+        (created_at, encrypted_password, user_id, site_name, updated_at, username) 
+    values
+        (?, ?, ?, ?, ?, ?)
+2026-02-21 16:06:02.920 [https-jsse-nio-8443-exec-6] DEBUG org.hibernate.SQL - 
+    select
+        u1_0.id,
+        u1_0.email,
+        u1_0.first_name,
+        u1_0.last_name,
+        u1_0.password,
+        u1_0.public_key,
+        u1_0.role 
+    from
+        users u1_0 
+    where
+        u1_0.email=?
+2026-02-21 16:06:02.920 [https-jsse-nio-8443-exec-6] DEBUG c.p.p.security.JwtAuthFilter - Korisnik admin@pki.com uspešno autentifikovan
+2026-02-21 16:06:02.928 [https-jsse-nio-8443-exec-6] INFO  c.p.p.c.PasswordManagerController - Admin admin@pki.com zatražio listu lozinki
+2026-02-21 16:06:02.936 [https-jsse-nio-8443-exec-6] DEBUG org.hibernate.SQL - 
+    select
+        u1_0.id,
+        u1_0.email,
+        u1_0.first_name,
+        u1_0.last_name,
+        u1_0.password,
+        u1_0.public_key,
+        u1_0.role 
+    from
+        users u1_0 
+    where
+        u1_0.email=?
+2026-02-21 16:06:02.953 [https-jsse-nio-8443-exec-6] DEBUG org.hibernate.SQL - 
+    select
+        pe1_0.id,
+        pe1_0.created_at,
+        pe1_0.encrypted_password,
+        pe1_0.user_id,
+        pe1_0.site_name,
+        pe1_0.updated_at,
+        pe1_0.username 
+    from
+        password_entries pe1_0 
+    where
+        pe1_0.user_id=?
+2026-02-21 16:06:03.244 [https-jsse-nio-8443-exec-6] DEBUG org.hibernate.SQL - 
+    select
+        u1_0.id,
+        u1_0.email,
+        u1_0.first_name,
+        u1_0.last_name,
+        u1_0.password,
+        u1_0.public_key,
+        u1_0.role 
+    from
+        users u1_0 
+    where
+        u1_0.email=?
+2026-02-21 16:06:03.256 [https-jsse-nio-8443-exec-6] DEBUG c.p.p.security.JwtAuthFilter - Korisnik admin@pki.com uspešno autentifikovan
+2026-02-21 16:06:03.256 [https-jsse-nio-8443-exec-6] DEBUG org.hibernate.SQL - 
+    select
+        u1_0.id,
+        u1_0.email,
+        u1_0.first_name,
+        u1_0.last_name,
+        u1_0.password,
+        u1_0.public_key,
+        u1_0.role 
+    from
+        users u1_0 
+    where
+        u1_0.email=?
+2026-02-21 16:57:39.442 [HikariPool-1 housekeeper] WARN  com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=32m20s989ms197µs500ns).

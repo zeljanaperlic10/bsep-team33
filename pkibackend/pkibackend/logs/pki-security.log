@@ -1,0 +1,33 @@
+2026-02-21 01:11:14.794 [https-jsse-nio-8443-exec-5] INFO  c.pki.pkibackend.service.AuthService - Uspešna prijava korisnika: admin@pki.com
+2026-02-21 02:18:09.029 [https-jsse-nio-8443-exec-9] INFO  c.pki.pkibackend.service.AuthService - Uspešna prijava korisnika: admin@pki.com
+2026-02-21 02:18:10.998 [https-jsse-nio-8443-exec-2] INFO  c.p.p.service.PasswordManagerService - Admin admin@pki.com zatražio listu lozinki — pronađeno: 0
+2026-02-21 02:19:32.996 [https-jsse-nio-8443-exec-3] INFO  c.p.p.service.PasswordManagerService - Admin admin@pki.com zatražio listu lozinki — pronađeno: 0
+2026-02-21 02:19:51.029 [https-jsse-nio-8443-exec-8] INFO  c.p.p.service.PasswordManagerService - Admin admin@pki.com zatražio listu lozinki — pronađeno: 0
+2026-02-21 02:19:53.092 [https-jsse-nio-8443-exec-3] INFO  c.p.p.service.PasswordManagerService - Admin admin@pki.com zatražio listu lozinki — pronađeno: 0
+2026-02-21 02:22:06.345 [https-jsse-nio-8443-exec-1] INFO  c.p.p.service.PasswordManagerService - Admin admin@pki.com zatražio listu lozinki — pronađeno: 0
+2026-02-21 02:22:29.449 [https-jsse-nio-8443-exec-6] INFO  c.pki.pkibackend.service.AuthService - Uspešna prijava korisnika: admin@pki.com
+2026-02-21 02:22:29.858 [https-jsse-nio-8443-exec-10] INFO  c.p.p.service.PasswordManagerService - Admin admin@pki.com zatražio listu lozinki — pronađeno: 0
+2026-02-21 02:25:04.667 [https-jsse-nio-8443-exec-6] INFO  c.p.p.service.CertificateService - Generisanje ROOT sertifikata za: My Root CA
+2026-02-21 02:27:05.148 [https-jsse-nio-8443-exec-6] INFO  c.p.p.service.CertificateService - Generisanje ROOT sertifikata za: My Root CA
+2026-02-21 02:28:51.247 [https-jsse-nio-8443-exec-7] INFO  c.p.p.service.CertificateService - Generisanje ROOT sertifikata za: My Root CA
+2026-02-21 02:41:55.379 [https-jsse-nio-8443-exec-2] INFO  c.pki.pkibackend.service.AuthService - Uspešna prijava korisnika: admin@pki.com
+2026-02-21 02:41:56.116 [https-jsse-nio-8443-exec-7] INFO  c.p.p.service.PasswordManagerService - Admin admin@pki.com zatražio listu lozinki — pronađeno: 0
+2026-02-21 02:42:52.649 [https-jsse-nio-8443-exec-4] INFO  c.p.p.service.CertificateService - Generisanje ROOT sertifikata za: My Root CA
+2026-02-21 02:51:06.088 [https-jsse-nio-8443-exec-7] INFO  c.p.p.service.PasswordManagerService - Admin admin@pki.com zatražio listu lozinki — pronađeno: 0
+2026-02-21 02:51:20.305 [https-jsse-nio-8443-exec-3] INFO  c.pki.pkibackend.service.AuthService - Uspešna prijava korisnika: admin@pki.com
+2026-02-21 02:51:20.508 [https-jsse-nio-8443-exec-9] INFO  c.p.p.service.PasswordManagerService - Admin admin@pki.com zatražio listu lozinki — pronađeno: 0
+2026-02-21 02:52:09.069 [https-jsse-nio-8443-exec-2] INFO  c.p.p.service.CertificateService - Generisanje ROOT sertifikata za: Root
+2026-02-21 02:56:22.778 [https-jsse-nio-8443-exec-10] INFO  c.p.p.service.PasswordManagerService - Admin admin@pki.com zatražio listu lozinki — pronađeno: 0
+2026-02-21 02:56:33.895 [https-jsse-nio-8443-exec-4] INFO  c.p.p.service.KeyPairService - Novi par ključeva generisan za admina: admin@pki.com
+2026-02-21 02:56:33.895 [https-jsse-nio-8443-exec-4] WARN  c.p.p.service.KeyPairService - Privatni ključ vraćen adminu — neće biti sačuvan na serveru
+2026-02-21 02:56:56.410 [https-jsse-nio-8443-exec-1] INFO  c.p.p.service.PasswordManagerService - Admin admin@pki.com zatražio listu lozinki — pronađeno: 0
+2026-02-21 02:57:07.847 [https-jsse-nio-8443-exec-2] INFO  c.p.p.service.PasswordManagerService - Admin admin@pki.com zatražio listu lozinki — pronađeno: 0
+2026-02-21 02:59:27.717 [https-jsse-nio-8443-exec-5] INFO  c.p.p.service.CertificateService - Generisanje ROOT sertifikata za: gerrg
+2026-02-21 02:59:44.617 [https-jsse-nio-8443-exec-5] INFO  c.p.p.service.CertificateService - Generisanje ROOT sertifikata za: gerrg
+2026-02-21 15:24:56.328 [https-jsse-nio-8443-exec-9] INFO  c.p.p.service.CertificateService - Generisanje ROOT sertifikata za: hbbhjb
+2026-02-21 15:27:24.015 [https-jsse-nio-8443-exec-10] INFO  c.p.p.service.PasswordManagerService - Admin admin@pki.com zatražio listu lozinki — pronađeno: 0
+2026-02-21 15:27:51.632 [https-jsse-nio-8443-exec-3] INFO  c.p.p.service.CertificateService - Generisanje ROOT sertifikata za: ijeo
+2026-02-21 15:34:30.485 [https-jsse-nio-8443-exec-7] INFO  c.pki.pkibackend.service.AuthService - Uspešna prijava korisnika: admin@pki.com
+2026-02-21 15:39:42.947 [https-jsse-nio-8443-exec-1] INFO  c.pki.pkibackend.service.AuthService - Uspešna prijava korisnika: admin@pki.com
+2026-02-21 15:41:04.040 [https-jsse-nio-8443-exec-6] INFO  c.p.p.service.CertificateService - Generisanje ROOT sertifikata za: My Root CA
+2026-02-21 15:48:01.823 [https-jsse-nio-8443-exec-5] INFO  c.p.p.service.CertificateService - Generisanje ROOT sertifikata za: My Root CA

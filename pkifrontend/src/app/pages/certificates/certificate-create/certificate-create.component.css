@@ -1,0 +1,49 @@
+.page-container {
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.page-header {
+  margin-bottom: 24px;
+}
+
+h1 {
+  font-size: 28px;
+  font-weight: 700;
+  color: #1976d2;
+  margin: 0;
+}
+
+h3 {
+  color: #333;
+  margin: 20px 0 12px 0;
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.full-width {
+  width: 100%;
+}
+
+.form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+  margin-bottom: 8px;
+}
+
+mat-divider {
+  margin: 16px 0;
+}
+
+.form-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 12px;
+  margin-top: 24px;
+}
+
+mat-spinner {
+  display: inline-block;
+  margin-right: 8px;
+}

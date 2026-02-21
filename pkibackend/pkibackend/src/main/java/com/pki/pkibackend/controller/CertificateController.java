@@ -3,11 +3,11 @@ package com.pki.pkibackend.controller;
 import com.pki.pkibackend.dto.CertificateRequest;
 import com.pki.pkibackend.dto.CertificateResponse;
 import com.pki.pkibackend.service.CertificateService;
-import jakarta.validation.Valid;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.http.ResponseEntity;
-import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -25,77 +25,125 @@ public class CertificateController {
         this.certificateService = certificateService;
     }
 
+    private String getCurrentAdminEmail() {
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        return authentication.getName();
+    }
+
     // GET /api/certificates
-    // Vraća sve sertifikate u sistemu
-    // Samo admin može da vidi sve sertifikate
     @GetMapping
-    @PreAuthorize("hasRole('ADMIN')")
     public ResponseEntity<List<CertificateResponse>> getAllCertificates() {
-        log.info("Admin zatražio listu svih sertifikata");
-        List<CertificateResponse> certificates = certificateService.getAllCertificates();
-        return ResponseEntity.ok(certificates);
+        try {
+            List<CertificateResponse> certificates = certificateService.getAllCertificates();
+            return ResponseEntity.ok(certificates);
+        } catch (Exception e) {
+            log.error("Greška pri dohvatanju sertifikata: {}", e.getMessage());
+            return ResponseEntity.internalServerError().build();
+        }
     }
 
     // GET /api/certificates/{id}
-    // Vraća jedan sertifikat po ID-u
     @GetMapping("/{id}")
-    @PreAuthorize("hasRole('ADMIN')")
     public ResponseEntity<CertificateResponse> getCertificateById(@PathVariable Long id) {
-        log.info("Admin zatražio sertifikat sa ID: {}", id);
-        CertificateResponse certificate = certificateService.getCertificateById(id);
-        return ResponseEntity.ok(certificate);
+        try {
+            CertificateResponse cert = certificateService.getCertificateById(id);
+            return ResponseEntity.ok(cert);
+        } catch (Exception e) {
+            log.error("Greška pri dohvatanju sertifikata {}: {}", id, e.getMessage());
+            return ResponseEntity.notFound().build();
+        }
     }
 
     // GET /api/certificates/issuers
-    // Vraća listu svih CA sertifikata koji nisu povučeni
-    // Koristi se za dropdown na frontendu kada biramo issuera
     @GetMapping("/issuers")
-    @PreAuthorize("hasRole('ADMIN')")
     public ResponseEntity<List<CertificateResponse>> getAvailableIssuers() {
-        log.info("Admin zatražio listu dostupnih issuera");
-        List<CertificateResponse> issuers = certificateService.getAvailableIssuers();
-        return ResponseEntity.ok(issuers);
+        try {
+            List<CertificateResponse> issuers = certificateService.getAvailableIssuers();
+            return ResponseEntity.ok(issuers);
+        } catch (Exception e) {
+            log.error("Greška pri dohvatanju issuera: {}", e.getMessage());
+            return ResponseEntity.internalServerError().build();
+        }
     }
 
     // POST /api/certificates/generate
-    // Generiše novi sertifikat (ROOT, INTERMEDIATE ili END_ENTITY)
-    // @Valid aktivira validaciju iz CertificateRequest anotacija
+    // Uklonili smo @Valid da ne blokira request zbog validacije
     @PostMapping("/generate")
-    @PreAuthorize("hasRole('ADMIN')")
-    public ResponseEntity<CertificateResponse> generateCertificate(
-            @Valid @RequestBody CertificateRequest request) {
+    public ResponseEntity<?> generateCertificate(@RequestBody CertificateRequest request) {
         try {
-            log.info("Admin kreira {} sertifikat za: {}",
-                request.getType(), request.getCommonName());
+            // Logujemo šta smo primili da vidimo problem
+            log.info("=== GENERATE REQUEST ===");
+            log.info("Type: {}", request.getType());
+            log.info("CommonName: {}", request.getCommonName());
+            log.info("Organization: {}", request.getOrganization());
+            log.info("ValidFrom: {}", request.getValidFrom());
+            log.info("ValidTo: {}", request.getValidTo());
+            log.info("IssuerAlias: {}", request.getIssuerAlias());
+            log.info("isCA: {}", request.isCA());
+            log.info("=======================");
+
+            // Ručna validacija umesto @Valid
+            if (request.getType() == null || request.getType().isEmpty()) {
+                return ResponseEntity.badRequest().body(Map.of("message", "Tip sertifikata je obavezan"));
+            }
+            if (request.getCommonName() == null || request.getCommonName().isEmpty()) {
+                return ResponseEntity.badRequest().body(Map.of("message", "Common Name je obavezan"));
+            }
+            if (request.getOrganization() == null || request.getOrganization().isEmpty()) {
+                return ResponseEntity.badRequest().body(Map.of("message", "Organizacija je obavezna"));
+            }
+            if (request.getValidFrom() == null) {
+                return ResponseEntity.badRequest().body(Map.of("message", "ValidFrom je obavezan — format: yyyy-MM-ddTHH:mm:ss"));
+            }
+            if (request.getValidTo() == null) {
+                return ResponseEntity.badRequest().body(Map.of("message", "ValidTo je obavezan — format: yyyy-MM-ddTHH:mm:ss"));
+            }
+            if (!request.getType().equalsIgnoreCase("ROOT")) {
+                if (request.getIssuerAlias() == null || request.getIssuerAlias().isEmpty()) {
+                    return ResponseEntity.badRequest().body(Map.of("message", "IssuerAlias je obavezan za " + request.getType()));
+                }
+            }
+
+            log.info("Admin {} kreira {} sertifikat za: {}",
+                getCurrentAdminEmail(), request.getType(), request.getCommonName());
+
             CertificateResponse response = certificateService.generateCertificate(request);
             return ResponseEntity.ok(response);
+
+        } catch (IllegalArgumentException e) {
+            log.error("Validaciona greška: {}", e.getMessage());
+            return ResponseEntity.badRequest().body(Map.of("message", e.getMessage()));
         } catch (Exception e) {
-            log.error("Greška pri generisanju sertifikata: {}", e.getMessage());
-            return ResponseEntity.badRequest().build();
+            log.error("Greška pri generisanju sertifikata: {}", e.getMessage(), e);
+            return ResponseEntity.badRequest().body(
+                Map.of("message", e.getMessage() != null ? e.getMessage() : "Interna greška — pogledaj konzolu")
+            );
         }
     }
 
     // PUT /api/certificates/{id}/revoke
-    // Povlači sertifikat — prima razlog povlačenja u body-ju
-    // X.509 standard zahteva navođenje razloga
     @PutMapping("/{id}/revoke")
-    @PreAuthorize("hasRole('ADMIN')")
-    public ResponseEntity<CertificateResponse> revokeCertificate(
+    public ResponseEntity<?> revokeCertificate(
             @PathVariable Long id,
             @RequestBody Map<String, String> body) {
-
-        String reason = body.get("reason");
-        if (reason == null || reason.isEmpty()) {
-            return ResponseEntity.badRequest().build();
-        }
-
         try {
-            log.warn("Admin povlači sertifikat ID: {} — razlog: {}", id, reason);
+            String reason = body.get("reason");
+            if (reason == null || reason.isEmpty()) {
+                return ResponseEntity.badRequest().body(Map.of("message", "Razlog povlačenja je obavezan"));
+            }
+
+            log.info("Admin {} povlači sertifikat ID: {} — razlog: {}",
+                getCurrentAdminEmail(), id, reason);
+
             CertificateResponse response = certificateService.revokeCertificate(id, reason);
             return ResponseEntity.ok(response);
+
+        } catch (IllegalStateException e) {
+            log.error("Greška pri povlačenju: {}", e.getMessage());
+            return ResponseEntity.badRequest().body(Map.of("message", e.getMessage()));
         } catch (Exception e) {
-            log.error("Greška pri povlačenju sertifikata: {}", e.getMessage());
-            return ResponseEntity.badRequest().build();
+            log.error("Greška pri povlačenju sertifikata {}: {}", id, e.getMessage());
+            return ResponseEntity.internalServerError().body(Map.of("message", e.getMessage()));
         }
     }
 }

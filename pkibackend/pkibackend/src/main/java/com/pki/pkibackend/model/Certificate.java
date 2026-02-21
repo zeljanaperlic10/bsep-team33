@@ -20,13 +20,8 @@ public class Certificate {
     @Column(nullable = false)
     private String organization;
 
-    @Column
     private String organizationalUnit;
-
-    @Column
     private String country;
-
-    @Column(nullable = false)
     private String serialNumber;
 
     @Enumerated(EnumType.STRING)
@@ -39,55 +34,30 @@ public class Certificate {
     @Column(nullable = false)
     private LocalDateTime validTo;
 
-    @Column
     private String issuerAlias;
 
     @Column(nullable = false)
     private boolean revoked = false;
 
-    @Column
     private String revocationReason;
-
-    @Column
     private LocalDateTime revokedAt;
 
     @Column(nullable = false)
     private LocalDateTime createdAt;
 
     public enum CertificateType {
-        ROOT,
-        INTERMEDIATE,
-        END_ENTITY
+        ROOT, INTERMEDIATE, END_ENTITY
     }
 
+    // Automatski postavljamo createdAt pre čuvanja u bazu
     @PrePersist
     public void prePersist() {
-        this.createdAt = LocalDateTime.now();
+        if (this.createdAt == null) {
+            this.createdAt = LocalDateTime.now();
+        }
     }
 
     public Certificate() {}
-
-    public Certificate(Long id, String alias, String commonName, String organization,
-                       String organizationalUnit, String country, String serialNumber,
-                       CertificateType type, LocalDateTime validFrom, LocalDateTime validTo,
-                       String issuerAlias, boolean revoked, String revocationReason,
-                       LocalDateTime revokedAt, LocalDateTime createdAt) {
-        this.id = id;
-        this.alias = alias;
-        this.commonName = commonName;
-        this.organization = organization;
-        this.organizationalUnit = organizationalUnit;
-        this.country = country;
-        this.serialNumber = serialNumber;
-        this.type = type;
-        this.validFrom = validFrom;
-        this.validTo = validTo;
-        this.issuerAlias = issuerAlias;
-        this.revoked = revoked;
-        this.revocationReason = revocationReason;
-        this.revokedAt = revokedAt;
-        this.createdAt = createdAt;
-    }
 
     public Long getId() { return id; }
     public void setId(Long id) { this.id = id; }
@@ -102,7 +72,9 @@ public class Certificate {
     public void setOrganization(String organization) { this.organization = organization; }
 
     public String getOrganizationalUnit() { return organizationalUnit; }
-    public void setOrganizationalUnit(String organizationalUnit) { this.organizationalUnit = organizationalUnit; }
+    public void setOrganizationalUnit(String organizationalUnit) {
+        this.organizationalUnit = organizationalUnit;
+    }
 
     public String getCountry() { return country; }
     public void setCountry(String country) { this.country = country; }
@@ -126,7 +98,9 @@ public class Certificate {
     public void setRevoked(boolean revoked) { this.revoked = revoked; }
 
     public String getRevocationReason() { return revocationReason; }
-    public void setRevocationReason(String revocationReason) { this.revocationReason = revocationReason; }
+    public void setRevocationReason(String revocationReason) {
+        this.revocationReason = revocationReason;
+    }
 
     public LocalDateTime getRevokedAt() { return revokedAt; }
     public void setRevokedAt(LocalDateTime revokedAt) { this.revokedAt = revokedAt; }

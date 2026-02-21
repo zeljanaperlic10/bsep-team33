@@ -1,0 +1,62 @@
+.page-container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.page-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 24px;
+}
+
+h1 {
+  font-size: 28px;
+  font-weight: 700;
+  color: #1976d2;
+  margin: 0;
+}
+
+.filter-card {
+  margin-bottom: 16px;
+}
+
+.filter-card mat-card-content {
+  display: flex;
+  gap: 16px;
+  align-items: center;
+  flex-wrap: wrap;
+  padding: 16px !important;
+}
+
+.filter-card mat-form-field {
+  min-width: 200px;
+}
+
+.cert-table {
+  width: 100%;
+}
+
+.spinner {
+  margin: 24px auto;
+  display: block;
+}
+
+.badge {
+  padding: 4px 10px;
+  border-radius: 12px;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.root { background: #e3f2fd; color: #1565c0; }
+.intermediate { background: #f3e5f5; color: #6a1b9a; }
+.end_entity { background: #e8f5e9; color: #2e7d32; }
+.active { background: #e8f5e9; color: #2e7d32; }
+.revoked { background: #ffebee; color: #c62828; }
+
+.empty-msg {
+  text-align: center;
+  padding: 32px;
+  color: #666;
+}

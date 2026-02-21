@@ -1,0 +1,129 @@
+<div class="dashboard-container">
+
+  <h1>Dashboard</h1>
+  <p class="subtitle">
+    Dobrodošli, {{ authService.getCurrentUser().firstName }}!
+  </p>
+
+  <!-- Statistike -->
+  <div class="stats-grid">
+
+    <mat-card class="stat-card">
+      <mat-card-content>
+        <div class="stat-icon blue">
+          <mat-icon>security</mat-icon>
+        </div>
+        <div class="stat-info">
+          <span class="stat-number">{{ totalCertificates }}</span>
+          <span class="stat-label">Ukupno sertifikata</span>
+        </div>
+      </mat-card-content>
+    </mat-card>
+
+    <mat-card class="stat-card">
+      <mat-card-content>
+        <div class="stat-icon green">
+          <mat-icon>check_circle</mat-icon>
+        </div>
+        <div class="stat-info">
+          <span class="stat-number">{{ activeCertificates }}</span>
+          <span class="stat-label">Aktivnih sertifikata</span>
+        </div>
+      </mat-card-content>
+    </mat-card>
+
+    <mat-card class="stat-card">
+      <mat-card-content>
+        <div class="stat-icon red">
+          <mat-icon>cancel</mat-icon>
+        </div>
+        <div class="stat-info">
+          <span class="stat-number">{{ revokedCertificates }}</span>
+          <span class="stat-label">Povučenih sertifikata</span>
+        </div>
+      </mat-card-content>
+    </mat-card>
+
+    <mat-card class="stat-card">
+      <mat-card-content>
+        <div class="stat-icon purple">
+          <mat-icon>lock</mat-icon>
+        </div>
+        <div class="stat-info">
+          <span class="stat-number">{{ totalPasswords }}</span>
+          <span class="stat-label">Sačuvanih lozinki</span>
+        </div>
+      </mat-card-content>
+    </mat-card>
+
+  </div>
+
+  <!-- Upozorenje ako admin nema par ključeva -->
+  <mat-card *ngIf="!hasKeyPair" class="warning-card">
+    <mat-card-content>
+      <mat-icon color="warn">warning</mat-icon>
+      <span>Niste generisali par ključeva za Password Manager!</span>
+      <button mat-raised-button color="warn" routerLink="/passwords">
+        Generiši ključeve
+      </button>
+    </mat-card-content>
+  </mat-card>
+
+  <!-- Poslednji sertifikati -->
+  <mat-card class="recent-card">
+    <mat-card-header>
+      <mat-card-title>Poslednji sertifikati</mat-card-title>
+      <button mat-button color="primary" routerLink="/certificates">
+        Vidi sve →
+      </button>
+    </mat-card-header>
+
+    <mat-card-content>
+      <mat-spinner *ngIf="isLoading" diameter="40"></mat-spinner>
+
+      <table mat-table [dataSource]="recentCertificates" *ngIf="!isLoading">
+
+        <ng-container matColumnDef="commonName">
+          <th mat-header-cell *matHeaderCellDef>Common Name</th>
+          <td mat-cell *matCellDef="let cert">{{ cert.commonName }}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="type">
+          <th mat-header-cell *matHeaderCellDef>Tip</th>
+          <td mat-cell *matCellDef="let cert">
+            <span class="badge" [ngClass]="cert.type.toLowerCase()">
+              {{ cert.type }}
+            </span>
+          </td>
+        </ng-container>
+
+        <ng-container matColumnDef="validTo">
+          <th mat-header-cell *matHeaderCellDef>Važi do</th>
+          <td mat-cell *matCellDef="let cert">
+            {{ cert.validTo | date:'dd.MM.yyyy' }}
+          </td>
+        </ng-container>
+
+        <ng-container matColumnDef="status">
+          <th mat-header-cell *matHeaderCellDef>Status</th>
+          <td mat-cell *matCellDef="let cert">
+            <span class="badge" [ngClass]="cert.revoked ? 'revoked' : 'active'">
+              {{ cert.revoked ? 'Povučen' : 'Aktivan' }}
+            </span>
+          </td>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="['commonName','type','validTo','status']"></tr>
+        <tr mat-row *matRowDef="let row; columns: ['commonName','type','validTo','status']"></tr>
+
+      </table>
+
+      <p *ngIf="!isLoading && recentCertificates.length === 0" class="empty-msg">
+        Nema sertifikata. 
+        <a routerLink="/certificates/create">Kreirajte prvi sertifikat</a>
+      </p>
+
+    </mat-card-content>
+  </mat-card>
+
+</div>

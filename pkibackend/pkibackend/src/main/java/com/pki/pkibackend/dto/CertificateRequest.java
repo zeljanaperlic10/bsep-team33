@@ -1,51 +1,32 @@
 package com.pki.pkibackend.dto;
 
-import jakarta.validation.constraints.NotBlank;
-import jakarta.validation.constraints.NotNull;
+import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import java.time.LocalDateTime;
 import java.util.List;
 
 public class CertificateRequest {
 
-    // X500Name podaci o vlasniku sertifikata
-    @NotBlank(message = "Common Name je obavezan")
     private String commonName;
-
-    @NotBlank(message = "Organizacija je obavezna")
     private String organization;
-
     private String organizationalUnit;
-
     private String country;
-
     private String state;
-
     private String locality;
-
-    // Tip sertifikata: ROOT, INTERMEDIATE ili END_ENTITY
-    @NotNull(message = "Tip sertifikata je obavezan")
     private String type;
 
-    // Datum od kad važi sertifikat
-    @NotNull(message = "Datum početka važenja je obavezan")
+    @JsonFormat(pattern = "yyyy-MM-dd'T'HH:mm:ss")
     private LocalDateTime validFrom;
 
-    // Datum do kad važi sertifikat
-    @NotNull(message = "Datum kraja važenja je obavezan")
+    @JsonFormat(pattern = "yyyy-MM-dd'T'HH:mm:ss")
     private LocalDateTime validTo;
 
-    // Alias CA sertifikata koji potpisuje novi sertifikat
-    // Za ROOT sertifikat ovo je null jer je samopotpisan
     private String issuerAlias;
-
-    // Ekstenzije sertifikata
-    // Npr: ["keyCertSign", "cRLSign"] za CA sertifikate
     private List<String> keyUsages;
-
-    // Npr: ["serverAuth", "clientAuth"] za EE sertifikate
     private List<String> extendedKeyUsages;
 
-    // Da li je CA sertifikat (može potpisivati druge sertifikate)
+    // Ovo je kljucno — bez ovoga Jackson čita kao "CA" umesto "isCA"
+    @JsonProperty("isCA")
     private boolean isCA;
 
     public CertificateRequest() {}
@@ -86,6 +67,9 @@ public class CertificateRequest {
     public List<String> getExtendedKeyUsages() { return extendedKeyUsages; }
     public void setExtendedKeyUsages(List<String> extendedKeyUsages) { this.extendedKeyUsages = extendedKeyUsages; }
 
+    @JsonProperty("isCA")
     public boolean isCA() { return isCA; }
+
+    @JsonProperty("isCA")
     public void setCA(boolean CA) { isCA = CA; }
 }
