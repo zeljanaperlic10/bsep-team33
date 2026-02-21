@@ -26,19 +26,28 @@ public class User {
     @Column(nullable = false)
     private Role role;
 
+    // Javni ključ admina — koristi se za enkripciju lozinki
+    // Čuvamo ga kao Base64 enkodovan string
+    // Privatni ključ se NIKAD ne čuva ovde
+    @Column(columnDefinition = "TEXT")
+    private String publicKey;
+
     public enum Role {
         ADMIN
     }
 
     public User() {}
 
-    public User(Long id, String email, String password, String firstName, String lastName, Role role) {
+    public User(Long id, String email, String password,
+                String firstName, String lastName,
+                Role role, String publicKey) {
         this.id = id;
         this.email = email;
         this.password = password;
         this.firstName = firstName;
         this.lastName = lastName;
         this.role = role;
+        this.publicKey = publicKey;
     }
 
     public Long getId() { return id; }
@@ -58,4 +67,7 @@ public class User {
 
     public Role getRole() { return role; }
     public void setRole(Role role) { this.role = role; }
+
+    public String getPublicKey() { return publicKey; }
+    public void setPublicKey(String publicKey) { this.publicKey = publicKey; }
 }

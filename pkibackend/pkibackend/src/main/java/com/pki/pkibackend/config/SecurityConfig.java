@@ -2,6 +2,9 @@ package com.pki.pkibackend.config;
 
 import com.pki.pkibackend.security.JwtAuthFilter;
 import com.pki.pkibackend.security.UserDetailsServiceImpl;
+import org.apache.catalina.connector.Connector;
+import org.springframework.boot.web.embedded.tomcat.TomcatServletWebServerFactory;
+import org.springframework.boot.web.servlet.server.ServletWebServerFactory;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -25,7 +28,7 @@ import java.util.List;
 
 @Configuration
 @EnableWebSecurity
-@EnableMethodSecurity // Omogućava @PreAuthorize anotacije na kontrolerima
+@EnableMethodSecurity
 public class SecurityConfig {
 
     private final JwtAuthFilter jwtAuthFilter;
@@ -40,61 +43,50 @@ public class SecurityConfig {
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http
-            // Isključujemo CSRF jer koristimo JWT (ne koristimo cookies)
+            // Isključujemo CSRF jer koristimo JWT
             .csrf(csrf -> csrf.disable())
 
-            // Podešavamo CORS da Angular može da šalje requestove
+            // CORS konfiguracija za Angular
             .cors(cors -> cors.configurationSource(corsConfigurationSource()))
 
-            // Definišemo koje rute su javne a koje zaštićene
+            // Definišemo javne i zaštićene rute
             .authorizeHttpRequests(auth -> auth
-                // Javne rute — ne treba token
+                // Javna ruta — samo login
                 .requestMatchers("/api/auth/**").permitAll()
                 // Sve ostale rute zahtevaju autentifikaciju
                 .anyRequest().authenticated()
             )
 
-            // Koristimo STATELESS session — ne čuvamo session na serveru
-            // Svaki request mora imati JWT token
+            // Stateless sesija — koristimo JWT
             .sessionManagement(session -> session
                 .sessionCreationPolicy(SessionCreationPolicy.STATELESS)
             )
 
-            // Dodajemo naš AuthenticationProvider
             .authenticationProvider(authenticationProvider())
 
-            // Dodajemo JWT filter PRZED standardnim Spring Security filterom
-            // Znači svaki request prvo prolazi kroz naš JWT filter
+            // Naš JWT filter se izvršava pre Spring Security filtera
             .addFilterBefore(jwtAuthFilter, UsernamePasswordAuthenticationFilter.class);
 
         return http.build();
     }
 
-    // CORS konfiguracija — dozvoljava Angular (localhost:4200) da komunicira sa backendom
+    // CORS — dozvoljava Angular da komunicira sa backendom
     @Bean
     public CorsConfigurationSource corsConfigurationSource() {
         CorsConfiguration configuration = new CorsConfiguration();
 
-        // Dozvoljeni origins — Angular development server
+        // Dozvoljavamo Angular development server
         configuration.setAllowedOrigins(List.of("http://localhost:4200"));
-
-        // Dozvoljene HTTP metode
         configuration.setAllowedMethods(Arrays.asList("GET", "POST", "PUT", "DELETE", "OPTIONS"));
-
-        // Dozvoljeni headeri — važno da uključimo Authorization za JWT
         configuration.setAllowedHeaders(Arrays.asList("Authorization", "Content-Type"));
-
-        // Dozvoljavamo slanje kredencijala (cookies, auth headeri)
         configuration.setAllowCredentials(true);
 
         UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
-        // Primenjujemo ovu konfiguraciju na sve rute
         source.registerCorsConfiguration("/**", configuration);
         return source;
     }
 
-    // AuthenticationProvider — koristi našu bazu za proveru korisnika
-    // i BCrypt za proveru lozinke
+    // Koristi našu bazu i BCrypt za autentifikaciju
     @Bean
     public AuthenticationProvider authenticationProvider() {
         DaoAuthenticationProvider provider = new DaoAuthenticationProvider();
@@ -103,18 +95,34 @@ public class SecurityConfig {
         return provider;
     }
 
-    // BCrypt enkoder za lozinke
-    // Automatski soli i hashuje lozinku
-    // Strength 10 je dobar balans između sigurnosti i performansi
     @Bean
     public PasswordEncoder passwordEncoder() {
         return new BCryptPasswordEncoder(10);
     }
 
-    // AuthenticationManager se koristi u AuthService za login
     @Bean
     public AuthenticationManager authenticationManager(
             AuthenticationConfiguration config) throws Exception {
         return config.getAuthenticationManager();
+    }
+
+    // HTTP (8080) → HTTPS (8443) redirect
+    // Svaki HTTP request se automatski redirektuje na HTTPS
+    @Bean
+    public ServletWebServerFactory servletContainer() {
+        TomcatServletWebServerFactory tomcat = new TomcatServletWebServerFactory();
+        tomcat.addAdditionalTomcatConnectors(createHttpConnector());
+        return tomcat;
+    }
+
+    private Connector createHttpConnector() {
+        Connector connector = new Connector(
+            TomcatServletWebServerFactory.DEFAULT_PROTOCOL
+        );
+        connector.setScheme("http");
+        connector.setPort(8080);
+        connector.setSecure(false);
+        connector.setRedirectPort(8443);
+        return connector;
     }
 }

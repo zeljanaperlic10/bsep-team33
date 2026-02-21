@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+
+    <!-- Format log zapisa po industrijskom standardu -->
+    <!-- datum [thread] nivo klasa - poruka -->
+    <property name="LOG_PATTERN"
+              value="%d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %msg%n"/>
+
+    <property name="LOG_PATH" value="logs"/>
+
+    <!-- ============================================ -->
+    <!-- Konzola — vidimo logove u Eclipse konzoli   -->
+    <!-- ============================================ -->
+    <appender name="CONSOLE" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder>
+            <pattern>${LOG_PATTERN}</pattern>
+        </encoder>
+    </appender>
+
+    <!-- ============================================ -->
+    <!-- Glavni log fajl sa rotacijom                -->
+    <!-- Novi fajl svaki dan, max 10MB, čuvamo 30 dana -->
+    <!-- ============================================ -->
+    <appender name="FILE" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <file>${LOG_PATH}/pki-app.log</file>
+
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <fileNamePattern>
+                ${LOG_PATH}/pki-app.%d{yyyy-MM-dd}.%i.log.gz
+            </fileNamePattern>
+            <timeBasedFileNamingAndTriggeringPolicy
+                class="ch.qos.logback.core.rolling.SizeAndTimeBasedFNATP">
+                <maxFileSize>10MB</maxFileSize>
+            </timeBasedFileNamingAndTriggeringPolicy>
+            <maxHistory>30</maxHistory>
+            <totalSizeCap>1GB</totalSizeCap>
+        </rollingPolicy>
+
+        <encoder>
+            <pattern>${LOG_PATTERN}</pattern>
+        </encoder>
+    </appender>
+
+    <!-- ============================================ -->
+    <!-- Audit log — bezbednosni događaji            -->
+    <!-- Login, sertifikati, ključevi, lozinke       -->
+    <!-- Čuvamo 90 dana za neporecivost              -->
+    <!-- ============================================ -->
+    <appender name="SECURITY_FILE" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <file>${LOG_PATH}/pki-security.log</file>
+
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <fileNamePattern>
+                ${LOG_PATH}/pki-security.%d{yyyy-MM-dd}.log.gz
+            </fileNamePattern>
+            <maxHistory>90</maxHistory>
+            <totalSizeCap>2GB</totalSizeCap>
+        </rollingPolicy>
+
+        <encoder>
+            <pattern>${LOG_PATTERN}</pattern>
+        </encoder>
+    </appender>
+
+    <!-- ============================================ -->
+    <!-- Logger konfiguracija                        -->
+    <!-- ============================================ -->
+
+    <!-- Cela aplikacija — DEBUG za razvoj -->
+    <logger name="com.pki.pkibackend" level="DEBUG" additivity="false">
+        <appender-ref ref="CONSOLE"/>
+        <appender-ref ref="FILE"/>
+    </logger>
+
+    <!-- Auth eventi — poseban audit fajl -->
+    <logger name="com.pki.pkibackend.service.AuthService"
+            level="INFO" additivity="false">
+        <appender-ref ref="CONSOLE"/>
+        <appender-ref ref="SECURITY_FILE"/>
+    </logger>
+
+    <!-- Certificate eventi — audit fajl -->
+    <logger name="com.pki.pkibackend.service.CertificateService"
+            level="INFO" additivity="false">
+        <appender-ref ref="CONSOLE"/>
+        <appender-ref ref="SECURITY_FILE"/>
+    </logger>
+
+    <!-- KeyPair eventi — audit fajl -->
+    <logger name="com.pki.pkibackend.service.KeyPairService"
+            level="INFO" additivity="false">
+        <appender-ref ref="CONSOLE"/>
+        <appender-ref ref="SECURITY_FILE"/>
+    </logger>
+
+    <!-- Password manager eventi — audit fajl -->
+    <logger name="com.pki.pkibackend.service.PasswordManagerService"
+            level="INFO" additivity="false">
+        <appender-ref ref="CONSOLE"/>
+        <appender-ref ref="SECURITY_FILE"/>
+    </logger>
+
+    <!-- Spring — samo WARN da ne bude buke -->
+    <logger name="org.springframework" level="WARN"/>
+
+    <!-- Hibernate SQL -->
+    <logger name="org.hibernate.SQL" level="DEBUG"/>
+
+    <!-- Root -->
+    <root level="INFO">
+        <appender-ref ref="CONSOLE"/>
+        <appender-ref ref="FILE"/>
+    </root>
+
+</configuration>
